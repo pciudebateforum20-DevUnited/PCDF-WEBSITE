@@ -420,10 +420,10 @@
             Current Committee</h2>
     </div>
 
-    <!-- 3D Flip Grid -->
-    <div class="w-full max-w-7xl mx-auto px-2 xs:px-3 sm:px-6 lg:px-8 relative z-10 fade-in-up pb-2 sm:pb-4" style="transition-delay: 200ms;">
+    <!-- 3D Flip Grid Container -->
+    <div class="w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 fade-in-up pb-2 sm:pb-4" style="transition-delay: 200ms;">
         <div id="committee-grid"
-            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 lg:gap-5 w-full items-center justify-center">
+            class="flex flex-wrap items-center justify-center gap-3.5 sm:gap-4 lg:gap-5 w-full">
             <!-- Slots will be injected here via JS -->
         </div>
 
@@ -456,6 +456,7 @@
     .committee-slot {
         perspective: 1200px;
         -webkit-perspective: 1200px;
+        transition: opacity 0.3s ease;
     }
 
     .flip-card-inner {
@@ -547,7 +548,9 @@
                 } else {
                     const start = page * count;
                     for (let i = 0; i < count; i++) {
-                        result.push(membersData[start + i] || null);
+                        if (start + i < membersData.length) {
+                            result.push(membersData[start + i]);
+                        }
                     }
                 }
             } else if (count === 3) {
@@ -559,17 +562,23 @@
                 } else {
                     const start = page * count;
                     for (let i = 0; i < count; i++) {
-                        result.push(membersData[start + i] || null);
+                        if (start + i < membersData.length) {
+                            result.push(membersData[start + i]);
+                        }
                     }
                 }
             } else if (count === 2) {
                 const start = page * count;
                 for (let i = 0; i < count; i++) {
-                    result.push(membersData[start + i] || null);
+                    if (start + i < membersData.length) {
+                        result.push(membersData[start + i]);
+                    }
                 }
             } else {
                 // Mobile (1 card per page): Starts directly from President (index 0) and rotates sequentially
-                result.push(membersData[page] || null);
+                if (page < membersData.length) {
+                    result.push(membersData[page]);
+                }
             }
             return result;
         }
@@ -610,7 +619,7 @@
             gridContainer.innerHTML = '';
             for (let i = 0; i < visibleItems; i++) {
                 const slot = document.createElement('div');
-                slot.className = 'committee-slot w-full max-w-[340px] xs:max-w-[370px] sm:max-w-none mx-auto aspect-[3/4.6] sm:aspect-auto sm:h-[400px] md:h-[420px]';
+                slot.className = 'committee-slot w-full max-w-[320px] sm:max-w-none sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] h-[375px] sm:h-[395px] md:h-[420px]';
                 slot.innerHTML = `
                     <div class="flip-card-inner">
                         <div class="flip-card-front w-full h-full"></div>
@@ -644,12 +653,14 @@
             slots.forEach((slot, index) => {
                 const member = initialMembers[index];
                 const front = slot.querySelector('.flip-card-front');
+                const inner = slot.querySelector('.flip-card-inner');
+                inner.style.transform = 'rotateY(0deg)';
                 if (member) {
                     front.innerHTML = generateCardContent(member);
-                    slot.style.visibility = 'visible';
+                    slot.style.display = 'block';
                 } else {
                     front.innerHTML = '';
-                    slot.style.visibility = 'hidden';
+                    slot.style.display = 'none';
                 }
             });
             flipState = 0;
@@ -668,10 +679,16 @@
 
                 if (member) {
                     targetFace.innerHTML = generateCardContent(member);
-                    slot.style.visibility = 'visible';
+                    if (slot.style.display === 'none') {
+                        inner.style.transition = 'none';
+                        inner.style.transform = `rotateY(${flipState * 180}deg)`;
+                        inner.offsetHeight; // Force reflow
+                        inner.style.transition = '';
+                    }
+                    slot.style.display = 'block';
                 } else {
                     targetFace.innerHTML = '';
-                    slot.style.visibility = 'hidden';
+                    slot.style.display = 'none';
                 }
 
                 // Smooth stagger delay across visible items on desktop, immediate on mobile
@@ -687,7 +704,9 @@
         }
 
         function resetAutoPlay() {
-            clearInterval(autoPlayTimer);
+            if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+            }
             autoPlayTimer = setInterval(() => {
                 currentPage = (currentPage + 1) % totalPages;
                 flipToCurrentPage('next');
@@ -713,6 +732,7 @@
                 const newVisible = getVisibleItems();
                 if (newVisible !== visibleItems) {
                     initGrid();
+                    resetAutoPlay();
                 }
             }, 200);
         });
@@ -734,24 +754,32 @@
             }
         }, { passive: true });
 
-        // Hover pause on desktop for comfortable viewing
-        if (committeeSection) {
-            committeeSection.addEventListener('mouseenter', () => {
-                clearInterval(autoPlayTimer);
-            });
-            committeeSection.addEventListener('mouseleave', () => {
+        // Hover pause on card container for comfortable reading, auto-resume on leave
+        gridContainer.addEventListener('mouseenter', () => {
+            if (autoPlayTimer) clearInterval(autoPlayTimer);
+        });
+        gridContainer.addEventListener('mouseleave', () => {
+            resetAutoPlay();
+        });
+
+        // Tab visibility change handler
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
                 resetAutoPlay();
-            });
-        }
+            } else if (autoPlayTimer) {
+                clearInterval(autoPlayTimer);
+            }
+        });
 
         // Start autoplay when section becomes visible in viewport
         if (committeeSection && 'IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting) {
                     resetAutoPlay();
-                    observer.disconnect();
+                } else {
+                    if (autoPlayTimer) clearInterval(autoPlayTimer);
                 }
-            }, { threshold: 0.15 });
+            }, { threshold: 0.1 });
             observer.observe(committeeSection);
         } else {
             resetAutoPlay();
