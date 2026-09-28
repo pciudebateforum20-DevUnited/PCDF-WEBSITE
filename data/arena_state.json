@@ -1,0 +1,189 @@
+{
+  "active_motion_id": "motion-power-sector",
+  "motions": [
+    {
+      "id": "motion-power-sector",
+      "title": "This House Believes that the Government has Failed in the Power Sector in the State Structure",
+      "category": "National Policy & Governance",
+      "round": "Week 01: Parliamentary Mandate",
+      "date": "August 2026",
+      "status": "active",
+      "info": "A parliamentary inquiry examining national grid expansion, power subsidies, capacity charges, and long-term energy sovereignty.",
+      "troops": [
+        {
+          "id": "t-1",
+          "side": "gov",
+          "name": "Tahmid Hasan",
+          "troop_class": "scholar",
+          "logic": "Universal electrification and strategic mega-projects have created an essential foundation for nationwide economic expansion.",
+          "timestamp": "10m ago",
+          "score": 98
+        },
+        {
+          "id": "t-2",
+          "side": "gov",
+          "name": "Sumaiya Anjum",
+          "troop_class": "vanguard",
+          "logic": "Grid modernization in rural agriculture and industrial zones has directly multiplied regional production efficiency.",
+          "timestamp": "25m ago",
+          "score": 95
+        },
+        {
+          "id": "t-3",
+          "side": "gov",
+          "name": "Rakib Chowdhury",
+          "troop_class": "strategist",
+          "logic": "Long-term capital investments such as nuclear and deep-sea LNG facilities ensure future energy independence.",
+          "timestamp": "1h ago",
+          "score": 97
+        },
+        {
+          "id": "t-4",
+          "side": "opp",
+          "name": "Sakib Al Mahmud",
+          "troop_class": "scholar",
+          "logic": "Unsound capacity charge structures and poor contract transparency have imposed an unsustainable fiscal burden on taxpayers.",
+          "timestamp": "5m ago",
+          "score": 99
+        },
+        {
+          "id": "t-5",
+          "side": "opp",
+          "name": "Farhana Yasmin",
+          "troop_class": "vanguard",
+          "logic": "Persistent summertime outages paired with tariff hikes demonstrate a systemic lack of demand forecasting and policy execution.",
+          "timestamp": "18m ago",
+          "score": 94
+        },
+        {
+          "id": "t-6",
+          "side": "opp",
+          "name": "Anindya Roy",
+          "troop_class": "strategist",
+          "logic": "Excessive reliance on imported fossil fuels created vulnerability to foreign exchange shocks and halted generation facilities.",
+          "timestamp": "40m ago",
+          "score": 96
+        },
+        {
+          "id": "t-motion-power-sector-7",
+          "side": "opp",
+          "name": "Farhan Chowdhury",
+          "troop_class": "strategist",
+          "logic": "Capacity charges without demand optimization have strained fiscal balance.",
+          "timestamp": "Just now",
+          "score": 99
+        },
+        {
+          "id": "t-motion-power-sector-8",
+          "side": "gov",
+          "name": "demo",
+          "troop_class": "scholar",
+          "logic": "i do not support",
+          "timestamp": "Just now",
+          "score": 96
+        },
+        {
+          "id": "t-motion-power-sector-9",
+          "side": "gov",
+          "name": "demo 02",
+          "troop_class": "scholar",
+          "logic": "i do",
+          "timestamp": "Just now",
+          "score": 99
+        },
+        {
+          "id": "t-motion-power-sector-10",
+          "side": "gov",
+          "name": "Tawhid Hasan",
+          "troop_class": "vanguard",
+          "logic": "Grid transmission line enhancements have doubled rural distribution reliability.",
+          "timestamp": "Just now",
+          "score": 95
+        },
+        {
+          "id": "t-motion-power-sector-11",
+          "side": "opp",
+          "name": "Abrar Rahman",
+          "troop_class": "strategist",
+          "logic": "Over-contracted capacity charges create systemic fiscal drag.",
+          "timestamp": "Just now",
+          "score": 96
+        },
+        {
+          "id": "t-motion-power-sector-12",
+          "side": "gov",
+          "name": "Mustafizur Rahman",
+          "troop_class": "scholar",
+          "logic": "Renewable energy microgrids are solving remote off-grid challenges.",
+          "timestamp": "Just now",
+          "score": 97
+        },
+        {
+          "id": "t-motion-power-sector-13",
+          "side": "opp",
+          "name": "Nafis Imtiaz",
+          "troop_class": "scholar",
+          "logic": "Systemic transmission loss outweighs generated supply in rural zones.",
+          "timestamp": "Just now",
+          "score": 99
+        },
+        {
+          "id": "t-motion-power-sector-14",
+          "side": "gov",
+          "name": "Shahriar Alam",
+          "troop_class": "vanguard",
+          "logic": "Decentralized solar-grid integrations are delivering energy sovereignty.",
+          "timestamp": "Just now",
+          "score": 97
+        },
+        {
+          "id": "t-motion-power-sector-15",
+          "side": "opp",
+          "name": "Sakib Khan",
+          "troop_class": "strategist",
+          "logic": "Energy subsidies are distorting macroeconomic stability.",
+          "timestamp": "Just now",
+          "score": 96
+        },
+        {
+          "id": "t-motion-power-sector-16",
+          "side": "opp",
+          "name": "test",
+          "troop_class": "scholar",
+          "logic": "======================",
+          "timestamp": "Just now",
+          "score": 97
+        }
+      ]
+    },
+    {
+      "id": "motion-us-china",
+      "title": "This House Holds the United States Responsible for Escalating the US-China Strategic Conflict",
+      "category": "Geopolitics & International Security",
+      "round": "Week 02: Upcoming Debate",
+      "date": "September 2026",
+      "status": "upcoming",
+      "info": "Examining semiconductor export bans, naval freedom of navigation patrols, and Taiwan Strait deterrence doctrines.",
+      "troops": [
+        {
+          "id": "t-uc-1",
+          "side": "gov",
+          "name": "Arman Malik",
+          "troop_class": "scholar",
+          "logic": "Aggressive decoupling policies and tech containment unilaterally disrupted multilateral trade equilibrium.",
+          "timestamp": "Archived",
+          "score": 92
+        },
+        {
+          "id": "t-uc-2",
+          "side": "opp",
+          "name": "Zoya Rahman",
+          "troop_class": "strategist",
+          "logic": "Defensive alliances and technological safeguards were necessary responses to non-market practices and territorial expansion.",
+          "timestamp": "Archived",
+          "score": 95
+        }
+      ]
+    }
+  ]
+}

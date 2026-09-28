@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Edit {{ label }} · PCDF Admin</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-[#0a0a0a] min-h-screen text-white antialiased">
+  <div class="max-w-3xl mx-auto px-6 py-10">
+    <div class="flex items-center justify-between mb-8 border-b border-white/10 pb-6">
+      <div>
+        <p class="text-gray-500 text-xs tracking-[0.3em] uppercase mb-1">Editing</p>
+        <h1 class="cinzel text-xl md:text-2xl font-bold tracking-[0.15em] uppercase">{{ label }}</h1>
+      </div>
+      <div class="flex gap-3">
+        <a href="{% if page == 'home' %}/{% else %}/{{ page }}{% endif %}" target="_blank"
+           class="text-xs border border-white/20 px-4 py-2 hover:border-white transition-colors">View Page</a>
+        <a href="/admin" class="text-xs border border-white/20 px-4 py-2 hover:border-white transition-colors">Dashboard</a>
+        <a href="/admin/logout" class="text-xs bg-red-600 px-4 py-2 hover:bg-white hover:text-black transition-colors">Logout</a>
+      </div>
+    </div>
+
+    {% if saved %}<div class="mb-6 text-green-400 text-sm border border-green-500/40 bg-green-500/10 py-2 px-4">Saved successfully.</div>{% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="space-y-8">
+      <!-- HERO FIELDS -->
+      <div>
+        <h2 class="text-xs tracking-[0.3em] uppercase text-gray-500 mb-4">Page Hero</h2>
+        {% for field in fields %}
+        <div class="border border-white/10 p-5 bg-white/5 mb-3">
+          <label class="block text-[0.6rem] md:text-xs tracking-[0.2em] uppercase text-gray-400 mb-2">{{ field.label }}</label>
+          {% if field.type == 'textarea' %}
+            <textarea name="{{ field.key }}" rows="5"
+              class="w-full px-4 py-3 bg-white/5 border border-white/20 focus:border-red-600 outline-none text-sm font-light leading-relaxed">{{ values.get(field.key, '') }}</textarea>
+          {% elif field.type == 'image' %}
+            {% if values.get(field.key) %}
+              <div class="mb-3">
+                <img src="{{ values.get(field.key) }}" alt="" class="h-40 object-cover border border-white/15" />
+                <label class="mt-2 flex items-center gap-2 text-xs text-gray-400">
+                  <input type="checkbox" name="_remove_{{ field.key }}" value="1" /> Remove current image
+                </label>
+              </div>
+            {% endif %}
+            <input type="file" name="{{ field.key }}" accept="image/*"
+              class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-white/10 file:text-white hover:file:bg-white/20" />
+          {% else %}
+            <input type="text" name="{{ field.key }}" value="{{ values.get(field.key, '') }}"
+              class="w-full px-4 py-3 bg-white/5 border border-white/20 focus:border-red-600 outline-none text-sm" />
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- SECTIONS -->
+      {% if page not in ['home', 'site'] %}
+      <div class="border-t border-white/10 pt-8">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xs tracking-[0.3em] uppercase text-gray-500">Page Sections</h2>
+        </div>
+        {% set sections = values.get('sections', []) %}
+        {% for s in sections %}
+        {% set si = loop.index0 %}
+        <div class="border border-white/15 p-5 bg-white/5 mb-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-3">
+              <span class="text-red-600 text-xs cinzel">Section {{ si + 1 }}</span>
+              <span class="text-gray-400 text-xs uppercase tracking-[0.2em]">{{ s.layout }}</span>
+            </div>
+            <div class="flex gap-2 text-xs">
+              <button type="submit" name="_action" value="move:{{ si }}:up" class="border border-white/20 px-2 py-1 hover:border-white">↑</button>
+              <button type="submit" name="_action" value="move:{{ si }}:down" class="border border-white/20 px-2 py-1 hover:border-white">↓</button>
+              <button type="submit" name="_action" value="del_section:{{ si }}" class="border border-red-500/40 px-2 py-1 hover:bg-red-500/10 text-red-400">Delete</button>
+            </div>
+          </div>
+          <input type="hidden" name="s{{ si }}_layout" value="{{ s.layout }}" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+            <input name="s{{ si }}_title" value="{{ s.title }}" placeholder="Section title" class="px-3 py-2 bg-white/5 border border-white/20 text-sm" />
+            <input name="s{{ si }}_subtitle" value="{{ s.subtitle }}" placeholder="Eyebrow / subtitle" class="px-3 py-2 bg-white/5 border border-white/20 text-sm" />
+          </div>
+          {% if s.layout in ['text', 'two_col', 'cta'] %}
+            <textarea name="s{{ si }}_text" rows="4" placeholder="Paragraph / description (HTML allowed)"
+              class="w-full px-3 py-2 bg-white/5 border border-white/20 text-sm font-light leading-relaxed mb-3">{{ s.text }}</textarea>
+          {% endif %}
+          {% if s.layout in ['cta'] %}
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+              <input name="s{{ si }}_cta_text" value="{{ s.cta_text }}" placeholder="Button text" class="px-3 py-2 bg-white/5 border border-white/20 text-sm" />
+              <input name="s{{ si }}_cta_link" value="{{ s.cta_link }}" placeholder="Button link (/about)" class="px-3 py-2 bg-white/5 border border-white/20 text-sm" />
+            </div>
+          {% endif %}
+          {% if s.layout in ['text', 'two_col'] %}
+            {% if s.image %}<div class="mb-2"><img src="{{ s.image }}" class="h-32 object-cover border border-white/15" />
+              <label class="mt-1 flex items-center gap-2 text-xs text-gray-400"><input type="checkbox" name="_rm_s{{ si }}_image" value="1" /> Remove image</label></div>{% endif %}
+            <input type="hidden" name="_cur_s{{ si }}_image" value="{{ s.image }}" />
+            <input type="file" name="s{{ si }}_image" accept="image/*"
+              class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:border-0 file:bg-white/10 file:text-white hover:file:bg-white/20 mb-3" />
+          {% endif %}
+
+          {% if s.layout in ['cards', 'stats', 'gallery'] %}
+            <div class="border-t border-white/10 pt-3 mt-1">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[0.6rem] uppercase tracking-[0.2em] text-gray-500">Items</span>
+                <button type="submit" name="_action" value="add_item:{{ si }}" class="text-xs border border-white/20 px-3 py-1 hover:border-white">+ Add Item</button>
+              </div>
+              {% for it in s.get('items', []) %}
+              {% set ij = loop.index0 %}
+              <div class="border border-white/10 p-3 mb-2 bg-black/20">
+                <div class="flex justify-end mb-2">
+                  <button type="submit" name="_action" value="del_item:{{ si }}:{{ ij }}" class="text-xs text-red-400 border border-red-500/40 px-2 py-1 hover:bg-red-500/10">Remove</button>
+                </div>
+                {% if s.layout == 'stats' %}
+                  <div class="grid grid-cols-2 gap-2 mb-2">
+                    <input name="s{{ si }}_it{{ ij }}_value" value="{{ it.value }}" placeholder="Value (e.g. 320)" class="px-2 py-1 bg-white/5 border border-white/20 text-sm" />
+                    <input name="s{{ si }}_it{{ ij }}_label" value="{{ it.label }}" placeholder="Label" class="px-2 py-1 bg-white/5 border border-white/20 text-sm" />
+                  </div>
+                {% else %}
+                  <input name="s{{ si }}_it{{ ij }}_heading" value="{{ it.heading }}" placeholder="Heading" class="w-full px-2 py-1 bg-white/5 border border-white/20 text-sm mb-2" />
+                  {% if s.layout == 'cards' %}
+                    <textarea name="s{{ si }}_it{{ ij }}_text" rows="2" placeholder="Text" class="w-full px-2 py-1 bg-white/5 border border-white/20 text-sm mb-2">{{ it.text }}</textarea>
+                  {% endif %}
+                {% endif %}
+                {% if s.layout in ['cards', 'gallery'] %}
+                  {% if it.image %}<div class="mb-1"><img src="{{ it.image }}" class="h-20 object-cover border border-white/15" />
+                    <label class="mt-1 flex items-center gap-2 text-xs text-gray-400"><input type="checkbox" name="_rm_s{{ si }}_it{{ ij }}_image" value="1" /> Remove</label></div>{% endif %}
+                  <input type="hidden" name="_cur_s{{ si }}_it{{ ij }}_image" value="{{ it.image }}" />
+                  <input type="file" name="s{{ si }}_it{{ ij }}_image" accept="image/*"
+                    class="w-full text-xs text-gray-400 file:mr-2 file:py-1 file:px-3 file:border-0 file:bg-white/10 file:text-white" />
+                {% endif %}
+              </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="text-xs text-gray-500 self-center mr-1">Add section:</span>
+          {% for lay in SECTION_LAYOUTS %}
+          <button type="submit" name="_action" value="add_section:{{ lay }}" class="text-xs border border-white/20 px-3 py-2 uppercase tracking-[0.15em] hover:border-red-600 hover:text-red-600 transition-colors">{{ lay }}</button>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      <div class="flex gap-3 pt-2">
+        <button type="submit" class="bg-red-600 hover:bg-white hover:text-black transition-colors px-8 py-3 cinzel font-bold tracking-[0.2em] uppercase text-xs">Save Changes</button>
+        <a href="/admin" class="border border-white/20 px-6 py-3 text-xs hover:border-white transition-colors flex items-center">Cancel</a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

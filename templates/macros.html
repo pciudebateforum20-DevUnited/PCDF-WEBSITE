@@ -1,0 +1,124 @@
+{% macro page_hero(page, eyebrow, title, subtitle, variant='default') %}
+{% set _img = content(page, 'image', '') %}
+{% set _e = edit_mode %}
+<section class="py-14 sm:py-20 md:py-28 px-5 sm:px-8 md:px-16 {{ 'bg-[#0a0a0a] text-white' if variant == 'dark' else 'bg-[#fafafa] hairline-border border-b border-gray-200' }} {{ 'pcdf-section' if _e else '' }}" data-section="{{ page }}|hero" data-layout="hero">
+    <div class="max-w-5xl mx-auto {{ 'text-center' if variant == 'center' else '' }}">
+        <div class="inline-flex items-center gap-2 mb-3">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-600">
+                {% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{page}}|eyebrow">{{ content(page, 'eyebrow', eyebrow) }}</span>{% else %}{{ content(page, 'eyebrow', eyebrow) }}{% endif %}
+            </span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-light leading-tight cinzel text-gray-900 {{ 'text-white' if variant == 'dark' else '' }} fade-in-up scroll-element">
+            {% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{page}}|title">{{ content(page, 'title', title) | safe }}</span>{% else %}{{ content(page, 'title', title) | safe }}{% endif %}</h1>
+        {% set _sub = content(page, 'subtitle', subtitle) %}
+        {% if _sub %}
+        <p class="mt-4 sm:mt-6 text-sm sm:text-base font-light {{ 'text-gray-400' if variant == 'dark' else 'text-gray-600' }} max-w-3xl leading-relaxed fade-in-up scroll-element"
+            style="transition-delay:150ms">{% if _e %}<span class="pcdf-edit block" contenteditable="true" data-edit="{{page}}|subtitle">{{ _sub | safe }}</span>{% else %}{{ _sub }}{% endif %}</p>
+        {% endif %}
+        {% if _img %}
+        <img src="{{ _img }}" alt="{{ content(page, 'eyebrow', eyebrow) }}"
+             class="mt-8 md:mt-12 rounded-2xl max-w-full mx-auto shadow-2xl border border-gray-200">
+        {% endif %}
+    </div>
+</section>
+{% endmacro %}
+
+{% macro render_sections(page) %}
+{% set _sections = content_sections(page) %}
+{% set _e = edit_mode %}
+{% for s in _sections %}
+{% set _si = loop.index0 %}
+{% set _layout = s.get('layout', 'text') %}
+{% set _sec_cls = 'pcdf-section' if _e else '' %}
+{% set _sec_data = ' data-section="%s|%d" data-layout="%s"'|format(page, _si, _layout) if _e else '' %}
+{% if _layout == 'text' %}
+<section class="py-12 sm:py-16 md:py-24 px-5 sm:px-8 md:px-16 bg-white hairline-border border-b border-gray-100 section-reveal {{ _sec_cls }}"{{ _sec_data }}>
+    <div class="max-w-4xl mx-auto">
+        {% if s.subtitle %}<div class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-600 mb-2 blur-in scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.subtitle">{{ s.subtitle | safe }}</span>{% else %}{{ s.subtitle | safe }}{% endif %}</div>{% endif %}
+        {% if s.title %}<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold cinzel uppercase text-gray-900 mb-5 fade-in-up scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.title">{{ s.title | safe }}</span>{% else %}{{ s.title | safe }}{% endif %}</h2>{% endif %}
+        {% if s.text %}<p class="text-sm sm:text-base font-light text-gray-600 leading-relaxed fade-in-up scroll-element" style="transition-delay:100ms">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.text">{{ s.text | safe }}</span>{% else %}{{ s.text | safe }}{% endif %}</p>{% endif %}
+        {% if s.image %}<img src="{{ s.image }}" alt="{{ s.title }}" class="mt-8 rounded-2xl max-w-full mx-auto shadow-xl border border-gray-100">{% endif %}
+    </div>
+</section>
+{% elif _layout == 'two_col' %}
+<section class="py-12 sm:py-16 md:py-24 px-5 sm:px-8 md:px-16 bg-white hairline-border border-b border-gray-100 section-reveal {{ _sec_cls }}"{{ _sec_data }}>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <div class="fade-in-left scroll-element">
+            {% if s.subtitle %}<div class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-600 mb-2 blur-in">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.subtitle">{{ s.subtitle | safe }}</span>{% else %}{{ s.subtitle | safe }}{% endif %}</div>{% endif %}
+            {% if s.title %}<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold cinzel uppercase text-gray-900 mb-5">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.title">{{ s.title | safe }}</span>{% else %}{{ s.title | safe }}{% endif %}</h2>{% endif %}
+            {% if s.text %}<p class="text-sm sm:text-base font-light text-gray-600 leading-relaxed">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.text">{{ s.text | safe }}</span>{% else %}{{ s.text | safe }}{% endif %}</p>{% endif %}
+            {% if s.cta_text %}<a href="{{ s.cta_link or '#' }}" class="art-btn mt-6 inline-block">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.cta_text">{{ s.cta_text | safe }}</span>{% else %}{{ s.cta_text | safe }}{% endif %}</a>{% endif %}
+        </div>
+        <div class="fade-in-right scroll-element" style="transition-delay:150ms">
+            {% if s.image %}<img src="{{ s.image }}" alt="{{ s.title }}" class="rounded-2xl shadow-xl w-full object-cover border border-gray-100">{% else %}<div class="aspect-video bg-gray-100 rounded-2xl"></div>{% endif %}
+        </div>
+    </div>
+</section>
+{% elif _layout == 'cards' %}
+<section class="py-12 sm:py-16 md:py-24 px-5 sm:px-8 md:px-16 bg-[#fafafa] hairline-border border-b border-gray-200 section-reveal {{ _sec_cls }}"{{ _sec_data }}>
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 md:mb-16">
+            {% if s.subtitle %}<h3 class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-600 mb-2 blur-in scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.subtitle">{{ s.subtitle | safe }}</span>{% else %}{{ s.subtitle | safe }}{% endif %}</h3>{% endif %}
+            {% if s.title %}<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold cinzel uppercase text-gray-900 fade-in-up scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.title">{{ s.title | safe }}</span>{% else %}{{ s.title | safe }}{% endif %}</h2>{% endif %}
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children scroll-element">
+            {% for it in s.get('items', []) %}
+            {% set _ij = loop.index0 %}
+            <div class="p-6 sm:p-8 bg-white rounded-2xl border border-gray-200 hover:border-red-600/50 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 fade-in-up scroll-element" data-item="{{ _ij }}">
+                {% if it.image %}<img src="{{ it.image }}" alt="{{ it.heading }}" class="w-full h-44 object-cover rounded-xl mb-5 shadow-xs">{% endif %}
+                {% if it.heading %}<h4 class="cinzel font-bold text-base sm:text-lg mb-2 text-gray-900" data-edit="{{ page }}|sections.{{ _si }}.items.{{ _ij }}.heading">{{ it.heading }}</h4>{% endif %}
+                {% if it.text %}<p class="text-xs sm:text-sm font-light text-gray-600 leading-relaxed" data-edit="{{ page }}|sections.{{ _si }}.items.{{ _ij }}.text">{{ it.text }}</p>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% elif _layout == 'stats' %}
+<section class="py-12 sm:py-16 md:py-24 px-5 sm:px-8 md:px-16 bg-white hairline-border border-b border-gray-100 section-reveal {{ _sec_cls }}"{{ _sec_data }}>
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 md:mb-16">
+            {% if s.subtitle %}<h3 class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-600 mb-2 blur-in scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.subtitle">{{ s.subtitle | safe }}</span>{% else %}{{ s.subtitle | safe }}{% endif %}</h3>{% endif %}
+            {% if s.title %}<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold cinzel uppercase text-gray-900 fade-in-up scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.title">{{ s.title | safe }}</span>{% else %}{{ s.title | safe }}{% endif %}</h2>{% endif %}
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {% for it in s.get('items', []) %}
+            {% set _ij = loop.index0 %}
+            <div class="p-6 bg-gray-50/70 rounded-2xl border border-gray-200 text-center fade-in-up scroll-element shadow-2xs hover:shadow-md transition-all" data-item="{{ _ij }}">
+                <div class="text-3xl sm:text-4xl cinzel font-bold text-red-600 counter-animate" data-target="{{ it.value }}" data-edit="{{ page }}|sections.{{ _si }}.items.{{ _ij }}.value">{{ it.value }}</div>
+                <div class="text-[11px] sm:text-xs font-sans font-semibold tracking-[0.2em] uppercase text-gray-500 mt-2" data-edit="{{ page }}|sections.{{ _si }}.items.{{ _ij }}.label">{{ it.label }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% elif _layout == 'gallery' %}
+<section class="py-12 sm:py-16 md:py-24 px-5 sm:px-8 md:px-16 bg-[#fafafa] hairline-border border-b border-gray-200 section-reveal {{ _sec_cls }}"{{ _sec_data }}>
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-10 md:mb-16">
+            {% if s.subtitle %}<h3 class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-600 mb-2 blur-in scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.subtitle">{{ s.subtitle | safe }}</span>{% else %}{{ s.subtitle | safe }}{% endif %}</h3>{% endif %}
+            {% if s.title %}<h2 class="text-2xl sm:text-3xl md:text-4xl font-bold cinzel uppercase text-gray-900 fade-in-up scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.title">{{ s.title | safe }}</span>{% else %}{{ s.title | safe }}{% endif %}</h2>{% endif %}
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+            {% for it in s.get('items', []) %}
+            {% set _ij = loop.index0 %}
+            <div class="group overflow-hidden bg-white rounded-2xl border border-gray-200 shadow-2xs hover:shadow-xl transition-all duration-300 fade-in-up scroll-element" data-item="{{ _ij }}">
+                {% if it.image %}<img src="{{ it.image }}" alt="{{ it.heading }}" class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700">{% else %}<div class="w-full aspect-[4/3] bg-gray-100 flex items-center justify-center text-gray-400 text-xs">No image</div>{% endif %}
+                {% if it.heading %}<div class="p-4 text-xs font-sans font-semibold tracking-[0.15em] uppercase text-gray-700" data-edit="{{ page }}|sections.{{ _si }}.items.{{ _ij }}.heading">{{ it.heading }}</div>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% elif _layout == 'cta' %}
+<section class="py-14 sm:py-18 md:py-24 px-5 sm:px-8 md:px-16 bg-[#0a0a0a] text-white border-t border-[#222] section-reveal {{ _sec_cls }}"{{ _sec_data }}>
+    <div class="max-w-3xl mx-auto text-center">
+        {% if s.subtitle %}<div class="text-xs font-sans font-semibold tracking-[0.25em] uppercase text-red-400 mb-2 blur-in scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.subtitle">{{ s.subtitle | safe }}</span>{% else %}{{ s.subtitle | safe }}{% endif %}</div>{% endif %}
+        {% if s.title %}<h2 class="text-2xl sm:text-3xl md:text-5xl cinzel font-bold uppercase text-white fade-in-up scroll-element">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.title">{{ s.title | safe }}</span>{% else %}{{ s.title | safe }}{% endif %}</h2>{% endif %}
+        {% if s.text %}<p class="mt-4 text-sm sm:text-base font-light text-gray-400 fade-in-up scroll-element" style="transition-delay:100ms">{% if _e %}<span class="pcdf-edit" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.text">{{ s.text | safe }}</span>{% else %}{{ s.text | safe }}{% endif %}</p>{% endif %}
+        {% if s.cta_text %}<div class="mt-8 fade-in-up scroll-element" style="transition-delay:200ms"><a href="{{ s.cta_link or '#' }}" class="art-btn" data-edit="{{ page }}|sections.{{ _si }}.cta_text">{{ s.cta_text }}</a>{% if _e %}<span class="pcdf-edit block mt-2 text-xs text-gray-400" contenteditable="true" data-edit="{{ page }}|sections.{{ _si }}.cta_link">{{ s.cta_link }}</span>{% endif %}</div>{% endif %}
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+{% endmacro %}

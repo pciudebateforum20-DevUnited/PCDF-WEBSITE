@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCDF — Content Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080810;
+      --surface: #0f0f1a;
+      --surface2: #141426;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(220,50,50,0.6);
+      --text: #e8e8f0;
+      --muted: #6b6b80;
+      --accent: #e03030;
+      --accent-glow: rgba(224,48,48,0.15);
+      --success: #22c55e;
+      --font: 'Inter', system-ui, sans-serif;
+      --cinzel: 'Cinzel', serif;
+    }
+
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background subtle grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* LAYOUT */
+    .shell {
+      display: flex;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 28px 0;
+    }
+
+    .sidebar-brand {
+      padding: 0 24px 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .sidebar-brand .wordmark {
+      font-family: var(--cinzel);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+    .sidebar-brand .tagline {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 0 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 12px 4px;
+      margin-top: 8px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.15s;
+      cursor: pointer;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: var(--accent-glow);
+      color: var(--text);
+    }
+    .nav-item.active { color: var(--accent); }
+    .nav-icon { font-size: 15px; width: 18px; text-align: center; flex-shrink: 0; }
+
+    .sidebar-footer {
+      padding: 20px 24px 0;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-avatar {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+    .user-info .name { font-size: 13px; font-weight: 600; }
+    .user-info .role { font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* MAIN */
+    .main {
+      flex: 1;
+      padding: 40px 48px 80px;
+      max-width: 1200px;
+    }
+
+    .page-header {
+      margin-bottom: 40px;
+    }
+    .page-header .breadcrumb {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .page-header h1 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .page-header p { color: var(--muted); font-size: 14px; }
+
+    /* QUICK STATS BAR */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .stat-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(224,48,48,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .stat-value { font-size: 22px; font-weight: 700; }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* SECTION LABEL */
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .section-label h2 {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* PAGE CARDS GRID */
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .page-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    .page-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: radial-gradient(circle at 50% 0%, var(--accent-glow), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .page-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(224,48,48,0.1);
+    }
+    .page-card:hover::before { opacity: 1; }
+
+    .card-top {
+      padding: 22px 22px 16px;
+      flex: 1;
+    }
+    .card-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      margin-bottom: 14px;
+      transition: all 0.2s;
+    }
+    .page-card:hover .card-icon {
+      background: var(--accent-glow);
+      border-color: rgba(224,48,48,0.3);
+    }
+    .card-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .card-bottom {
+      padding: 14px 22px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .card-action {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+    .card-action-arrow {
+      transition: transform 0.2s;
+    }
+    .page-card:hover .card-action-arrow { transform: translateX(3px); }
+
+    /* VIEW LIVE BADGE */
+    .view-live-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 3px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      transition: all 0.15s;
+      margin-top: 8px;
+    }
+    .view-live-btn:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* LOGOUT BUTTON */
+    .logout-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+      padding: 9px 12px;
+      border-radius: 8px;
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+      margin-top: 6px;
+    }
+    .logout-btn:hover {
+      background: rgba(224,48,48,0.1);
+      color: var(--accent);
+    }
+
+    /* SCROLL FADE-IN */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-card {
+      animation: fadeUp 0.4s ease both;
+    }
+    .page-card:nth-child(1)  { animation-delay: 0.05s; }
+    .page-card:nth-child(2)  { animation-delay: 0.10s; }
+    .page-card:nth-child(3)  { animation-delay: 0.15s; }
+    .page-card:nth-child(4)  { animation-delay: 0.20s; }
+    .page-card:nth-child(5)  { animation-delay: 0.25s; }
+    .page-card:nth-child(6)  { animation-delay: 0.30s; }
+    .page-card:nth-child(7)  { animation-delay: 0.35s; }
+    .page-card:nth-child(8)  { animation-delay: 0.40s; }
+    .page-card:nth-child(9)  { animation-delay: 0.45s; }
+    .page-card:nth-child(10) { animation-delay: 0.50s; }
+    .page-card:nth-child(11) { animation-delay: 0.55s; }
+    .page-card:nth-child(12) { animation-delay: 0.60s; }
+
+    /* WELCOME BANNER */
+    .welcome-banner {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-banner::after {
+      content: 'PCDF';
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      font-family: var(--cinzel);
+      font-size: 96px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.02);
+      pointer-events: none;
+      user-select: none;
+    }
+    .banner-text h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .banner-text p {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 400px;
+    }
+    .banner-pulse {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.4);
+      animation: pulse 2s infinite;
+      flex-shrink: 0;
+    }
+    .banner-status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--success);
+      font-weight: 500;
+    }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { padding: 24px 20px 60px; }
+      .stats-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="wordmark">PCDF</div>
+        <div class="tagline">Content Studio</div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-label">Navigation</div>
+        <a class="nav-item active" href="/admin">
+          <span class="nav-icon">⬛</span> Dashboard
+        </a>
+        <a class="nav-item" href="/" target="_blank">
+          <span class="nav-icon">↗</span> View Live Site
+        </a>
+
+        <div class="nav-label">Pages</div>
+        {% for key, label in labels.items() %}
+        <a class="nav-item" href="/admin/editor/{{ key }}">
+          <span class="nav-icon">{{ {'site':'⚙','home':'🏠','about':'ℹ','manifesto':'📜','committee':'👥','events':'📅','achievements':'🏆','news':'📰','reports':'📄','gallery':'🖼','contact':'✉','testimonials':'💬','partners':'🤝','newsletter':'📧','apply':'📝','timeline':'📋'}.get(key, '📃') }}</span>
+          {{ label }}
+        </a>
+        {% endfor %}
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div class="user-avatar">A</div>
+          <div class="user-info">
+            <div class="name">Admin</div>
+            <div class="role">Content Editor</div>
+          </div>
+        </div>
+        <a class="logout-btn" href="/admin/logout">
+          <span>⎋</span> Sign Out
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <!-- WELCOME BANNER -->
+      <div class="welcome-banner">
+        <div class="banner-text">
+          <h2>👋 Welcome back, Admin</h2>
+          <p>Choose any page below to open the visual editor. All changes are previewed live before you publish.</p>
+        </div>
+        <div class="banner-status">
+          <div class="banner-pulse"></div>
+          Site is live
+        </div>
+      </div>
+
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div class="breadcrumb">PCDF Admin · Content Studio</div>
+        <h1>All Pages</h1>
+        <p>{{ labels|length }} pages available to edit</p>
+      </div>
+
+      <!-- STATS BAR -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <div class="stat-icon">📄</div>
+          <div>
+            <div class="stat-value">{{ labels|length }}</div>
+            <div class="stat-label">Total Pages</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">✏️</div>
+          <div>
+            <div class="stat-value">Ready</div>
+            <div class="stat-label">Visual Editor</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌐</div>
+          <div>
+            <div class="stat-value">Live</div>
+            <div class="stat-label">Site Status</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGES GRID -->
+      <div class="section-label">
+        <h2>Pages — Click to Edit</h2>
+      </div>
+
+      <div class="pages-grid">
+        {% set page_icons = {
+          'site': '⚙️', 'home': '🏠', 'about': 'ℹ️', 'manifesto': '📜',
+          'committee': '👥', 'events': '📅', 'achievements': '🏆', 'news': '📰',
+          'reports': '📄', 'gallery': '🖼️', 'contact': '✉️', 'testimonials': '💬',
+          'partners': '🤝', 'newsletter': '📧', 'apply': '📝', 'timeline': '📋'
+        } %}
+        {% set page_descs = {
+          'site': 'Global site title and tagline shown across all pages.',
+          'home': 'Hero title, kicker text, and manifesto section content.',
+          'about': 'About PCDF — who we are, stats, programmes, and CTA.',
+          'manifesto': 'Our beliefs and principles — the PCDF manifesto.',
+          'committee': 'Executive committee members and leadership info.',
+          'events': 'Tournament formats, flagship events, and calendar.',
+          'achievements': 'Trophy case, stats, and milestone timeline.',
+          'news': 'Latest notices, results, and announcements.',
+          'reports': 'Publications, motion banks, and knowledge base.',
+          'gallery': 'Photos from tournaments, workshops, and events.',
+          'contact': 'Contact details, email, room, and hours.',
+          'testimonials': 'Member and alumni voices and quotes.',
+          'partners': 'Sponsors, partners, and collaboration info.',
+          'newsletter': 'Newsletter subscription page content.',
+          'apply': 'Membership application process and info.',
+          'timeline': 'PCDF year-by-year journey and history.'
+        } %}
+        {% for key in pages.keys() %}
+        <a class="page-card" href="/admin/editor/{{ key }}">
+          <div class="card-top">
+            <div class="card-icon">{{ page_icons.get(key, '📃') }}</div>
+            <div class="card-name">{{ labels.get(key, key) }}</div>
+            <div class="card-desc">{{ page_descs.get(key, 'Edit this page\'s content.') }}</div>
+            <a class="view-live-btn" href="{% if key == 'home' %}/{% elif key == 'site' %}#{% else %}/{{ key }}{% endif %}" target="_blank" onclick="event.stopPropagation()">
+              ↗ View Live
+            </a>
+          </div>
+          <div class="card-bottom">
+            <span class="card-meta">{{ '/admin/editor/' + key }}</span>
+            <span class="card-action">
+              Edit <span class="card-action-arrow">→</span>
+            </span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </main>
+  </div>
+</body>
+</html>

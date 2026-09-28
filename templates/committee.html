@@ -1,0 +1,435 @@
+{% extends "page_base.html" %}
+
+{% block page %}
+<!-- HERO SECTION -->
+<section class="py-14 sm:py-20 md:py-24 px-5 sm:px-8 md:px-16 bg-[#faf8f5] border-b border-[#e2dfd8] relative overflow-hidden">
+    <!-- Decorative subtle grid background -->
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#8b1e1e_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+    <div class="max-w-6xl mx-auto text-center relative z-10">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-50 border border-red-200/60 mb-5">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span class="text-[0.7rem] sm:text-xs font-semibold tracking-[0.25em] uppercase text-red-700">Leadership Roster 2025–2026</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl md:text-6xl font-light cinzel text-[#2c2825] leading-tight tracking-tight uppercase">
+            The Executive <span class="font-bold text-[#8b1e1e]">Committee</span>
+        </h1>
+        
+        <p class="mt-4 sm:mt-6 text-sm sm:text-base font-light text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Elected stewards of rhetoric, leadership, and competitive debate at Port City International University. 
+            Meet the 17 executives directing forum strategy, tournament training, media relations, and discourse excellence.
+        </p>
+
+        <!-- CATEGORY FILTER BUTTONS -->
+        <div class="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3" id="committeeFilters">
+            <button type="button" data-filter="all" class="filter-btn active-filter px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-[#8b1e1e] bg-[#8b1e1e] text-white shadow-sm">
+                All Executives (17)
+            </button>
+            <button type="button" data-filter="leadership" class="filter-btn px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-gray-300 bg-white text-gray-700 hover:border-[#8b1e1e] hover:text-[#8b1e1e]">
+                Leadership (2)
+            </button>
+            <button type="button" data-filter="secretariat" class="filter-btn px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-gray-300 bg-white text-gray-700 hover:border-[#8b1e1e] hover:text-[#8b1e1e]">
+                Secretariat (10)
+            </button>
+            <button type="button" data-filter="executive" class="filter-btn px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-gray-300 bg-white text-gray-700 hover:border-[#8b1e1e] hover:text-[#8b1e1e]">
+                Executive Members (5)
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN COMMITTEE ROSTER SECTION -->
+<section class="py-14 sm:py-20 md:py-24 px-5 sm:px-8 md:px-16 bg-[#fdfcf9]">
+    <div class="max-w-7xl mx-auto space-y-16 sm:space-y-24">
+
+        <!-- TIER 1: PRESIDIUM / TOP LEADERSHIP -->
+        <div class="committee-tier" data-category="leadership">
+            <div class="flex items-center gap-4 mb-8 sm:mb-10 pb-4 border-b border-gray-200">
+                <div class="w-3 h-3 bg-[#8b1e1e] rotate-45"></div>
+                <div>
+                    <span class="text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase text-red-700 font-bold block">Tier I · Presidium</span>
+                    <h2 class="text-xl sm:text-3xl font-bold cinzel text-[#2c2825] uppercase tracking-wide">Top Leadership</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+                <!-- President -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-5 sm:p-6 shadow-[6px_6px_0_0_#8b1e1e] hover:shadow-[10px_10px_0_0_#8b1e1e] hover:-translate-y-1.5 transition-all duration-500 rounded-sm">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-[#f4f1ea] mb-5 border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/asabul_islam_rutul.webp') }}" 
+                             alt="Asabul Islam Rutul" 
+                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute top-3 left-3 px-3 py-1 bg-[#8b1e1e] text-white text-[0.65rem] uppercase tracking-widest font-semibold shadow">
+                            President
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <span class="text-[0.65rem] tracking-[0.25em] text-[#8b1e1e] font-bold uppercase block mb-1">Executive Head</span>
+                        <h3 class="text-xl sm:text-2xl font-bold cinzel text-[#2c2825] uppercase tracking-wide leading-tight">Asabul Islam Rutul</h3>
+                        <p class="text-xs text-gray-500 font-light mt-2 leading-relaxed">
+                            Sets the overarching strategic vision, represents PCDF across national collegiate forums, and oversees institutional relations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Vice President -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-5 sm:p-6 shadow-[6px_6px_0_0_#8b1e1e] hover:shadow-[10px_10px_0_0_#8b1e1e] hover:-translate-y-1.5 transition-all duration-500 rounded-sm">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-[#f4f1ea] mb-5 border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/muhammad_ibrahim.webp') }}" 
+                             alt="Muhammad Ibrahim" 
+                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute top-3 left-3 px-3 py-1 bg-[#2c2825] text-white text-[0.65rem] uppercase tracking-widest font-semibold shadow">
+                            Vice President
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <span class="text-[0.65rem] tracking-[0.25em] text-[#8b1e1e] font-bold uppercase block mb-1">Operations & Training</span>
+                        <h3 class="text-xl sm:text-2xl font-bold cinzel text-[#2c2825] uppercase tracking-wide leading-tight">Muhammad Ibrahim</h3>
+                        <p class="text-xs text-gray-500 font-light mt-2 leading-relaxed">
+                            Directs tournament preparations, competitive debating squads, internal league operations, and speaker development.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TIER 2: SECRETARIAT DIVISION -->
+        <div class="committee-tier" data-category="secretariat">
+            <div class="flex items-center gap-4 mb-8 sm:mb-10 pb-4 border-b border-gray-200">
+                <div class="w-3 h-3 bg-[#8b1e1e] rotate-45"></div>
+                <div>
+                    <span class="text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase text-red-700 font-bold block">Tier II · Departments</span>
+                    <h2 class="text-xl sm:text-3xl font-bold cinzel text-[#2c2825] uppercase tracking-wide">The Secretariat</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-6">
+                
+                <!-- Joint Secretary: Umme Kulsum -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/umme_kulsum.webp') }}" alt="Umme Kulsum" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Umme Kulsum</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Joint Secretary</p>
+                </div>
+
+                <!-- Assistant Secretary: Humaira Yeasmin Mila -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/humaira_yeasmin_mila.webp') }}" alt="Humaira Yeasmin Mila" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Humaira Yeasmin Mila</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Assistant Secretary</p>
+                </div>
+
+                <!-- Debate Secretary: Jahedul Islam Rafi -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/jahedul_islam_rafi.webp') }}" alt="Jahedul Islam Rafi" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Jahedul Islam Rafi</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Debate Secretary</p>
+                </div>
+
+                <!-- Finance Secretary: Fahmida Rubaiyat Nazifa -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/fahmida_rubaiyat_nazifa.webp') }}" alt="Fahmida Rubaiyat Nazifa" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Fahmida Rubaiyat Nazifa</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Finance Secretary</p>
+                </div>
+
+                <!-- Assistant Finance Secretary: Nur-A-Jannat Tarin -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/nur_a_jannat_tarin.webp') }}" alt="Nur-A-Jannat Tarin" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Nur-A-Jannat Tarin</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Asst. Finance Secretary</p>
+                </div>
+
+                <!-- Office Secretary: Md. Sohraf -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/md_sohraf.webp') }}" alt="Md. Sohraf" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Md. Sohraf</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Office Secretary</p>
+                </div>
+
+                <!-- Assistant Office Secretary: Ashikur Rahman Anik -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/ashikur_rahman_anik.webp') }}" alt="Ashikur Rahman Anik" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Ashikur Rahman Anik</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Asst. Office Secretary</p>
+                </div>
+
+                <!-- Assistant Organizing Secretary: Suprova Dev -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/suprova_dev.webp') }}" alt="Suprova Dev" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Suprova Dev</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Asst. Organizing Secretary</p>
+                </div>
+
+                <!-- Press & Media Secretary: Taqi Mahmud Chowdhury -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/taqi_mahmud_chowdhury.webp') }}" alt="Taqi Mahmud Chowdhury" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Taqi Mahmud Chowdhury</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Press & Media Secretary</p>
+                </div>
+
+                <!-- Assistant Media Secretary: Nosrahat Jahan Shefa -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/nosrahat_jahan_shefa.webp') }}" alt="Nosrahat Jahan Shefa" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Nosrahat Jahan Shefa</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Asst. Media Secretary</p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TIER 3: EXECUTIVE MEMBERS -->
+        <div class="committee-tier" data-category="executive">
+            <div class="flex items-center gap-4 mb-8 sm:mb-10 pb-4 border-b border-gray-200">
+                <div class="w-3 h-3 bg-[#8b1e1e] rotate-45"></div>
+                <div>
+                    <span class="text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase text-red-700 font-bold block">Tier III · Members</span>
+                    <h2 class="text-xl sm:text-3xl font-bold cinzel text-[#2c2825] uppercase tracking-wide">Executive Members</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+                
+                <!-- Aditya Das -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/aditya_das.webp') }}" alt="Aditya Das" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Aditya Das</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Executive Member</p>
+                </div>
+
+                <!-- Athoy Chakraborty -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/athoy_chakraborty.webp') }}" alt="Athoy Chakraborty" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Athoy Chakraborty</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Executive Member</p>
+                </div>
+
+                <!-- Mohima Sultana Masuma -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/mohima_sultana_masuma.webp') }}" alt="Mohima Sultana Masuma" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Mohima Sultana Masuma</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Executive Member</p>
+                </div>
+
+                <!-- Muhammad Shahria Nur Shishir -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/muhammad_shahria_nur_shishir.webp') }}" alt="Muhammad Shahria Nur Shishir" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">M. S. Nur Shishir</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Executive Member</p>
+                </div>
+
+                <!-- Swarna Barua -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-4 shadow-[4px_4px_0_0_#8b1e1e] hover:shadow-[8px_8px_0_0_#8b1e1e] hover:-translate-y-1 transition-all duration-400 rounded-sm">
+                    <div class="w-full aspect-[3/4] overflow-hidden bg-[#f4f1ea] mb-3.5 relative border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/swarna_barua.webp') }}" alt="Swarna Barua" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    </div>
+                    <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide text-center leading-snug line-clamp-1">Swarna Barua</h4>
+                    <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 text-center">Executive Member</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- COMMITTEE RESPONSIBILITIES / PILLARS -->
+<section class="py-14 sm:py-20 md:py-24 px-5 sm:px-8 md:px-16 bg-[#faf8f5] border-t border-[#e2dfd8]">
+    <div class="max-w-6xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+            <span class="text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase text-red-700 font-bold block mb-2">Institutional Mandate</span>
+            <h2 class="text-2xl sm:text-4xl font-bold cinzel text-[#2c2825] uppercase">Four Pillars of Leadership</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="p-6 bg-white border border-[#e2dfd8] shadow-sm hover:border-[#8b1e1e] transition-all">
+                <div class="w-10 h-10 rounded-full bg-red-50 text-[#8b1e1e] flex items-center justify-center font-bold text-sm mb-4">01</div>
+                <h3 class="cinzel font-bold text-base text-[#2c2825] mb-2 uppercase">Debate & Adjudication</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">Weekly competitive training, BP/AP motion development, and institutional adjudicator accreditation.</p>
+            </div>
+
+            <div class="p-6 bg-white border border-[#e2dfd8] shadow-sm hover:border-[#8b1e1e] transition-all">
+                <div class="w-10 h-10 rounded-full bg-red-50 text-[#8b1e1e] flex items-center justify-center font-bold text-sm mb-4">02</div>
+                <h3 class="cinzel font-bold text-base text-[#2c2825] mb-2 uppercase">Tournaments & Leagues</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">Organizing national opens, university internal leagues, and delegating squads to external competitions.</p>
+            </div>
+
+            <div class="p-6 bg-white border border-[#e2dfd8] shadow-sm hover:border-[#8b1e1e] transition-all">
+                <div class="w-10 h-10 rounded-full bg-red-50 text-[#8b1e1e] flex items-center justify-center font-bold text-sm mb-4">03</div>
+                <h3 class="cinzel font-bold text-base text-[#2c2825] mb-2 uppercase">Press & Publication</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">Documenting debates, managing digital journals, broadcasting exhibition clashes, and brand communications.</p>
+            </div>
+
+            <div class="p-6 bg-white border border-[#e2dfd8] shadow-sm hover:border-[#8b1e1e] transition-all">
+                <div class="w-10 h-10 rounded-full bg-red-50 text-[#8b1e1e] flex items-center justify-center font-bold text-sm mb-4">04</div>
+                <h3 class="cinzel font-bold text-base text-[#2c2825] mb-2 uppercase">Fiscal Governance</h3>
+                <p class="text-xs text-gray-500 font-light leading-relaxed">Financial transparency, sponsorship acquisition, university liaison, and logistical execution.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PREVIOUS COMMITTEES / LEGACY SECTION -->
+<section class="py-14 sm:py-20 md:py-24 px-5 sm:px-8 md:px-16 bg-white border-t border-[#e2dfd8]">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-end mb-10 md:mb-14 gap-4 pb-4 border-b border-gray-100">
+            <div>
+                <span class="text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase text-red-700 font-bold block mb-1">Our Legacy</span>
+                <h2 class="text-2xl sm:text-4xl font-bold cinzel text-[#2c2825] uppercase tracking-wide">Previous Committees</h2>
+            </div>
+            <p class="text-xs sm:text-sm text-gray-500 font-light max-w-md leading-relaxed">
+                The leaders who shaped PCDF in earlier sessions. We thank them for building the foundation we stand on today.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Session 2023-24 -->
+            <div class="p-6 sm:p-8 bg-[#faf8f5] border border-[#e2dfd8] hover:border-[#8b1e1e] hover:shadow-lg transition-all duration-300 rounded-sm">
+                <div class="flex items-center justify-between mb-5 pb-3 border-b border-gray-200">
+                    <span class="text-xs tracking-[0.2em] uppercase text-red-700 font-bold">2023 – 2024</span>
+                    <span class="text-[0.65rem] uppercase tracking-widest px-2.5 py-0.5 bg-red-100/60 text-red-800 rounded font-semibold">Inaugural</span>
+                </div>
+                <ul class="space-y-3 text-xs sm:text-sm text-gray-700 font-light">
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">President</span><span class="cinzel font-bold text-[#2c2825]">Imran Hossain</span></li>
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">Vice President</span><span class="cinzel font-bold text-[#2c2825]">Lamia Karim</span></li>
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">Secretary General</span><span class="cinzel font-bold text-[#2c2825]">Rafi Ahmed</span></li>
+                    <li class="flex justify-between"><span class="text-gray-400">Treasurer</span><span class="cinzel font-bold text-[#2c2825]">Sabrina Sultana</span></li>
+                </ul>
+            </div>
+
+            <!-- Session 2022-23 -->
+            <div class="p-6 sm:p-8 bg-[#faf8f5] border border-[#e2dfd8] hover:border-[#8b1e1e] hover:shadow-lg transition-all duration-300 rounded-sm">
+                <div class="flex items-center justify-between mb-5 pb-3 border-b border-gray-200">
+                    <span class="text-xs tracking-[0.2em] uppercase text-red-700 font-bold">2022 – 2023</span>
+                    <span class="text-[0.65rem] uppercase tracking-widest px-2.5 py-0.5 bg-gray-200 text-gray-700 rounded font-semibold">Founding</span>
+                </div>
+                <ul class="space-y-3 text-xs sm:text-sm text-gray-700 font-light">
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">President</span><span class="cinzel font-bold text-[#2c2825]">Tanvir Rahman</span></li>
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">Vice President</span><span class="cinzel font-bold text-[#2c2825]">Nusrat Jahan</span></li>
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">Secretary General</span><span class="cinzel font-bold text-[#2c2825]">Sakib Al Hasan</span></li>
+                    <li class="flex justify-between"><span class="text-gray-400">Treasurer</span><span class="cinzel font-bold text-[#2c2825]">Mahfuza Akter</span></li>
+                </ul>
+            </div>
+
+            <!-- Session 2021-22 -->
+            <div class="p-6 sm:p-8 bg-[#faf8f5] border border-[#e2dfd8] hover:border-[#8b1e1e] hover:shadow-lg transition-all duration-300 rounded-sm">
+                <div class="flex items-center justify-between mb-5 pb-3 border-b border-gray-200">
+                    <span class="text-xs tracking-[0.2em] uppercase text-red-700 font-bold">2021 – 2022</span>
+                    <span class="text-[0.65rem] uppercase tracking-widest px-2.5 py-0.5 bg-gray-200 text-gray-700 rounded font-semibold">Pilot</span>
+                </div>
+                <ul class="space-y-3 text-xs sm:text-sm text-gray-700 font-light">
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">President</span><span class="cinzel font-bold text-[#2c2825]">Anika Tabassum</span></li>
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">Vice President</span><span class="cinzel font-bold text-[#2c2825]">Rakibul Islam</span></li>
+                    <li class="flex justify-between border-b border-gray-100 pb-2.5"><span class="text-gray-400">Secretary General</span><span class="cinzel font-bold text-[#2c2825]">Farzana Haque</span></li>
+                    <li class="flex justify-between"><span class="text-gray-400">Treasurer</span><span class="cinzel font-bold text-[#2c2825]">Yusuf Ali</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="py-14 sm:py-20 px-5 sm:px-8 md:px-16 bg-[#0a0a0a] text-white text-center relative overflow-hidden">
+    <div class="max-w-3xl mx-auto relative z-10">
+        <span class="text-[0.65rem] sm:text-xs tracking-[0.3em] uppercase text-red-500 font-bold block mb-3">Connect With Us</span>
+        <h2 class="text-2xl sm:text-4xl md:text-5xl cinzel font-bold uppercase text-white leading-tight">
+            Collaborate With The Executive Board
+        </h2>
+        <p class="mt-4 text-xs sm:text-sm font-light text-gray-400 max-w-xl mx-auto leading-relaxed">
+            Interested in inviting PCDF adjudicators, co-hosting tournaments, or pitching institutional debate partnerships?
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <a href="/contact" class="art-btn px-7 py-3 text-xs uppercase tracking-widest">
+                Contact Committee
+            </a>
+            <a href="/apply" class="px-7 py-3 text-xs uppercase tracking-widest font-semibold text-white border border-white/30 hover:border-white hover:bg-white/10 transition-all duration-300">
+                Join As Member
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- JAVASCRIPT FOR CATEGORY FILTERING -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const filterButtons = document.querySelectorAll('#committeeFilters .filter-btn');
+    const tiers = document.querySelectorAll('.committee-tier');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            // Update button styles
+            filterButtons.forEach(b => {
+                b.classList.remove('bg-[#8b1e1e]', 'text-white', 'border-[#8b1e1e]', 'active-filter');
+                b.classList.add('bg-white', 'text-gray-700', 'border-gray-300');
+            });
+            this.classList.remove('bg-white', 'text-gray-700', 'border-gray-300');
+            this.classList.add('bg-[#8b1e1e]', 'text-white', 'border-[#8b1e1e]', 'active-filter');
+
+            const filter = this.getAttribute('data-filter');
+
+            tiers.forEach(tier => {
+                const category = tier.getAttribute('data-category');
+                if (filter === 'all' || filter === category) {
+                    tier.style.display = 'block';
+                    tier.style.opacity = '0';
+                    tier.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        tier.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        tier.style.opacity = '1';
+                        tier.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    tier.style.display = 'none';
+                }
+            });
+        });
+    });
+});
+</script>
+{% endblock %}

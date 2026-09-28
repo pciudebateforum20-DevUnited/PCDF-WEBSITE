@@ -1,0 +1,1188 @@
+{
+  "site": {
+    "title": "PCIU Debating Forum",
+    "tagline": "Where logic meets passion, and every argument is a work of art.",
+    "sections": []
+  },
+  "home": {
+    "hero_kicker": "Join The Elite Club",
+    "hero_title": "WAR OF WORDS",
+    "manifesto_eyebrow": "The Manifesto",
+    "manifesto_title": "\n            \n            Every argument is a blank canvas.<br class=\"hidden sm:block\"><span class=\"font-bold\">Logic</span> is the structure.<br class=\"hidden sm:block\"><span class=\"font-bold text-red-600\">Passion</span> is the color.\n        \n        ",
+    "manifesto_text": "\n            Symposium is not merely a platform for discussion; it is a gallery of human intellect. We believe that debates, when stripped of their noise, form stunning geometric patterns of thought. Here, words are weapons, and your mind is the ultimate brush. Step into the void and leave your mark on the collective consciousness.\n        ",
+    "sections": [
+      {
+        "cta_link": "/",
+        "cta_text": "Learn More",
+        "image": "",
+        "items": [],
+        "layout": "text",
+        "subtitle": "",
+        "text": "",
+        "title": ""
+      },
+      {
+        "cta_link": "/",
+        "cta_text": "Learn More",
+        "image": "",
+        "items": [],
+        "layout": "text",
+        "subtitle": "",
+        "text": "",
+        "title": ""
+      },
+      {
+        "cta_link": "/",
+        "cta_text": "Learn More",
+        "image": "",
+        "items": [
+          {
+            "heading": "New item",
+            "image": "",
+            "label": "Label",
+            "text": "",
+            "value": "0"
+          }
+        ],
+        "layout": "stats",
+        "subtitle": "",
+        "text": "",
+        "title": ""
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About PCDF",
+    "title": "The Voice of Reason,<br class=\"hidden sm:block\" /><span class=\"font-bold\">The Power of Words</span>",
+    "subtitle": "The Port City International University Debating Forum (PCDF) is the premier debating society of Port City International University. Founded in 2023, we exist to cultivate a culture of critical thinking, articulate expression, and respectful discourse on campus — and to send our voices into the wider world.",
+    "sections": [
+      {
+        "layout": "text",
+        "title": "Who We Are",
+        "subtitle": "",
+        "text": "PCDF is a student-led community of debaters, orators, and critical thinkers. We bring together students from every discipline around a single belief: that the disciplined use of language is one of the most powerful tools a person can wield.",
+        "image": "",
+        "items": []
+      },
+      {
+        "layout": "stats",
+        "title": "By the Numbers",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "320",
+            "label": "Active Members"
+          },
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "48",
+            "label": "Tournaments / Yr"
+          },
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "17",
+            "label": "Trophies Won"
+          },
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "2023",
+            "label": "Founded"
+          }
+        ]
+      },
+      {
+        "layout": "cards",
+        "title": "What We Do",
+        "subtitle": "Programmes",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Weekly Drill Sessions",
+            "text": "Hands-on practice of framing, rebuttal, and delivery every week of the semester.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Masterclasses",
+            "text": "Guest adjudicators and champions teach style, strategy, and world-class technique.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Internal Leagues",
+            "text": "Term-long leagues with rankings, finals, and prizes to keep members sharp.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "External Tournaments",
+            "text": "Representation at national and international BP, AP, and WSDC competitions.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Adjudication Training",
+            "text": "A structured path from speaker to certified judge and tournament official.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Outreach & Schools",
+            "text": "Workshops in local schools to grow the culture of debate beyond campus.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Join the Forum",
+        "subtitle": "",
+        "text": "Whether you have never spoken in public or you already compete nationally, there is a place for you at PCDF.",
+        "image": "",
+        "cta_text": "Apply Now",
+        "cta_link": "/apply",
+        "items": []
+      }
+    ],
+    "x": "y"
+  },
+  "manifesto": {
+    "eyebrow": "Our Manifesto",
+    "title": "WE BELIEVE IN THE <span class=\"text-red-600\">SACRED POWER</span> OF THE WELL-PLACED WORD.",
+    "subtitle": "",
+    "sections": [
+      {
+        "layout": "text",
+        "title": "",
+        "subtitle": "",
+        "text": "Debate is not about winning. It is about thinking clearly when it is hard, speaking bravely when it is unpopular, and listening deeply when it is uncomfortable.",
+        "image": "",
+        "items": []
+      },
+      {
+        "layout": "cards",
+        "title": "Principles",
+        "subtitle": "What We Stand For",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Logic Over Loudness",
+            "text": "The strongest voice is the one with the soundest reasoning.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Evidence Over Echo",
+            "text": "Claims earn their place only when backed by facts.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Respect Over Ridicule",
+            "text": "We attack ideas vigorously and opponents never.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Question Over Certainty",
+            "text": "The best debaters hold their conclusions loosely.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Courage Over Comfort",
+            "text": "We speak the unpopular truth when the moment demands it.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Service Over Status",
+            "text": "We use our voices to inform, include, and lift others.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Enter the Forum",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "cta_text": "About PCDF",
+        "cta_link": "/about",
+        "items": []
+      }
+    ]
+  },
+  "committee": {
+    "eyebrow": "Leadership",
+    "title": "The <span class=\"font-bold\">Executive Committee</span>",
+    "subtitle": "PCDF is run by a dedicated student committee elected each session. Meet the people who set the vision, run the training, and carry the forum forward.",
+    "sections": [
+      {
+        "layout": "text",
+        "title": "How We Work",
+        "subtitle": "",
+        "text": "The committee is elected annually by the membership. We split into portfolios so training, tournaments, outreach, and communications all get the focus they deserve.",
+        "image": "",
+        "items": []
+      },
+      {
+        "layout": "cards",
+        "title": "Executive Committee",
+        "subtitle": "Meet the Team",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "President",
+            "text": "Aarav Rahman — sets the vision and represents PCDF externally.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Vice President",
+            "text": "Sarah Khan — oversees training and tournament preparation.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Secretary General",
+            "text": "Mehdi Hasan — coordinates logistics and records.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Treasurer",
+            "text": "Nafisa Faruque — manages the budget and partnerships.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Communications Director",
+            "text": "Leena Aktar — leads media, newsletter, and socials.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Tournament Director",
+            "text": "Tariq Aziz — plans and runs PCDF events.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cards",
+        "title": "Previous Committees",
+        "subtitle": "Our Legacy",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "2024–25 Committee",
+            "text": "The team that took PCDF to its first national break.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "2023–24 Committee",
+            "text": "The founding committee that built PCDF from scratch.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Get Involved",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "cta_text": "Contact",
+        "cta_link": "/contact",
+        "items": []
+      }
+    ]
+  },
+  "events": {
+    "eyebrow": "Activities & Events",
+    "title": "Where We <span class=\"font-bold\">Clash</span>",
+    "subtitle": "From weekly drills to national championships, PCDF's calendar is packed with opportunities to speak, judge, and grow. Here is what we run through the year.",
+    "sections": [
+      {
+        "layout": "text",
+        "title": "Our Calendar",
+        "subtitle": "",
+        "text": "We train every week and compete almost every month. Members can jump into as much or as little as they like.",
+        "image": "",
+        "items": []
+      },
+      {
+        "layout": "cards",
+        "title": "Formats We Compete In",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "British Parliamentary",
+            "text": "The international standard; fast, witty, and strategic.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Asian Parliamentary",
+            "text": "Sharp rhetoric and points of information.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "World Schools",
+            "text": "Team-based, prepared and impromptu motions.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Public Speaking",
+            "text": "Platform speaking and oratory for every occasion.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cards",
+        "title": "Flagship Events",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "PCDF Nationals",
+            "text": "Our biggest tournament of the year.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Inter-University Championship",
+            "text": "We host teams from across the country.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Freshman Cup",
+            "text": "A friendly launchpad for first-year debaters.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Workshop Series",
+            "text": "Skills clinics with champions and adjudicators.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "See You on the Floor",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "cta_text": "Apply",
+        "cta_link": "/apply",
+        "items": []
+      }
+    ]
+  },
+  "achievements": {
+    "eyebrow": "Achievements",
+    "title": "The <span class=\"font-bold\">Trophy Case</span>",
+    "subtitle": "PCDF members don't just train — they win. A record of championships, breaks, and best-speaker titles from tournaments across the country and beyond.",
+    "sections": [
+      {
+        "layout": "stats",
+        "title": "The Record",
+        "subtitle": "By the Numbers",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "60+",
+            "label": "Tournaments"
+          },
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "25",
+            "label": "Trophies"
+          },
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "40",
+            "label": "Best Speakers"
+          },
+          {
+            "heading": "",
+            "text": "",
+            "image": "",
+            "value": "12",
+            "label": "Finals"
+          }
+        ]
+      },
+      {
+        "layout": "cards",
+        "title": "Trophy Case",
+        "subtitle": "Recent Highlights",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "National BP Open Champions",
+            "text": "Undefeated in prelims, won a 3–2 final.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Best Speaker Award",
+            "text": "Sarah Khan ranked top speaker nationally.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Novice Cup Winners",
+            "text": "Our first-year team took the title.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Outreach Excellence",
+            "text": "Recognised for school debate programmes.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cards",
+        "title": "Milestones",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "2023",
+            "text": "PCDF founded at PCIU.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "2024",
+            "text": "First national break.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "2025",
+            "text": "Hosted the PCDF Nationals.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "2026",
+            "text": "Crossed 60 tournaments competed.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      }
+    ]
+  },
+  "news": {
+    "eyebrow": "News & Notices",
+    "title": "The Latest from <span class=\"font-bold\">PCDF</span>",
+    "subtitle": "Bulletins, deadlines, results, and opportunities — everything members and the community need to stay in the loop.",
+    "sections": [
+      {
+        "layout": "cards",
+        "title": "Notices & Results",
+        "subtitle": "Latest",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Tryouts for 2026–27 Are Open",
+            "text": "Auditions run across two weekends in September. Register before Sept 10.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "PCDF A Champions at Regional BP Open",
+            "text": "Our senior team went undefeated in prelims.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Weekly Drills Move to Room 204",
+            "text": "From August, Tuesday drills shift to the forum room.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Call for Adjudicators",
+            "text": "Alumni can apply to judge at the November Nationals.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "School Outreach Launches",
+            "text": "Weekly debate clubs at three partner schools.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Motion Bank Vol. III",
+            "text": "300+ new motions added to the library.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Never Miss a Beat",
+        "subtitle": "",
+        "text": "Subscribe to the newsletter for results, deadlines, and the occasional provocation.",
+        "image": "",
+        "cta_text": "Subscribe",
+        "cta_link": "/newsletter",
+        "items": []
+      }
+    ]
+  },
+  "reports": {
+    "eyebrow": "Knowledge Base",
+    "title": "Reports & <span class=\"font-bold\">Publications</span>",
+    "subtitle": "PCDF believes knowledge should be shared. Our resource library collects annual reports, motion banks, research, and guides for the wider debate community.",
+    "sections": [
+      {
+        "layout": "cards",
+        "title": "Publications",
+        "subtitle": "Knowledge Base",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Annual Report 2025",
+            "text": "Our year in review: impact, finance, and plans.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Motion Bank Vol. III",
+            "text": "300+ tournament-ready motions with infoslides.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Debate Handbook",
+            "text": "A guide to BP, AP, and WSDC for beginners.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Research Briefs",
+            "text": "Short briefings on recurring debate topics.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Tournament Guide",
+            "text": "How we plan and run PCDF events.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Policy Papers",
+            "text": "Our positions on debate and education policy.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Need a Resource?",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "cta_text": "Contact",
+        "cta_link": "/contact",
+        "items": []
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "Gallery",
+    "title": "Moments from <span class=\"font-bold\">the Floor</span>",
+    "subtitle": "Every tournament, workshop, and gala leaves a trail of spontaneity, intensity, and camaraderie. A visual diary of the PCIU Debating Forum.",
+    "sections": [
+      {
+        "image": "",
+        "items": [
+          {
+            "heading": "7th Inter-Department Debate Championship",
+            "image": "/static/img/events/7th-inter-dept_1.webp",
+            "label": "February 2026",
+            "text": "Flagship intra-university tournament finals in the main auditorium.",
+            "value": "Championship"
+          },
+          {
+            "heading": "Oath Taking & Grand Show Debate",
+            "image": "/static/img/events/oath-taking-ceremony_1.webp",
+            "label": "September 2025",
+            "text": "Formal induction ceremony and executive exhibition debate.",
+            "value": "Gala"
+          },
+          {
+            "heading": "Public Speaking & Oratory Masterclass",
+            "image": "/static/img/events/public-speaking-workshop_1.webp",
+            "label": "October 2025",
+            "text": "Voice modulation, body language, and impromptu drill clinic.",
+            "value": "Workshop"
+          },
+          {
+            "heading": "CUET National Debate Fest",
+            "image": "/static/img/events/cuet-national-fest_1.webp",
+            "label": "July 2026",
+            "text": "PCDF delegation competing at the national engineering debate fest.",
+            "value": "National"
+          },
+          {
+            "heading": "PUDS National Debate Championship",
+            "image": "/static/img/events/puds-national-debate_1.webp",
+            "label": "July 2026",
+            "text": "Premier University national parliamentary clash.",
+            "value": "National"
+          },
+          {
+            "heading": "Annual PCDF Grand Iftar Mahfil",
+            "image": "/static/img/events/iftar-mahfil-2026_1.webp",
+            "label": "March 2026",
+            "text": "Annual reunion and brotherhood gathering with alumni and advisors.",
+            "value": "Social"
+          },
+          {
+            "heading": "Pahela Baishakh Cultural Ramma Debate",
+            "image": "/static/img/events/pahela-baishakh-debate_1.webp",
+            "label": "April 2026",
+            "text": "Celebration of Bengali New Year with wit and humorous debate.",
+            "value": "Cultural"
+          },
+          {
+            "heading": "37th Batch Recruitment & Welcome Ceremony",
+            "image": "/static/img/events/recruitment-37th-batch_1.webp",
+            "label": "August 2026",
+            "text": "Welcoming the newest cohort of debaters into the PCDF family.",
+            "value": "Recruitment"
+          },
+          {
+            "heading": "Mental Health & Wellbeing Workshop",
+            "image": "/static/img/events/mental-health-workshop_1.webp",
+            "label": "November 2025",
+            "text": "Empathetic dialogue on resilience and competitive speech confidence.",
+            "value": "Workshop"
+          }
+        ],
+        "layout": "gallery",
+        "subtitle": "Moments",
+        "text": "A visual chronicle of debates, masterclasses, and camaraderie from the 2025–2026 Executive Committee session.",
+        "title": "From the Floor"
+      },
+      {
+        "cta_link": "/timeline",
+        "cta_text": "Explore Full Timeline",
+        "image": "",
+        "items": [],
+        "layout": "cta",
+        "subtitle": "Complete Record",
+        "text": "Browse all 25 official tournaments, workshops, and milestones from 2025–2026.",
+        "title": "View Chronological Archive"
+      }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Let&#39;s <span class=\"font-bold\">Talk</span>",
+    "subtitle": "Questions about joining, partnering, or sponsoring PCDF? We&#39;d love to hear from you. Reach the committee directly or drop by the forum room.",
+    "sections": [
+      {
+        "layout": "text",
+        "title": "Reach Us",
+        "subtitle": "",
+        "text": "The fastest way to reach the committee is email, but you are always welcome to drop by the forum room during our open hours.",
+        "image": "",
+        "items": []
+      },
+      {
+        "layout": "cards",
+        "title": "Details",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Email",
+            "text": "debate@pciu.edu",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Phone",
+            "text": "+880 1234 567890",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Room",
+            "text": "Student Union, Room 204",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Hours",
+            "text": "Mon–Fri · 3–7 PM",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Send a Message",
+        "subtitle": "",
+        "text": "Use the form and we will get back to you within two working days.",
+        "image": "",
+        "cta_text": "Email Us",
+        "cta_link": "mailto:debate@pciu.edu",
+        "items": []
+      }
+    ]
+  },
+  "testimonials": {
+    "eyebrow": "Voices",
+    "title": "In Their <span class=\"font-bold\">Words</span>",
+    "subtitle": "Members, alumni, and partners on what the PCIU Debating Forum gave them — and what it asks of anyone who joins.",
+    "sections": [
+      {
+        "layout": "cards",
+        "title": "Voices",
+        "subtitle": "In Their Words",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Aarav Rahman · President",
+            "text": "PCDF turned my fear of public speaking into my favourite weapon.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Sarah Khan · Vice President",
+            "text": "The discipline of rebuilding my argument under fire is the most useful skill I learned.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Imran Hossain · Alumnus",
+            "text": "I watch our members out-think people with twice their experience. That is the training paying off.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Nafisa Faruque · Treasurer",
+            "text": "I joined for the debates and stayed for the people.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Mehdi Hasan · Secretary General",
+            "text": "Our school outreach kids now run their own debates. That ripple effect is why I volunteer.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Partner · BRAC Bank",
+            "text": "Sponsoring PCDF was an easy yes. We get sharp, thoughtful young people.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      }
+    ]
+  },
+  "partners": {
+    "eyebrow": "Allies",
+    "title": "Our <span class=\"font-bold\">Partners</span>",
+    "subtitle": "PCDF is sustained by universities, institutions, and brands who believe in the power of reasoned speech. Thank you to everyone who helps us debate freely.",
+    "sections": [
+      {
+        "layout": "cards",
+        "title": "Our Partners",
+        "subtitle": "Allies",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "BRAC Bank",
+            "text": "Title sponsor of the PCDF Nationals.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "The Daily Star",
+            "text": "Media partner for tournament coverage.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "British Council",
+            "text": "Supports our training and workshops.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "UNICEF",
+            "text": "Partner on youth dialogue programmes.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Grameenphone",
+            "text": "Connectivity and outreach support.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Pathao",
+            "text": "Mobility partner for events.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cards",
+        "title": "Become a Partner",
+        "subtitle": "Collaborate",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Sponsor a Tournament",
+            "text": "Put your brand behind the next generation of thinkers.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Host a Masterclass",
+            "text": "Share expertise via guest sessions.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Fund Outreach",
+            "text": "Keep debate free and open to all.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Talk to Us",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "cta_text": "Contact",
+        "cta_link": "/contact",
+        "items": []
+      }
+    ]
+  },
+  "newsletter": {
+    "eyebrow": "Newsletter",
+    "title": "Stay in the <span class=\"font-bold\">Loop</span>",
+    "subtitle": "No spam. Just tournament alerts, workshop drops, and the occasional philosophical provocation — straight to your inbox.",
+    "sections": [
+      {
+        "layout": "cta",
+        "title": "Stay in the Loop",
+        "subtitle": "",
+        "text": "No spam. Just tournament alerts, workshop drops, and the occasional philosophical provocation.",
+        "image": "",
+        "cta_text": "Subscribe",
+        "cta_link": "#",
+        "items": []
+      },
+      {
+        "layout": "cards",
+        "title": "What You’ll Get",
+        "subtitle": "",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Results & Breaks",
+            "text": "Same-day summaries of every PCDF tournament.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Workshop Drops",
+            "text": "Early access to masterclasses and tryouts.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "The Long Form",
+            "text": "Occasional essays on rhetoric and reason.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      }
+    ]
+  },
+  "apply": {
+    "eyebrow": "Join the Forum",
+    "title": "Become a <span class=\"font-bold\">Member</span>",
+    "subtitle": "We recruit twice a year — spring and fall. No prior debate experience required. What we look for: intellectual curiosity, a willingness to be challenged, and the courage to challenge others.",
+    "sections": [
+      {
+        "layout": "cards",
+        "title": "The Process",
+        "subtitle": "How to Join",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Submit Application",
+            "text": "Fill out the online form and tell us why you want to join.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Audition Round",
+            "text": "A friendly 10-minute debate with senior members.",
+            "image": "",
+            "value": "",
+            "label": ""
+          },
+          {
+            "heading": "Welcome to PCDF",
+            "text": "A 4-week induction with training and mentorship.",
+            "image": "",
+            "value": "",
+            "label": ""
+          }
+        ]
+      },
+      {
+        "layout": "text",
+        "title": "Who Can Apply",
+        "subtitle": "",
+        "text": "Any Port City International University student, undergraduate or postgraduate. No debate background needed — we train complete beginners.",
+        "image": "",
+        "items": []
+      },
+      {
+        "layout": "cta",
+        "title": "Start Application",
+        "subtitle": "",
+        "text": "Next recruitment cycle opens September 2026.",
+        "image": "",
+        "cta_text": "Apply Now",
+        "cta_link": "/contact",
+        "items": []
+      }
+    ]
+  },
+  "timeline": {
+    "eyebrow": "Timeline",
+    "title": "Our <span class=\"font-bold\">Journey</span>",
+    "subtitle": "The story of PCDF so far — year by year.",
+    "sections": [
+      {
+        "layout": "text",
+        "title": "From Idea to Institution",
+        "subtitle": "",
+        "text": "What started as a group of friends arguing in a cafeteria is now the premier debating society of the university.",
+        "image": "",
+        "items": []
+      }
+    ]
+  },
+  "blog": {
+    "eyebrow": "Insights & Thought Leadership",
+    "title": "The Orator&#39;s <span class=\"font-bold\">Journal</span>",
+    "subtitle": "Debating strategies, motion breakdowns, speaker techniques, and philosophical inquiries from PCIU Debating Forum members and adjudicators.",
+    "sections": [
+      {
+        "layout": "cards",
+        "title": "Featured Articles",
+        "subtitle": "Deep Dives & Strategy",
+        "text": "",
+        "image": "",
+        "items": [
+          {
+            "heading": "Mastering British Parliamentary: The Opening Half Breakdown",
+            "text": "How Opening Government and Opening Opposition set the clash and frame the debate for victory.",
+            "image": "",
+            "value": "Strategy",
+            "label": "10 Min Read"
+          },
+          {
+            "heading": "The Art of Characterization in Policy Motions",
+            "text": "Why stakeholders and tangible incentives matter more than abstract philosophical assertions.",
+            "image": "",
+            "value": "Adjudication",
+            "label": "7 Min Read"
+          },
+          {
+            "heading": "Rebuttal Under Fire: Deconstructing 3-Minute Extensions",
+            "text": "Techniques from world-class closing speakers on extracting winning metrics in closing half.",
+            "image": "",
+            "value": "Technique",
+            "label": "8 Min Read"
+          },
+          {
+            "heading": "Economics for Debaters: Inflation, Fiscal Levers, and Market Failures",
+            "text": "A comprehensive primer on breaking down international trade, sanction, and monetary policy debates.",
+            "image": "",
+            "value": "Mastery",
+            "label": "12 Min Read"
+          },
+          {
+            "heading": "Speech Modulation & Rhetorical Impact: The Psychology of Persuasion",
+            "text": "How tempo, pause, and strategic emphasis elevate logical argumentation into unforgettable speeches.",
+            "image": "",
+            "value": "Oratory",
+            "label": "6 Min Read"
+          },
+          {
+            "heading": "Constructing Unbreakable Comparative Frameworks",
+            "text": "How to decisively prove why your world is preferable, even under the worst assumptions.",
+            "image": "",
+            "value": "Logic",
+            "label": "9 Min Read"
+          }
+        ]
+      },
+      {
+        "layout": "cta",
+        "title": "Contribute to the Journal",
+        "subtitle": "Call for Submissions",
+        "text": "Are you a debater, alumnus, or adjudicator with an essay or motion analysis to share? We welcome submissions.",
+        "image": "",
+        "cta_text": "Submit an Article",
+        "cta_link": "/contact",
+        "items": []
+      }
+    ]
+  }
+}

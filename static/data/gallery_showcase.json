@@ -1,0 +1,110 @@
+{
+  "row1_h1": {
+    "src": "7th inter Department debate competition\\_KIA0043.JPG",
+    "title": "7th Inter-Department Championship",
+    "category": "Flagship Tournament",
+    "date": "February 2026",
+    "desc": "Premier university tournament final round with lively argumentation and judicial evaluation.",
+    "web_path": "/static/img/gallery_showcase/row1_h1.webp",
+    "type": "horizontal"
+  },
+  "row1_h2": {
+    "src": "Iftar Mahfi 2026\\FB_IMG_1789072559871.jpg",
+    "title": "Annual PCDF Grand Iftar Mahfil",
+    "category": "Reunion & Community",
+    "date": "March 2026",
+    "desc": "A warm gathering of alumni, executives, and general members under festive evening lights.",
+    "web_path": "/static/img/gallery_showcase/row1_h2.webp",
+    "type": "horizontal"
+  },
+  "row1_h3": {
+    "src": "Pahela Baishakh Ramma Debate\\IMG-20260911-WA0045.jpg",
+    "title": "Pahela Baishakh Ramma Debate",
+    "category": "Cultural Heritage",
+    "date": "April 2026",
+    "desc": "Celebrating Bengali New Year with theatrical satire and traditional folk argumentation.",
+    "web_path": "/static/img/gallery_showcase/row1_h3.webp",
+    "type": "horizontal"
+  },
+  "row2_v1": {
+    "src": "Outdoor Session\\FB_IMG_1789073836933.jpg",
+    "title": "Outdoor Green Campus Session",
+    "category": "Campus Debates",
+    "date": "May 2026",
+    "desc": "Lively open-air debate circles amidst the scenic university green grounds.",
+    "web_path": "/static/img/gallery_showcase/row2_v1.webp",
+    "type": "vertical"
+  },
+  "row2_v2": {
+    "src": "Oath taking and show debate ceremony\\FB_IMG_1789068991563.jpg",
+    "title": "Oath Taking & Induction Ceremony",
+    "category": "Executive Assembly",
+    "date": "September 2025",
+    "desc": "Formal oath of dedication by incoming leadership and honorary advisors.",
+    "web_path": "/static/img/gallery_showcase/row2_v2.webp",
+    "type": "vertical"
+  },
+  "row2_v3": {
+    "src": "PUDS national debate\\FB_IMG_1789074201244.jpg",
+    "title": "PUDS National Debate Fest",
+    "category": "National Circuit",
+    "date": "July 2026",
+    "desc": "PCDF delegation competing at the national inter-university tournament.",
+    "web_path": "/static/img/gallery_showcase/row2_v3.webp",
+    "type": "vertical"
+  },
+  "row3_h1": {
+    "src": "Member recruitment and welcome of the 37th batch\\IMG-20260911-WA0038.jpg",
+    "title": "37th Batch Grand Orientation",
+    "category": "Recruitment & Induction",
+    "date": "January 2026",
+    "desc": "Welcoming hundreds of aspiring freshmen into the debating fraternity.",
+    "web_path": "/static/img/gallery_showcase/row3_h1.webp",
+    "type": "horizontal"
+  },
+  "row3_h2": {
+    "src": "Public Speaking Workshop\\IMG-20260911-WA0067.jpg",
+    "title": "Public Speaking & Oratory Masterclass",
+    "category": "Skill Masterclass",
+    "date": "October 2025",
+    "desc": "Hands-on training in stage presence, speech structuring, and vocal projection.",
+    "web_path": "/static/img/gallery_showcase/row3_h2.webp",
+    "type": "horizontal"
+  },
+  "row3_h3": {
+    "src": "BGCTrust vs PCDF friendly debate\\FB_IMG_1789072174777.jpg",
+    "title": "Inter-University Friendly Debate",
+    "category": "Inter-Varsity Circuit",
+    "date": "August 2025",
+    "desc": "High-octane collegiate clash fostering camaraderie across university debate clubs.",
+    "web_path": "/static/img/gallery_showcase/row3_h3.webp",
+    "type": "horizontal"
+  },
+  "row4_v1": {
+    "src": "Mental health workshop\\FB_IMG_1789073143552.jpg",
+    "title": "Debaters' Mental Well-being Session",
+    "category": "Special Workshop",
+    "date": "November 2025",
+    "desc": "Empowering youth resilience, focus, and mindfulness through interactive team sessions.",
+    "web_path": "/static/img/gallery_showcase/row4_v1.webp",
+    "type": "vertical"
+  },
+  "row4_v2": {
+    "src": "Pahela Baishakh Ramma Debate\\IMG-20260911-WA0086.jpg",
+    "title": "Traditional Baishakhi Orator",
+    "category": "Cultural Heritage",
+    "date": "April 2026",
+    "desc": "Festive oratorical performances embracing rich folk traditions and lively humor.",
+    "web_path": "/static/img/gallery_showcase/row4_v2.webp",
+    "type": "vertical"
+  },
+  "row4_v3": {
+    "src": "Oath taking and show debate ceremony\\FB_IMG_1789069010326.jpg",
+    "title": "Honorary Show Debate Exhibition",
+    "category": "Showcase Debate",
+    "date": "September 2025",
+    "desc": "Showcase debate featuring top adjudicators and senior national debaters.",
+    "web_path": "/static/img/gallery_showcase/row4_v3.webp",
+    "type": "vertical"
+  }
+}

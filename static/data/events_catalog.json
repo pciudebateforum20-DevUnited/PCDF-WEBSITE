@@ -1,0 +1,993 @@
+[
+  {
+    "id": "7th-inter-dept",
+    "title": "7th Inter-Department Debate Championship",
+    "category": "Championship",
+    "year": "2026",
+    "date_label": "February 2026",
+    "tag": "Flagship Tournament",
+    "summary": "The premier intra-university championship where departments clashed in intense parliamentary debates across preliminary and auditorium grand final rounds.",
+    "stats": [
+      "8 Departments",
+      "24 Speakers",
+      "Grand Final Stage",
+      "Auditorium Clash"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/7th-inter-dept_1.webp",
+        "filename": "7th-inter-dept_1.webp",
+        "width": 1200,
+        "height": 800,
+        "size_kb": 57.1
+      },
+      {
+        "url": "/static/img/events/7th-inter-dept_2.webp",
+        "filename": "7th-inter-dept_2.webp",
+        "width": 1200,
+        "height": 800,
+        "size_kb": 87.9
+      },
+      {
+        "url": "/static/img/events/7th-inter-dept_3.webp",
+        "filename": "7th-inter-dept_3.webp",
+        "width": 1200,
+        "height": 800,
+        "size_kb": 69.5
+      },
+      {
+        "url": "/static/img/events/7th-inter-dept_4.webp",
+        "filename": "7th-inter-dept_4.webp",
+        "width": 1200,
+        "height": 800,
+        "size_kb": 70.2
+      }
+    ],
+    "featured_image": "/static/img/events/7th-inter-dept_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "oath-taking-ceremony",
+    "title": "Oath Taking & Grand Show Debate Ceremony",
+    "category": "Induction & Gala",
+    "year": "2025",
+    "date_label": "September 2025",
+    "tag": "Executive Gala",
+    "summary": "The solemn induction ceremony of the Executive Committee 2025–2026, accompanied by a prestigious exhibition show debate before university leadership.",
+    "stats": [
+      "Executive Board",
+      "Show Debate",
+      "University Guests",
+      "150+ Attendees"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/oath-taking-ceremony_1.webp",
+        "filename": "oath-taking-ceremony_1.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 79.5
+      },
+      {
+        "url": "/static/img/events/oath-taking-ceremony_2.webp",
+        "filename": "oath-taking-ceremony_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 78.4
+      },
+      {
+        "url": "/static/img/events/oath-taking-ceremony_3.webp",
+        "filename": "oath-taking-ceremony_3.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 78.4
+      },
+      {
+        "url": "/static/img/events/oath-taking-ceremony_4.webp",
+        "filename": "oath-taking-ceremony_4.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 73.1
+      }
+    ],
+    "featured_image": "/static/img/events/oath-taking-ceremony_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "cuet-national-fest",
+    "title": "CUET National Debate Fest 2026",
+    "category": "National Competition",
+    "year": "2026",
+    "date_label": "July 2026",
+    "tag": "National Arena",
+    "summary": "PCDF delegation represented Port City International University on the national circuit at CUET, clashing with premier university teams across Bangladesh.",
+    "stats": [
+      "CUET Campus",
+      "BP Format",
+      "PCDF Delegation",
+      "National Open"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/cuet-national-fest_1.webp",
+        "filename": "cuet-national-fest_1.webp",
+        "width": 640,
+        "height": 800,
+        "size_kb": 70.1
+      },
+      {
+        "url": "/static/img/events/cuet-national-fest_2.webp",
+        "filename": "cuet-national-fest_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 150.4
+      },
+      {
+        "url": "/static/img/events/cuet-national-fest_3.webp",
+        "filename": "cuet-national-fest_3.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 85.5
+      },
+      {
+        "url": "/static/img/events/cuet-national-fest_4.webp",
+        "filename": "cuet-national-fest_4.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 113.9
+      }
+    ],
+    "featured_image": "/static/img/events/cuet-national-fest_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "puds-national-debate",
+    "title": "PUDS National Debate Championship",
+    "category": "National Competition",
+    "year": "2026",
+    "date_label": "July 2026",
+    "tag": "National Championship",
+    "summary": "High-octane parliamentary debate rounds at Premier University, highlighting razor-sharp extension argumentation and rebuttal mastery.",
+    "stats": [
+      "National Open",
+      "Parliamentary",
+      "Outround Run",
+      "Best Delegation"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/puds-national-debate_1.webp",
+        "filename": "puds-national-debate_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 88.9
+      },
+      {
+        "url": "/static/img/events/puds-national-debate_2.webp",
+        "filename": "puds-national-debate_2.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 118.3
+      },
+      {
+        "url": "/static/img/events/puds-national-debate_3.webp",
+        "filename": "puds-national-debate_3.webp",
+        "width": 450,
+        "height": 800,
+        "size_kb": 64.2
+      },
+      {
+        "url": "/static/img/events/puds-national-debate_4.webp",
+        "filename": "puds-national-debate_4.webp",
+        "width": 800,
+        "height": 800,
+        "size_kb": 84.7
+      }
+    ],
+    "featured_image": "/static/img/events/puds-national-debate_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "pahela-baishakh-debate",
+    "title": "Pahela Baishakh Cultural Ramma Debate",
+    "category": "Cultural & Social",
+    "year": "2026",
+    "date_label": "April 2026",
+    "tag": "Bengali Heritage",
+    "summary": "A colorful celebration of Bengali New Year with satirical wit, traditional attire, poetic rhetoric, and campus-wide audience engagement.",
+    "stats": [
+      "Ramma Format",
+      "Cultural Festival",
+      "Campus Gathering",
+      "Heritage & Humor"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/pahela-baishakh-debate_1.webp",
+        "filename": "pahela-baishakh-debate_1.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 65.6
+      },
+      {
+        "url": "/static/img/events/pahela-baishakh-debate_2.webp",
+        "filename": "pahela-baishakh-debate_2.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 85.7
+      },
+      {
+        "url": "/static/img/events/pahela-baishakh-debate_3.webp",
+        "filename": "pahela-baishakh-debate_3.webp",
+        "width": 450,
+        "height": 800,
+        "size_kb": 61.5
+      },
+      {
+        "url": "/static/img/events/pahela-baishakh-debate_4.webp",
+        "filename": "pahela-baishakh-debate_4.webp",
+        "width": 450,
+        "height": 800,
+        "size_kb": 58.4
+      }
+    ],
+    "featured_image": "/static/img/events/pahela-baishakh-debate_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "iftar-mahfil-2026",
+    "title": "Annual PCDF Grand Iftar Mahfil 2026",
+    "category": "Cultural & Social",
+    "year": "2026",
+    "date_label": "March 2026",
+    "tag": "Brotherhood & Reunion",
+    "summary": "The heartwarming annual gathering bringing together active debaters, esteemed alumni, faculty advisors, and executive leadership in camaraderie.",
+    "stats": [
+      "Alumni Reunion",
+      "Executive Circle",
+      "100+ Members",
+      "Fraternity Night"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/iftar-mahfil-2026_1.webp",
+        "filename": "iftar-mahfil-2026_1.webp",
+        "width": 1253,
+        "height": 800,
+        "size_kb": 173.9
+      },
+      {
+        "url": "/static/img/events/iftar-mahfil-2026_2.webp",
+        "filename": "iftar-mahfil-2026_2.webp",
+        "width": 1253,
+        "height": 800,
+        "size_kb": 173.9
+      },
+      {
+        "url": "/static/img/events/iftar-mahfil-2026_3.webp",
+        "filename": "iftar-mahfil-2026_3.webp",
+        "width": 1200,
+        "height": 800,
+        "size_kb": 77.8
+      },
+      {
+        "url": "/static/img/events/iftar-mahfil-2026_4.webp",
+        "filename": "iftar-mahfil-2026_4.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 130.5
+      }
+    ],
+    "featured_image": "/static/img/events/iftar-mahfil-2026_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "public-speaking-workshop",
+    "title": "Public Speaking & Oratory Masterclass",
+    "category": "Workshop",
+    "year": "2025",
+    "date_label": "October 2025",
+    "tag": "Skill Masterclass",
+    "summary": "An intensive hands-on masterclass addressing stage fright, voice modulation, body language, and constructing persuasive impromptu narratives.",
+    "stats": [
+      "Masterclass",
+      "Voice Modulation",
+      "Live Drills",
+      "80+ Participants"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/public-speaking-workshop_1.webp",
+        "filename": "public-speaking-workshop_1.webp",
+        "width": 640,
+        "height": 800,
+        "size_kb": 51.8
+      },
+      {
+        "url": "/static/img/events/public-speaking-workshop_2.webp",
+        "filename": "public-speaking-workshop_2.webp",
+        "width": 800,
+        "height": 800,
+        "size_kb": 78.7
+      },
+      {
+        "url": "/static/img/events/public-speaking-workshop_3.webp",
+        "filename": "public-speaking-workshop_3.webp",
+        "width": 800,
+        "height": 800,
+        "size_kb": 67.2
+      },
+      {
+        "url": "/static/img/events/public-speaking-workshop_4.webp",
+        "filename": "public-speaking-workshop_4.webp",
+        "width": 1200,
+        "height": 800,
+        "size_kb": 102.8
+      }
+    ],
+    "featured_image": "/static/img/events/public-speaking-workshop_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "mental-health-workshop",
+    "title": "Mental Health & Wellbeing Workshop",
+    "category": "Workshop",
+    "year": "2025",
+    "date_label": "November 2025",
+    "tag": "Youth Wellbeing",
+    "summary": "An empathetic interactive session addressing mental resilience, academic balance, and confidence under competitive pressure.",
+    "stats": [
+      "Interactive Clinic",
+      "Peer Support",
+      "Guest Facilitators",
+      "Open Forum"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/mental-health-workshop_1.webp",
+        "filename": "mental-health-workshop_1.webp",
+        "width": 640,
+        "height": 800,
+        "size_kb": 67.9
+      },
+      {
+        "url": "/static/img/events/mental-health-workshop_2.webp",
+        "filename": "mental-health-workshop_2.webp",
+        "width": 1040,
+        "height": 780,
+        "size_kb": 127.2
+      },
+      {
+        "url": "/static/img/events/mental-health-workshop_3.webp",
+        "filename": "mental-health-workshop_3.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 84.1
+      },
+      {
+        "url": "/static/img/events/mental-health-workshop_4.webp",
+        "filename": "mental-health-workshop_4.webp",
+        "width": 1201,
+        "height": 800,
+        "size_kb": 89.8
+      }
+    ],
+    "featured_image": "/static/img/events/mental-health-workshop_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "outdoor-ramma-debate",
+    "title": "Outdoor Open-Air Ramma Debate",
+    "category": "Cultural & Social",
+    "year": "2025",
+    "date_label": "November 2025",
+    "tag": "Open-Air Session",
+    "summary": "Debating in the open air: An exhilarating humorous debate under the blue sky, blending fast wit, spontaneous humor, and high crowd energy.",
+    "stats": [
+      "Open Air",
+      "Satire & Wit",
+      "Campus Lawn",
+      "Spontaneous Clash"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/outdoor-ramma-debate_1.webp",
+        "filename": "outdoor-ramma-debate_1.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 160.0
+      },
+      {
+        "url": "/static/img/events/outdoor-ramma-debate_2.webp",
+        "filename": "outdoor-ramma-debate_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 192.9
+      },
+      {
+        "url": "/static/img/events/outdoor-ramma-debate_3.webp",
+        "filename": "outdoor-ramma-debate_3.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 164.8
+      },
+      {
+        "url": "/static/img/events/outdoor-ramma-debate_4.webp",
+        "filename": "outdoor-ramma-debate_4.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 80.7
+      }
+    ],
+    "featured_image": "/static/img/events/outdoor-ramma-debate_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "drishti-national-adj",
+    "title": "Drishti National Debate — 4th Adjudication Break",
+    "category": "Achievement",
+    "year": "2026",
+    "date_label": "May 2026",
+    "tag": "National Distinction",
+    "summary": "PCDF adjudicators distinguished themselves on the national circuit, securing the 4th top adjudicator position at Drishti National Debate.",
+    "stats": [
+      "4th Adjudicator Break",
+      "National Panel",
+      "Grand Final Panelist"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/drishti-national-adj_1.webp",
+        "filename": "drishti-national-adj_1.webp",
+        "width": 600,
+        "height": 800,
+        "size_kb": 29.6
+      },
+      {
+        "url": "/static/img/events/drishti-national-adj_2.webp",
+        "filename": "drishti-national-adj_2.webp",
+        "width": 600,
+        "height": 800,
+        "size_kb": 22.7
+      }
+    ],
+    "featured_image": "/static/img/events/drishti-national-adj_1.webp",
+    "image_count": 2
+  },
+  {
+    "id": "cuds-divisional-2025",
+    "title": "CUDS Divisional Debate Championship 2025",
+    "category": "Championship",
+    "year": "2025",
+    "date_label": "August 2025",
+    "tag": "Regional Circuit",
+    "summary": "Representing PCIU at Chittagong University Debating Society's regional division championship in rigorous policy debates.",
+    "stats": [
+      "Regional Stage",
+      "CUDS Venue",
+      "Policy Clashes"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/cuds-divisional-2025_1.webp",
+        "filename": "cuds-divisional-2025_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 96.0
+      }
+    ],
+    "featured_image": "/static/img/events/cuds-divisional-2025_1.webp",
+    "image_count": 1
+  },
+  {
+    "id": "cusd-national-2026",
+    "title": "CUSD National Debate Championship 2026",
+    "category": "National Competition",
+    "year": "2026",
+    "date_label": "March 2026",
+    "tag": "National Stage",
+    "summary": "Delegation at Comilla University national tournament competing in high-stakes socio-economic and institutional reform motions.",
+    "stats": [
+      "National Teams",
+      "Tabulation Break",
+      "Rhetorical Depth"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/cusd-national-2026_1.webp",
+        "filename": "cusd-national-2026_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 80.6
+      }
+    ],
+    "featured_image": "/static/img/events/cusd-national-2026_1.webp",
+    "image_count": 1
+  },
+  {
+    "id": "eduds-national-debate",
+    "title": "EDUDS National Debate Tournament",
+    "category": "National Competition",
+    "year": "2025",
+    "date_label": "September 2025",
+    "tag": "National Circuit",
+    "summary": "High-intensity parliamentary debate at East Delta University, demonstrating sharp case construction and rebuttal precision.",
+    "stats": [
+      "Parliamentary",
+      "National Circuit",
+      "Speaker Accolades"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/eduds-national-debate_1.webp",
+        "filename": "eduds-national-debate_1.webp",
+        "width": 450,
+        "height": 800,
+        "size_kb": 60.6
+      }
+    ],
+    "featured_image": "/static/img/events/eduds-national-debate_1.webp",
+    "image_count": 1
+  },
+  {
+    "id": "ustc-national-debate",
+    "title": "USTC National Debate & Adjudication Summit",
+    "category": "National Competition",
+    "year": "2026",
+    "date_label": "June 2026",
+    "tag": "National Arena",
+    "summary": "USTC national tournament participation with certified PCDF debaters and official adjudication panel judges.",
+    "stats": [
+      "Debater & Judge Roster",
+      "BP Rounds",
+      "Accredited Panelists"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/ustc-national-debate_1.webp",
+        "filename": "ustc-national-debate_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 88.5
+      },
+      {
+        "url": "/static/img/events/ustc-national-debate_2.webp",
+        "filename": "ustc-national-debate_2.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 94.0
+      }
+    ],
+    "featured_image": "/static/img/events/ustc-national-debate_1.webp",
+    "image_count": 2
+  },
+  {
+    "id": "nils-national-legal",
+    "title": "NILS National Legal Debate Championship",
+    "category": "Specialized Debate",
+    "year": "2026",
+    "date_label": "April 2026",
+    "tag": "Legal Jurisprudence",
+    "summary": "Specialized tournament at Daffodil International University examining constitutional frameworks, international human rights law, and jurisprudence.",
+    "stats": [
+      "Legal Jurisprudence",
+      "DIU Venue",
+      "Constitutional Law"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/nils-national-legal_1.webp",
+        "filename": "nils-national-legal_1.webp",
+        "width": 715,
+        "height": 538,
+        "size_kb": 36.5
+      },
+      {
+        "url": "/static/img/events/nils-national-legal_2.webp",
+        "filename": "nils-national-legal_2.webp",
+        "width": 715,
+        "height": 715,
+        "size_kb": 49.6
+      },
+      {
+        "url": "/static/img/events/nils-national-legal_3.webp",
+        "filename": "nils-national-legal_3.webp",
+        "width": 715,
+        "height": 715,
+        "size_kb": 46.2
+      }
+    ],
+    "featured_image": "/static/img/events/nils-national-legal_1.webp",
+    "image_count": 3
+  },
+  {
+    "id": "punab-national-debate",
+    "title": "PUNAB National Debate Festival",
+    "category": "National Competition",
+    "year": "2026",
+    "date_label": "May 2026",
+    "tag": "National Arena",
+    "summary": "PCDF debaters engaging in national level parliamentary discourse on economic policy and global governance.",
+    "stats": [
+      "National Fest",
+      "Policy Motions",
+      "Delegation Recognition"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/punab-national-debate_1.webp",
+        "filename": "punab-national-debate_1.webp",
+        "width": 566,
+        "height": 800,
+        "size_kb": 52.1
+      }
+    ],
+    "featured_image": "/static/img/events/punab-national-debate_1.webp",
+    "image_count": 1
+  },
+  {
+    "id": "bgctrust-friendly-debate",
+    "title": "BGC Trust University vs PCDF Inter-Varsity Debate",
+    "category": "Bilateral Debate",
+    "year": "2026",
+    "date_label": "March 2026",
+    "tag": "Inter-University",
+    "summary": "A spirited bilateral intellectual exchange between BGC Trust University and PCDF, fostering inter-campus harmony and oratorical skill.",
+    "stats": [
+      "Bilateral Showcase",
+      "Cross-Campus Ties",
+      "High-Energy Clash"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/bgctrust-friendly-debate_1.webp",
+        "filename": "bgctrust-friendly-debate_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 49.2
+      },
+      {
+        "url": "/static/img/events/bgctrust-friendly-debate_2.webp",
+        "filename": "bgctrust-friendly-debate_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 35.6
+      },
+      {
+        "url": "/static/img/events/bgctrust-friendly-debate_3.webp",
+        "filename": "bgctrust-friendly-debate_3.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 42.8
+      }
+    ],
+    "featured_image": "/static/img/events/bgctrust-friendly-debate_1.webp",
+    "image_count": 3
+  },
+  {
+    "id": "marketing-debate-fest",
+    "title": "Inter-University Marketing Debate Fest",
+    "category": "Specialized Debate",
+    "year": "2026",
+    "date_label": "February 2026",
+    "tag": "Commerce & Strategy",
+    "summary": "Strategic debate tournament focusing on modern market disruptions, corporate branding ethics, and technological shifts in commerce.",
+    "stats": [
+      "Corporate Strategy",
+      "Market Ethics",
+      "Specialized Motion Bank"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/marketing-debate-fest_1.webp",
+        "filename": "marketing-debate-fest_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 106.2
+      }
+    ],
+    "featured_image": "/static/img/events/marketing-debate-fest_1.webp",
+    "image_count": 1
+  },
+  {
+    "id": "recruitment-37th-batch",
+    "title": "37th Batch Member Recruitment & Grand Welcome",
+    "category": "Recruitment & Induction",
+    "year": "2026",
+    "date_label": "August 2026",
+    "tag": "New Generation",
+    "summary": "Induction and grand orientation of the 37th intake of energetic new debaters, initiating their parliamentary training journey.",
+    "stats": [
+      "37th Intake",
+      "Induction Round",
+      "Mentorship Kickoff"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/recruitment-37th-batch_1.webp",
+        "filename": "recruitment-37th-batch_1.webp",
+        "width": 533,
+        "height": 800,
+        "size_kb": 38.7
+      },
+      {
+        "url": "/static/img/events/recruitment-37th-batch_2.webp",
+        "filename": "recruitment-37th-batch_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 81.6
+      },
+      {
+        "url": "/static/img/events/recruitment-37th-batch_3.webp",
+        "filename": "recruitment-37th-batch_3.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 75.6
+      },
+      {
+        "url": "/static/img/events/recruitment-37th-batch_4.webp",
+        "filename": "recruitment-37th-batch_4.webp",
+        "width": 450,
+        "height": 800,
+        "size_kb": 48.8
+      }
+    ],
+    "featured_image": "/static/img/events/recruitment-37th-batch_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "recruitment-36th-batch",
+    "title": "36th Batch Member Recruitment & Orientation",
+    "category": "Recruitment & Induction",
+    "year": "2026",
+    "date_label": "February 2026",
+    "tag": "Fresh Talents",
+    "summary": "Welcoming our 36th batch into the PCDF family through icebreakers, parliamentary debate fundamentals, and mentorship pairings.",
+    "stats": [
+      "36th Intake",
+      "Skill Onboarding",
+      "Club Orientation"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/recruitment-36th-batch_1.webp",
+        "filename": "recruitment-36th-batch_1.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 81.6
+      },
+      {
+        "url": "/static/img/events/recruitment-36th-batch_2.webp",
+        "filename": "recruitment-36th-batch_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 75.6
+      },
+      {
+        "url": "/static/img/events/recruitment-36th-batch_3.webp",
+        "filename": "recruitment-36th-batch_3.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 83.7
+      },
+      {
+        "url": "/static/img/events/recruitment-36th-batch_4.webp",
+        "filename": "recruitment-36th-batch_4.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 43.5
+      }
+    ],
+    "featured_image": "/static/img/events/recruitment-36th-batch_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "recruitment-35th-batch",
+    "title": "35th Batch Member Recruitment & Welcome Ceremony",
+    "category": "Recruitment & Induction",
+    "year": "2025",
+    "date_label": "September 2025",
+    "tag": "Foundational Intake",
+    "summary": "The milestone recruitment and orientation of the 35th batch, establishing the core speaker cohort of the 2025-2026 operational year.",
+    "stats": [
+      "35th Intake",
+      "Grand Welcome",
+      "Foundational Cohort"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/recruitment-35th-batch_1.webp",
+        "filename": "recruitment-35th-batch_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 117.8
+      },
+      {
+        "url": "/static/img/events/recruitment-35th-batch_2.webp",
+        "filename": "recruitment-35th-batch_2.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 100.3
+      },
+      {
+        "url": "/static/img/events/recruitment-35th-batch_3.webp",
+        "filename": "recruitment-35th-batch_3.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 104.2
+      },
+      {
+        "url": "/static/img/events/recruitment-35th-batch_4.webp",
+        "filename": "recruitment-35th-batch_4.webp",
+        "width": 1280,
+        "height": 721,
+        "size_kb": 68.5
+      }
+    ],
+    "featured_image": "/static/img/events/recruitment-35th-batch_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "recruitment-spring-2026",
+    "title": "Spring 2026 Member Recruitment Campaign",
+    "category": "Recruitment & Induction",
+    "year": "2026",
+    "date_label": "January 2026",
+    "tag": "Spring Recruitment",
+    "summary": "Campus-wide outreach campaign bringing enthusiastic minds across engineering, law, business, and humanities into competitive debating.",
+    "stats": [
+      "Cross-Discipline Outreach",
+      "Audition Trials",
+      "Selection Rounds"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/recruitment-spring-2026_1.webp",
+        "filename": "recruitment-spring-2026_1.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 117.8
+      },
+      {
+        "url": "/static/img/events/recruitment-spring-2026_2.webp",
+        "filename": "recruitment-spring-2026_2.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 135.9
+      },
+      {
+        "url": "/static/img/events/recruitment-spring-2026_3.webp",
+        "filename": "recruitment-spring-2026_3.webp",
+        "width": 1067,
+        "height": 800,
+        "size_kb": 102.2
+      }
+    ],
+    "featured_image": "/static/img/events/recruitment-spring-2026_1.webp",
+    "image_count": 3
+  },
+  {
+    "id": "indoor-debate-sessions",
+    "title": "Indoor Parliamentary Drills & Motion Clinics",
+    "category": "Training & Drills",
+    "year": "2026",
+    "date_label": "Weekly 2025-2026",
+    "tag": "Weekly Drills",
+    "summary": "Regular weekly indoor practice sessions dedicated to motion breakdown, 15-minute prep optimization, extension generation, and POI strategy.",
+    "stats": [
+      "Weekly Drills",
+      "15-Min Prep Clinics",
+      "Live Motion Battles"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/indoor-debate-sessions_1.webp",
+        "filename": "indoor-debate-sessions_1.webp",
+        "width": 1280,
+        "height": 590,
+        "size_kb": 41.9
+      },
+      {
+        "url": "/static/img/events/indoor-debate-sessions_2.webp",
+        "filename": "indoor-debate-sessions_2.webp",
+        "width": 1280,
+        "height": 590,
+        "size_kb": 22.9
+      }
+    ],
+    "featured_image": "/static/img/events/indoor-debate-sessions_1.webp",
+    "image_count": 2
+  },
+  {
+    "id": "outdoor-training-sessions",
+    "title": "Outdoor Speech Practicum & Team Building",
+    "category": "Training & Drills",
+    "year": "2025",
+    "date_label": "October 2025",
+    "tag": "Speech Practicum",
+    "summary": "Outdoor training sessions focused on vocal projection, body language in open spaces, debate camaraderie, and rapid-fire argumentation games.",
+    "stats": [
+      "Vocal Projection",
+      "Team Bonding",
+      "Rapid Fire Drills"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/outdoor-training-sessions_1.webp",
+        "filename": "outdoor-training-sessions_1.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 208.3
+      },
+      {
+        "url": "/static/img/events/outdoor-training-sessions_2.webp",
+        "filename": "outdoor-training-sessions_2.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 225.0
+      },
+      {
+        "url": "/static/img/events/outdoor-training-sessions_3.webp",
+        "filename": "outdoor-training-sessions_3.webp",
+        "width": 1280,
+        "height": 720,
+        "size_kb": 227.1
+      },
+      {
+        "url": "/static/img/events/outdoor-training-sessions_4.webp",
+        "filename": "outdoor-training-sessions_4.webp",
+        "width": 600,
+        "height": 800,
+        "size_kb": 107.9
+      }
+    ],
+    "featured_image": "/static/img/events/outdoor-training-sessions_1.webp",
+    "image_count": 4
+  },
+  {
+    "id": "online-strategy-sessions",
+    "title": "Virtual Strategy & International Motion Breakdown",
+    "category": "Training & Drills",
+    "year": "2026",
+    "date_label": "Bi-Weekly 2025-2026",
+    "tag": "Virtual Clinic",
+    "summary": "Late-night digital debate strategy sessions, international motion analysis, and tab review clinics for debaters preparing for out-of-town championships.",
+    "stats": [
+      "Virtual Clinics",
+      "Motion Archive Reviews",
+      "Remote Sparring"
+    ],
+    "images": [
+      {
+        "url": "/static/img/events/online-strategy-sessions_1.webp",
+        "filename": "online-strategy-sessions_1.webp",
+        "width": 1280,
+        "height": 576,
+        "size_kb": 25.3
+      },
+      {
+        "url": "/static/img/events/online-strategy-sessions_2.webp",
+        "filename": "online-strategy-sessions_2.webp",
+        "width": 1280,
+        "height": 578,
+        "size_kb": 32.6
+      },
+      {
+        "url": "/static/img/events/online-strategy-sessions_3.webp",
+        "filename": "online-strategy-sessions_3.webp",
+        "width": 402,
+        "height": 800,
+        "size_kb": 19.2
+      },
+      {
+        "url": "/static/img/events/online-strategy-sessions_4.webp",
+        "filename": "online-strategy-sessions_4.webp",
+        "width": 369,
+        "height": 800,
+        "size_kb": 7.4
+      }
+    ],
+    "featured_image": "/static/img/events/online-strategy-sessions_1.webp",
+    "image_count": 4
+  }
+]

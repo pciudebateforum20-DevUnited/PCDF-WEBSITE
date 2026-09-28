@@ -1,0 +1,6 @@
+{% extends "page_base.html" %}
+{% block page %}
+{% from "macros.html" import page_hero, render_sections %}
+{{ page_hero('about', '', '', '') }}
+{{ render_sections('about') }}
+{% endblock %}

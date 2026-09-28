@@ -1,0 +1,241 @@
+{% extends "page_base.html" %}
+
+{% block page %}
+
+<!-- TIMELINE HERO HEADER -->
+<section class="py-16 md:py-24 px-6 md:px-16 bg-[#fafafa] hairline-border border-b border-gray-200">
+    <div class="max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-red-50 border border-red-200">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+            <span class="text-xs font-sans font-semibold tracking-widest uppercase text-red-700">Official Executive Chronicle • 2025–2026</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold cinzel uppercase text-gray-900 mb-4 tracking-tight">
+            The Journey of Reason
+        </h1>
+        <p class="text-sm sm:text-base text-gray-600 font-light max-w-2xl mx-auto leading-relaxed">
+            From premier intra-university tournaments to national circuit victories, workshops, and cultural debates — discover every momentous milestone of the PCIU Debating Forum.
+        </p>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 mt-8 max-w-4xl mx-auto" id="timelineFilters">
+            <button type="button" class="tl-filter-btn active px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-black text-white shadow-sm transition-all" data-filter="all">All Events ({{ events_catalog | length }})</button>
+            <button type="button" class="tl-filter-btn px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-white border border-gray-300 text-gray-700 hover:border-red-600 transition-all" data-filter="2026">2026 Season</button>
+            <button type="button" class="tl-filter-btn px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-white border border-gray-300 text-gray-700 hover:border-red-600 transition-all" data-filter="2025">2025 Season</button>
+            <button type="button" class="tl-filter-btn px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-white border border-gray-300 text-gray-700 hover:border-red-600 transition-all" data-filter="Championship">Championships</button>
+            <button type="button" class="tl-filter-btn px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-white border border-gray-300 text-gray-700 hover:border-red-600 transition-all" data-filter="National Competition">National Circuit</button>
+            <button type="button" class="tl-filter-btn px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-white border border-gray-300 text-gray-700 hover:border-red-600 transition-all" data-filter="Workshop">Workshops</button>
+            <button type="button" class="tl-filter-btn px-4 py-1.5 rounded-full text-xs font-sans font-medium uppercase tracking-wider bg-white border border-gray-300 text-gray-700 hover:border-red-600 transition-all" data-filter="Cultural & Social">Social & Cultural</button>
+        </div>
+    </div>
+</section>
+
+<!-- TIMELINE ENTRIES FEED -->
+<section class="py-12 md:py-20 px-4 sm:px-6 md:px-12 bg-white">
+    <div class="max-w-5xl mx-auto space-y-10 md:space-y-14" id="timelineContainer">
+
+        {% for ev in events_catalog %}
+        <div class="tl-event-card bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col md:flex-row"
+             id="{{ ev.id }}"
+             data-category="{{ ev.category }}"
+             data-year="{{ ev.year }}">
+            
+            <!-- Left Side: Photo Hero & Image Thumbnails -->
+            <div class="w-full md:w-[48%] flex flex-col bg-gray-900 shrink-0">
+                
+                <!-- Main Featured Photo -->
+                <div class="relative w-full aspect-[16/10] md:aspect-[4/3] overflow-hidden cursor-pointer group"
+                     onclick="openTimelineModal('{{ ev.featured_image }}', '{{ ev.title }}', '{{ ev.tag }} • {{ ev.date_label }}', '{{ ev.summary }}')">
+                    <img src="{{ ev.featured_image }}" alt="{{ ev.title }}" loading="lazy" id="mainPhoto_{{ ev.id }}"
+                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+                    
+                    <!-- Badges -->
+                    <div class="absolute top-3 left-3 flex gap-2">
+                        <span class="px-2.5 py-1 rounded-full bg-red-600 text-white text-[10px] font-sans font-bold uppercase tracking-wider shadow-sm">
+                            {{ ev.tag }}
+                        </span>
+                    </div>
+
+                    <!-- Enlarge Prompt -->
+                    <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-xs text-white text-[10px] font-sans font-medium flex items-center gap-1.5 opacity-90 group-hover:opacity-100 group-hover:bg-red-600 transition-all">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
+                        <span>{{ ev.image_count }} Photos</span>
+                    </div>
+                </div>
+
+                <!-- Thumbnail Switcher Strip (If multiple angles exist) -->
+                {% if ev.images | length > 1 %}
+                <div class="p-2.5 bg-gray-950 flex items-center gap-2 overflow-x-auto border-t border-gray-800">
+                    <span class="text-[10px] font-sans font-semibold uppercase text-gray-400 shrink-0 px-1">Angles:</span>
+                    <div class="flex items-center gap-2">
+                        {% for img in ev.images %}
+                        <button type="button" 
+                                class="thumb-switch-btn w-12 h-9 rounded-md overflow-hidden border-2 {% if loop.first %}border-red-600 ring-2 ring-red-500/40{% else %}border-gray-700{% endif %} hover:border-red-400 transition-all shrink-0 cursor-pointer"
+                                onclick="switchTimelineImage('{{ ev.id }}', '{{ img.url }}', this, '{{ ev.title }}', '{{ ev.tag }} • Angle {{ loop.index }}', '{{ ev.summary }}')">
+                            <img src="{{ img.url }}" alt="Preview" loading="lazy" class="w-full h-full object-cover">
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+
+            <!-- Right Side: Content & Details -->
+            <div class="w-full md:w-[52%] p-6 sm:p-8 flex flex-col justify-between">
+                
+                <div>
+                    <!-- Date & Category Meta -->
+                    <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-gray-100">
+                        <span class="text-xs font-sans font-semibold uppercase tracking-wider text-red-700">
+                            {{ ev.date_label }}
+                        </span>
+                        <span class="text-[11px] font-sans text-gray-400 uppercase">
+                            {{ ev.category }}
+                        </span>
+                    </div>
+
+                    <!-- Title -->
+                    <h3 class="text-xl sm:text-2xl font-bold cinzel text-gray-900 leading-snug mb-3">
+                        {{ ev.title }}
+                    </h3>
+
+                    <!-- Description -->
+                    <p class="text-xs md:text-sm text-gray-500 font-light leading-relaxed">
+                        {{ ev.summary }}
+                    </p>
+                </div>
+
+                <!-- Stats Badges -->
+                {% if ev.stats %}
+                <div class="mt-6 pt-4 border-t border-gray-100 flex flex-wrap gap-2">
+                    {% for st in ev.stats %}
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-gray-50 border border-gray-200 text-xs font-sans text-gray-700 font-medium">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                        <span>{{ st }}</span>
+                    </span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+<!-- Fullscreen Lightbox Modal -->
+<div id="timelineModal" class="fixed inset-0 bg-black/95 z-[999] flex flex-col items-center justify-center p-4 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeTimelineModal(event)">
+    <button class="absolute top-6 right-6 text-white text-2xl w-11 h-11 rounded-full bg-white/10 hover:bg-red-600 flex items-center justify-center transition-all duration-200 z-10" onclick="closeTimelineModal(event)">✕</button>
+    <div class="relative max-w-5xl max-h-[85vh] flex flex-col items-center">
+        <img id="timelineModalImg" src="" alt="Enlarged View" class="max-w-[90vw] max-h-[72vh] object-contain rounded-xl shadow-2xl border border-white/10">
+        <div class="text-center mt-4 max-w-2xl px-4">
+            <div id="timelineModalTag" class="text-xs font-sans uppercase text-red-400 font-bold tracking-widest mb-1"></div>
+            <h3 id="timelineModalTitle" class="cinzel text-lg md:text-2xl text-white font-bold mb-1"></h3>
+            <p id="timelineModalDesc" class="text-xs md:text-sm text-gray-300 font-light leading-relaxed"></p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTimelineModal(url, title, tag, desc) {
+        const modal = document.getElementById('timelineModal');
+        const img = document.getElementById('timelineModalImg');
+        const t = document.getElementById('timelineModalTitle');
+        const tg = document.getElementById('timelineModalTag');
+        const d = document.getElementById('timelineModalDesc');
+        if (modal && img) {
+            img.src = url;
+            if (t) t.textContent = title || '';
+            if (tg) tg.textContent = tag || '';
+            if (d) d.textContent = desc || '';
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeTimelineModal(e) {
+        if (e.target.id === 'timelineModal' || e.target.tagName === 'BUTTON' || e.target.closest('button')) {
+            const modal = document.getElementById('timelineModal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+            }
+        }
+    }
+
+    function switchTimelineImage(eventId, newUrl, btnElement, title, tag, summary) {
+        const img = document.getElementById(`mainPhoto_${eventId}`);
+        const parentHero = img ? img.parentElement : null;
+        if (img) {
+            img.style.opacity = '0.3';
+            setTimeout(() => {
+                img.src = newUrl;
+                img.onload = () => { img.style.opacity = '1'; };
+            }, 80);
+        }
+        if (parentHero) {
+            parentHero.setAttribute('onclick', `openTimelineModal('${newUrl}', '${title.replace(/'/g, "\\'")}', '${tag.replace(/'/g, "\\'")}', '${summary.replace(/'/g, "\\'")}')`);
+        }
+        const container = btnElement.parentElement;
+        if (container) {
+            container.querySelectorAll('.thumb-switch-btn').forEach(b => {
+                b.classList.remove('border-red-600', 'ring-2', 'ring-red-500/40');
+                b.classList.add('border-gray-700');
+            });
+            btnElement.classList.remove('border-gray-700');
+            btnElement.classList.add('border-red-600', 'ring-2', 'ring-red-500/40');
+        }
+    }
+
+    // Filter functionality
+    document.addEventListener('DOMContentLoaded', () => {
+        const btns = document.querySelectorAll('#timelineFilters .tl-filter-btn');
+        const cards = document.querySelectorAll('.tl-event-card');
+
+        btns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btns.forEach(b => {
+                    b.classList.remove('active', 'bg-black', 'text-white');
+                    b.classList.add('bg-white', 'text-gray-700');
+                });
+                btn.classList.add('active', 'bg-black', 'text-white');
+                btn.classList.remove('bg-white', 'text-gray-700');
+
+                const filter = btn.getAttribute('data-filter');
+
+                cards.forEach(card => {
+                    const cat = card.getAttribute('data-category') || '';
+                    const yr = card.getAttribute('data-year') || '';
+
+                    if (filter === 'all') {
+                        card.style.display = 'flex';
+                    } else if (filter === '2025' || filter === '2026') {
+                        card.style.display = (yr === filter) ? 'flex' : 'none';
+                    } else if (filter === 'National Competition') {
+                        card.style.display = cat.includes('National') ? 'flex' : 'none';
+                    } else if (filter === 'Cultural & Social') {
+                        card.style.display = (cat.includes('Cultural') || cat.includes('Social') || cat.includes('Iftar') || cat.includes('Baishakh')) ? 'flex' : 'none';
+                    } else if (cat.toLowerCase().includes(filter.toLowerCase())) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.getElementById('timelineModal');
+                if (modal && !modal.classList.contains('pointer-events-none')) {
+                    modal.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

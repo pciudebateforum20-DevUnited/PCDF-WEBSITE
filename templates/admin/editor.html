@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit {{ label }} · PCDF Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #09090f;
+      --surface: #0f0f1a;
+      --surface2: #141428;
+      --surface3: #1a1a2e;
+      --border: rgba(255,255,255,0.07);
+      --border-focus: rgba(224,48,48,0.6);
+      --text: #e8e8f2;
+      --text2: #a0a0b8;
+      --muted: #555568;
+      --accent: #e03030;
+      --accent-soft: rgba(224,48,48,0.12);
+      --accent-glow: rgba(224,48,48,0.08);
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --font: 'Inter', system-ui, sans-serif;
+      --cinzel: 'Cinzel', serif;
+      --radius: 10px;
+      --toolbar-h: 56px;
+    }
+    html, body { height: 100%; overflow: hidden; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); }
+
+    /* ─── TOOLBAR ──────────────────────────────────────────── */
+    .toolbar {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--toolbar-h);
+      background: rgba(9,9,15,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 20px;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .toolbar-back {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--text2); text-decoration: none;
+      font-size: 13px; padding: 6px 10px;
+      border-radius: 7px; transition: all 0.15s;
+    }
+    .toolbar-back:hover { background: var(--surface2); color: var(--text); }
+    .toolbar-divider { width: 1px; height: 24px; background: var(--border); }
+    .toolbar-title {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 600;
+    }
+    .toolbar-page-badge {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 6px; padding: 3px 10px;
+      font-size: 12px; color: var(--text2);
+    }
+    .toolbar-spacer { flex: 1; }
+    .toolbar-actions { display: flex; align-items: center; gap: 8px; }
+
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 8px;
+      font-size: 13px; font-weight: 500;
+      cursor: pointer; border: none;
+      text-decoration: none; transition: all 0.15s;
+      font-family: var(--font);
+    }
+    .btn-ghost {
+      background: none; color: var(--text2);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--surface2); color: var(--text); border-color: rgba(255,255,255,0.15); }
+    .btn-danger-ghost {
+      background: none; color: var(--accent);
+      border: 1px solid rgba(224,48,48,0.3);
+    }
+    .btn-danger-ghost:hover { background: var(--accent-soft); border-color: var(--accent); }
+    .btn-publish {
+      background: var(--accent); color: #fff;
+      border: 1px solid var(--accent);
+      position: relative; overflow: hidden;
+    }
+    .btn-publish:hover { background: #c02020; border-color: #c02020; }
+    .btn-publish.dirty::after {
+      content: ''; position: absolute;
+      top: 6px; right: 6px;
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #fff;
+      animation: blink 1.5s infinite;
+    }
+    .btn-publish.saving { opacity: 0.7; pointer-events: none; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .shell {
+      display: flex;
+      height: 100vh;
+      padding-top: var(--toolbar-h);
+    }
+
+    /* ─── LEFT PANEL ──────────────────────────────────────── */
+    .left-panel {
+      width: 280px; flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .left-header {
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .left-header h2 {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600; margin-bottom: 10px;
+    }
+
+    /* HERO SECTION MINI CARD (always visible) */
+    .hero-mini-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 10px;
+    }
+    .hero-mini-card:hover, .hero-mini-card.active {
+      border-color: var(--border-focus);
+      background: var(--accent-glow);
+    }
+    .hero-mini-card.active { border-color: var(--accent); }
+    .hero-mini-icon {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: var(--accent-soft); display: flex;
+      align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0;
+    }
+    .hero-mini-label { font-size: 13px; font-weight: 600; flex:1; }
+    .hero-mini-sub { font-size: 10px; color: var(--muted); }
+
+    .section-list-scroll {
+      flex: 1; overflow-y: auto;
+      padding: 12px;
+    }
+    .section-list-scroll::-webkit-scrollbar { width: 4px; }
+    .section-list-scroll::-webkit-scrollbar-track { background: transparent; }
+    .section-list-scroll::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 2px; }
+
+    .section-list-label {
+      font-size: 10px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600; margin-bottom: 8px; padding: 0 2px;
+    }
+
+    .section-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex; align-items: center; gap: 8px;
+      position: relative;
+      user-select: none;
+    }
+    .section-item:hover { border-color: rgba(255,255,255,0.15); background: var(--surface3); }
+    .section-item.active { border-color: var(--accent); background: var(--accent-glow); }
+    .section-item.drag-over { border-color: var(--warning); background: rgba(245,158,11,0.08); }
+    .section-item.dragging { opacity: 0.4; }
+
+    .drag-handle {
+      color: var(--muted); font-size: 14px;
+      cursor: grab; flex-shrink: 0;
+      line-height: 1;
+    }
+    .drag-handle:active { cursor: grabbing; }
+
+    .section-item-info { flex: 1; min-width: 0; }
+    .section-item-title {
+      font-size: 13px; font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .section-item-type {
+      font-size: 10px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    .layout-badge {
+      font-size: 10px; padding: 2px 7px;
+      border-radius: 20px;
+      font-weight: 600; letter-spacing: 0.05em;
+      text-transform: uppercase; flex-shrink: 0;
+    }
+    .badge-text    { background: rgba(99,102,241,0.15); color: #818cf8; border: 1px solid rgba(99,102,241,0.2); }
+    .badge-cards   { background: rgba(16,185,129,0.12); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+    .badge-stats   { background: rgba(245,158,11,0.12); color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
+    .badge-gallery { background: rgba(168,85,247,0.12); color: #c084fc; border: 1px solid rgba(168,85,247,0.2); }
+    .badge-cta     { background: rgba(224,48,48,0.12);  color: #f87171; border: 1px solid rgba(224,48,48,0.2); }
+    .badge-two_col { background: rgba(14,165,233,0.12); color: #38bdf8; border: 1px solid rgba(14,165,233,0.2); }
+
+    .section-delete-btn {
+      width: 22px; height: 22px; border-radius: 5px;
+      background: none; border: none;
+      color: var(--muted); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; transition: all 0.15s; flex-shrink: 0;
+    }
+    .section-delete-btn:hover { background: rgba(224,48,48,0.15); color: var(--accent); }
+
+    .add-section-btn {
+      width: 100%; padding: 10px;
+      background: none; border: 1px dashed var(--border);
+      border-radius: var(--radius); color: var(--muted);
+      font-size: 12px; cursor: pointer;
+      transition: all 0.15s; margin-top: 6px;
+      font-family: var(--font);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .add-section-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+    /* ─── RIGHT PANEL ─────────────────────────────────────── */
+    .right-panel {
+      flex: 1; overflow-y: auto;
+      background: var(--bg);
+    }
+    .right-panel::-webkit-scrollbar { width: 6px; }
+    .right-panel::-webkit-scrollbar-track { background: transparent; }
+    .right-panel::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+
+    .editor-area {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 32px 32px 80px;
+    }
+
+    .editor-section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px; padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .editor-section-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--accent-soft); border: 1px solid rgba(224,48,48,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .editor-section-title { font-size: 18px; font-weight: 700; }
+    .editor-section-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    /* FIELD GROUPS */
+    .field-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .field-group-title {
+      font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--muted);
+      font-weight: 600; margin-bottom: 16px;
+    }
+
+    .field-row { margin-bottom: 14px; }
+    .field-row:last-child { margin-bottom: 0; }
+    .field-label {
+      display: block; font-size: 12px; font-weight: 500;
+      color: var(--text2); margin-bottom: 6px;
+    }
+    .field-hint {
+      font-size: 10px; color: var(--muted);
+      font-weight: 400; margin-left: 6px;
+    }
+
+    .field-input, .field-textarea {
+      width: 100%; background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px;
+      color: var(--text); font-size: 14px;
+      font-family: var(--font); outline: none;
+      transition: border-color 0.15s;
+      resize: vertical;
+    }
+    .field-input:focus, .field-textarea:focus {
+      border-color: var(--border-focus);
+      background: var(--surface3);
+    }
+    .field-textarea { min-height: 90px; line-height: 1.6; }
+
+    .field-row-2col {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+      margin-bottom: 14px;
+    }
+    .field-row-2col:last-child { margin-bottom: 0; }
+
+    /* IMAGE UPLOAD */
+    .image-upload-area {
+      border: 2px dashed var(--border);
+      border-radius: 10px; padding: 20px;
+      text-align: center; cursor: pointer;
+      transition: all 0.15s;
+      position: relative;
+    }
+    .image-upload-area:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .image-upload-area img {
+      max-height: 140px; max-width: 100%; border-radius: 8px;
+      object-fit: cover; margin-bottom: 8px;
+    }
+    .image-upload-text { font-size: 12px; color: var(--muted); }
+    .image-upload-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+    .image-remove-btn {
+      background: rgba(224,48,48,0.15); border: 1px solid rgba(224,48,48,0.3);
+      color: var(--accent); border-radius: 6px; padding: 4px 10px;
+      font-size: 11px; cursor: pointer; font-family: var(--font);
+      margin-top: 6px; transition: all 0.15s;
+    }
+    .image-remove-btn:hover { background: rgba(224,48,48,0.3); }
+
+    /* ─── ITEMS LIST ──────────────────────────────────────── */
+    .items-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .items-label {
+      font-size: 11px; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--muted); font-weight: 600;
+    }
+    .add-item-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 7px; padding: 5px 10px;
+      color: var(--text2); font-size: 12px; cursor: pointer;
+      font-family: var(--font); transition: all 0.15s;
+    }
+    .add-item-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+
+    .item-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 8px;
+      transition: all 0.15s;
+      cursor: default;
+    }
+    .item-card:hover { border-color: rgba(255,255,255,0.12); }
+    .item-card.item-dragging { opacity: 0.3; }
+    .item-card.item-drag-over { border-color: var(--warning); background: rgba(245,158,11,0.08); }
+
+    .item-card-top {
+      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    }
+    .item-drag-handle {
+      color: var(--muted); font-size: 14px; cursor: grab; flex-shrink: 0;
+    }
+    .item-drag-handle:active { cursor: grabbing; }
+    .item-index {
+      width: 20px; height: 20px; border-radius: 5px;
+      background: var(--surface3); display: flex; align-items: center;
+      justify-content: center; font-size: 10px; color: var(--muted);
+      font-weight: 700; flex-shrink: 0;
+    }
+    .item-title-preview {
+      flex: 1; font-size: 13px; font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      color: var(--text2);
+    }
+    .item-delete-btn {
+      background: none; border: none;
+      color: var(--muted); cursor: pointer; font-size: 14px;
+      border-radius: 5px; padding: 2px 5px;
+      transition: all 0.15s; flex-shrink: 0;
+    }
+    .item-delete-btn:hover { color: var(--accent); background: rgba(224,48,48,0.12); }
+
+    .item-fields { display: flex; flex-direction: column; gap: 8px; }
+    .item-field-input {
+      width: 100%; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 7px;
+      padding: 8px 12px; color: var(--text); font-size: 13px;
+      font-family: var(--font); outline: none; transition: border-color 0.15s;
+    }
+    .item-field-input:focus { border-color: var(--border-focus); }
+    .item-field-textarea {
+      width: 100%; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 7px;
+      padding: 8px 12px; color: var(--text); font-size: 13px;
+      font-family: var(--font); outline: none; transition: border-color 0.15s;
+      resize: vertical; min-height: 60px; line-height: 1.5;
+    }
+    .item-field-textarea:focus { border-color: var(--border-focus); }
+    .item-field-row-2 {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+
+    /* Item image upload */
+    .item-image-area {
+      border: 1px dashed var(--border); border-radius: 8px;
+      padding: 10px 14px; cursor: pointer;
+      transition: all 0.15s; position: relative;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .item-image-area:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .item-image-preview { height: 40px; width: 60px; object-fit: cover; border-radius: 5px; flex-shrink: 0; }
+    .item-image-text { font-size: 11px; color: var(--muted); }
+    .item-image-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+    .item-image-remove {
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; font-size: 12px; margin-left: auto; padding: 2px 5px;
+      border-radius: 4px; transition: all 0.15s;
+    }
+    .item-image-remove:hover { color: var(--accent); }
+
+    /* ─── EMPTY STATE ─────────────────────────────────────── */
+    .empty-state {
+      text-align: center; padding: 60px 24px;
+      color: var(--muted);
+    }
+    .empty-state-icon { font-size: 48px; margin-bottom: 16px; }
+    .empty-state h3 { font-size: 16px; color: var(--text2); margin-bottom: 8px; }
+    .empty-state p { font-size: 13px; }
+
+    /* ─── LAYOUT PICKER MODAL ─────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(4px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.2s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 28px;
+      width: 540px; max-width: 90vw;
+      transform: scale(0.95); transition: transform 0.2s;
+    }
+    .modal-overlay.open .modal { transform: scale(1); }
+    .modal-title {
+      font-size: 18px; font-weight: 700; margin-bottom: 6px;
+    }
+    .modal-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+    .layout-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .layout-choice {
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px;
+      cursor: pointer; transition: all 0.15s; text-align: left;
+    }
+    .layout-choice:hover { border-color: var(--accent); background: var(--accent-glow); }
+    .layout-choice-icon { font-size: 24px; margin-bottom: 6px; }
+    .layout-choice-name { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .layout-choice-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+    .modal-cancel-btn {
+      width: 100%; padding: 10px;
+      background: none; border: 1px solid var(--border);
+      border-radius: 8px; color: var(--muted);
+      font-size: 13px; cursor: pointer; font-family: var(--font);
+      transition: all 0.15s;
+    }
+    .modal-cancel-btn:hover { background: var(--surface2); color: var(--text); }
+
+    /* ─── CONFIRM DELETE MODAL ────────────────────────────── */
+    .confirm-modal {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 24px;
+      width: 360px; max-width: 90vw;
+      transform: scale(0.95); transition: transform 0.2s;
+    }
+    .modal-overlay.open .confirm-modal { transform: scale(1); }
+    .confirm-icon { font-size: 32px; margin-bottom: 12px; }
+    .confirm-title { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .confirm-text { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .confirm-actions { display: flex; gap: 8px; }
+    .confirm-actions .btn { flex: 1; justify-content: center; }
+
+    /* ─── TOAST ───────────────────────────────────────────── */
+    .toast-container {
+      position: fixed; bottom: 24px; right: 24px;
+      z-index: 3000; display: flex; flex-direction: column; gap: 8px;
+      pointer-events: none;
+    }
+    .toast {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 18px;
+      font-size: 13px; font-weight: 500;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      animation: slideIn 0.3s ease;
+      pointer-events: all;
+      max-width: 320px;
+    }
+    .toast.success { border-color: rgba(34,197,94,0.3); color: var(--success); }
+    .toast.error   { border-color: rgba(224,48,48,0.3); color: #f87171; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(10px) scale(0.96); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeOut {
+      to { opacity: 0; transform: translateY(4px); }
+    }
+    .toast.removing { animation: fadeOut 0.3s ease forwards; }
+
+    /* ─── UNSAVED BADGE ───────────────────────────────────── */
+    .unsaved-badge {
+      font-size: 11px; padding: 3px 8px;
+      background: rgba(245,158,11,0.15); color: var(--warning);
+      border: 1px solid rgba(245,158,11,0.3); border-radius: 20px;
+      display: none;
+    }
+    .unsaved-badge.show { display: inline-flex; align-items: center; gap: 4px; }
+
+    /* ─── SCROLLBAR ────────────────────────────────────────── */
+    *::-webkit-scrollbar { width: 5px; }
+    *::-webkit-scrollbar-track { background: transparent; }
+    *::-webkit-scrollbar-thumb { background: var(--surface3); border-radius: 3px; }
+
+    /* ─── KEYBOARD HINT ───────────────────────────────────── */
+    .kbd {
+      display: inline-flex; align-items: center;
+      background: var(--surface2); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1px 5px;
+      font-size: 10px; color: var(--muted); font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<header class="toolbar">
+  <a class="toolbar-back btn btn-ghost" href="/admin">
+    ← Dashboard
+  </a>
+  <div class="toolbar-divider"></div>
+  <div class="toolbar-title">
+    <span>Editing</span>
+    <span class="toolbar-page-badge">{{ label }}</span>
+  </div>
+  <div class="toolbar-spacer"></div>
+  <div class="toolbar-actions">
+    <span class="unsaved-badge" id="unsavedBadge">● Unsaved changes</span>
+    <a class="btn btn-ghost" href="{% if page == 'home' %}/{% elif page == 'site' %}#{% else %}/{{ page }}{% endif %}" target="_blank">
+      View Live ↗
+    </a>
+    <button class="btn btn-publish" id="publishBtn" onclick="publishChanges()">
+      🚀 Publish Changes
+    </button>
+  </div>
+</header>
+
+<!-- MAIN SHELL -->
+<div class="shell">
+  <!-- LEFT PANEL: Section Navigator -->
+  <aside class="left-panel">
+    <div class="left-header">
+      <h2>Page Structure</h2>
+      <!-- Hero always on top -->
+      <div class="hero-mini-card active" id="heroMiniCard" onclick="selectHero()">
+        <div class="hero-mini-icon">🎯</div>
+        <div>
+          <div class="hero-mini-label">Page Header</div>
+          <div class="hero-mini-sub">Title, subtitle, eyebrow</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-list-scroll">
+      {% if page not in ['home', 'site'] %}
+      <div class="section-list-label">Sections</div>
+      {% endif %}
+      <div id="sectionList">
+        <!-- Rendered by JS -->
+      </div>
+      {% if page not in ['site'] %}
+      <button class="add-section-btn" onclick="openLayoutPicker()">
+        + Add Section
+      </button>
+      {% endif %}
+    </div>
+  </aside>
+
+  <!-- RIGHT PANEL: Editor -->
+  <div class="right-panel">
+    <div class="editor-area" id="editorArea">
+      <div class="empty-state" id="emptyState">
+        <div class="empty-state-icon">⏳</div>
+        <h3>Loading editor…</h3>
+        <p>Fetching your content from the server.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LAYOUT PICKER MODAL ──────────────────────────────── -->
+<div class="modal-overlay" id="layoutPickerModal">
+  <div class="modal">
+    <div class="modal-title">Add a New Section</div>
+    <div class="modal-sub">Choose a layout type to add to this page.</div>
+    <div class="layout-grid">
+      <button class="layout-choice" onclick="addSection('text')">
+        <div class="layout-choice-icon">📝</div>
+        <div class="layout-choice-name">Text Block</div>
+        <div class="layout-choice-desc">A title, body paragraph, and optional image. Great for descriptions.</div>
+      </button>
+      <button class="layout-choice" onclick="addSection('cards')">
+        <div class="layout-choice-icon">🃏</div>
+        <div class="layout-choice-name">Card Grid</div>
+        <div class="layout-choice-desc">A grid of cards — each with a heading and description. Great for features or team members.</div>
+      </button>
+      <button class="layout-choice" onclick="addSection('stats')">
+        <div class="layout-choice-icon">📊</div>
+        <div class="layout-choice-name">Stats Counter</div>
+        <div class="layout-choice-desc">Big numbers with labels — trophies, members, tournaments, etc.</div>
+      </button>
+      <button class="layout-choice" onclick="addSection('gallery')">
+        <div class="layout-choice-icon">🖼️</div>
+        <div class="layout-choice-name">Photo Gallery</div>
+        <div class="layout-choice-desc">A grid of photos with captions. Great for events and highlights.</div>
+      </button>
+      <button class="layout-choice" onclick="addSection('cta')">
+        <div class="layout-choice-icon">📢</div>
+        <div class="layout-choice-name">Call to Action</div>
+        <div class="layout-choice-desc">A prompt with a button — "Apply Now", "Contact Us", etc.</div>
+      </button>
+      <button class="layout-choice" onclick="addSection('two_col')">
+        <div class="layout-choice-icon">⬛⬛</div>
+        <div class="layout-choice-name">Two Columns</div>
+        <div class="layout-choice-desc">Side-by-side text blocks for comparisons or two topics.</div>
+      </button>
+    </div>
+    <button class="modal-cancel-btn" onclick="closeLayoutPicker()">Cancel</button>
+  </div>
+</div>
+
+<!-- ─── CONFIRM DELETE MODAL ─────────────────────────────── -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="confirm-modal">
+    <div class="confirm-icon">🗑️</div>
+    <div class="confirm-title">Delete Section?</div>
+    <div class="confirm-text">This will remove the section and all its items. This cannot be undone after publishing.</div>
+    <div class="confirm-actions">
+      <button class="btn btn-ghost" onclick="closeConfirmModal()">Cancel</button>
+      <button class="btn btn-danger-ghost" id="confirmDeleteBtn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+// ─────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────
+const PAGE = "{{ page }}";
+let state = null;          // full page data from server
+let isDirty = false;       // unsaved changes?
+let selectedView = 'hero'; // 'hero' | section index (number)
+let pendingDeleteIdx = null;
+
+// Layout display names and icons
+const LAYOUT_META = {
+  text:    { name: 'Text Block',     icon: '📝', badge: 'badge-text'    },
+  cards:   { name: 'Card Grid',      icon: '🃏', badge: 'badge-cards'   },
+  stats:   { name: 'Stats Counter',  icon: '📊', badge: 'badge-stats'   },
+  gallery: { name: 'Photo Gallery',  icon: '🖼️', badge: 'badge-gallery' },
+  cta:     { name: 'Call to Action', icon: '📢', badge: 'badge-cta'     },
+  two_col: { name: 'Two Columns',    icon: '⬛', badge: 'badge-two_col' },
+};
+
+// Hero field definitions per page
+const HERO_FIELDS = {
+  site:      [{ key:'title', label:'Site Title', hint:'Shown in browser tab & SEO' },
+              { key:'tagline', label:'Tagline', hint:'Shown as site description' }],
+  home:      [{ key:'hero_kicker', label:'Kicker (above main title)', hint:'Small label above the big title' },
+              { key:'hero_title', label:'Main Hero Title', hint:'The big dramatic text on the home page' },
+              { key:'manifesto_eyebrow', label:'Manifesto Section Label', hint:'Small label above the manifesto text' },
+              { key:'manifesto_title', label:'Manifesto Title', hint:'Can include HTML like <span class="font-bold">text</span>', textarea: true },
+              { key:'manifesto_text', label:'Manifesto Paragraph', hint:'The main manifesto body text', textarea: true }],
+  default:   [{ key:'eyebrow', label:'Section Label', hint:'Small label above the main title (e.g. "About PCDF")' },
+              { key:'title', label:'Page Title', hint:'The main heading. Can include <span> for styling', textarea: true },
+              { key:'subtitle', label:'Subtitle / Description', hint:'Short description below the title', textarea: true }],
+};
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+async function init() {
+  try {
+    const res = await fetch(`/admin/api/get/${PAGE}`);
+    const json = await res.json();
+    if (!json.ok) throw new Error('Failed to load');
+    state = json.data;
+    if (!state.sections) state.sections = [];
+    renderSectionList();
+    renderEditor('hero');
+  } catch(e) {
+    document.getElementById('emptyState').innerHTML = `
+      <div class="empty-state-icon">⚠️</div>
+      <h3>Failed to load content</h3>
+      <p>${e.message}. Please refresh the page.</p>`;
+  }
+}
+
+// ─────────────────────────────────────────────
+// DIRTY STATE
+// ─────────────────────────────────────────────
+function markDirty() {
+  isDirty = true;
+  document.getElementById('unsavedBadge').classList.add('show');
+  document.getElementById('publishBtn').classList.add('dirty');
+}
+function markClean() {
+  isDirty = false;
+  document.getElementById('unsavedBadge').classList.remove('show');
+  document.getElementById('publishBtn').classList.remove('dirty');
+}
+
+// ─────────────────────────────────────────────
+// SECTION LIST RENDER
+// ─────────────────────────────────────────────
+function renderSectionList() {
+  const list = document.getElementById('sectionList');
+  if (!state.sections || state.sections.length === 0) {
+    list.innerHTML = PAGE === 'site' ? '' :
+      `<div style="font-size:12px;color:var(--muted);text-align:center;padding:16px 0">
+         No sections yet.<br>Click "+ Add Section" below.
+       </div>`;
+    return;
+  }
+  list.innerHTML = '';
+  state.sections.forEach((sec, i) => {
+    const meta = LAYOUT_META[sec.layout] || { name: sec.layout, icon: '📄', badge: 'badge-text' };
+    const title = sec.title || `Untitled ${meta.name}`;
+    const div = document.createElement('div');
+    div.className = 'section-item' + (selectedView === i ? ' active' : '');
+    div.draggable = true;
+    div.dataset.idx = i;
+    div.innerHTML = `
+      <span class="drag-handle" title="Drag to reorder">⠿</span>
+      <div class="section-item-info" onclick="selectSection(${i})">
+        <div class="section-item-title">${escHtml(title)}</div>
+        <div class="section-item-type">${meta.name}</div>
+      </div>
+      <span class="layout-badge ${meta.badge}">${meta.icon}</span>
+      <button class="section-delete-btn" onclick="confirmDeleteSection(${i})" title="Delete section">✕</button>
+    `;
+    // drag events
+    div.addEventListener('dragstart', onSectionDragStart);
+    div.addEventListener('dragover',  onSectionDragOver);
+    div.addEventListener('drop',      onSectionDrop);
+    div.addEventListener('dragend',   onSectionDragEnd);
+    list.appendChild(div);
+  });
+}
+
+// ─────────────────────────────────────────────
+// DRAG AND DROP — SECTIONS
+// ─────────────────────────────────────────────
+let dragSrcIdx = null;
+function onSectionDragStart(e) {
+  dragSrcIdx = parseInt(e.currentTarget.dataset.idx);
+  e.currentTarget.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+}
+function onSectionDragOver(e) {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  document.querySelectorAll('.section-item').forEach(el => el.classList.remove('drag-over'));
+  e.currentTarget.classList.add('drag-over');
+}
+function onSectionDrop(e) {
+  e.preventDefault();
+  const targetIdx = parseInt(e.currentTarget.dataset.idx);
+  if (dragSrcIdx === null || dragSrcIdx === targetIdx) return;
+  const moved = state.sections.splice(dragSrcIdx, 1)[0];
+  state.sections.splice(targetIdx, 0, moved);
+  if (selectedView === dragSrcIdx) selectedView = targetIdx;
+  else if (typeof selectedView === 'number') {
+    if (dragSrcIdx < selectedView && targetIdx >= selectedView) selectedView--;
+    else if (dragSrcIdx > selectedView && targetIdx <= selectedView) selectedView++;
+  }
+  markDirty();
+  renderSectionList();
+  renderEditor(selectedView);
+}
+function onSectionDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  document.querySelectorAll('.section-item').forEach(el => el.classList.remove('drag-over'));
+  dragSrcIdx = null;
+}
+
+// ─────────────────────────────────────────────
+// SELECT VIEW
+// ─────────────────────────────────────────────
+function selectHero() {
+  selectedView = 'hero';
+  document.getElementById('heroMiniCard').classList.add('active');
+  document.querySelectorAll('.section-item').forEach(el => el.classList.remove('active'));
+  renderEditor('hero');
+}
+function selectSection(i) {
+  selectedView = i;
+  document.getElementById('heroMiniCard').classList.remove('active');
+  document.querySelectorAll('.section-item').forEach((el, idx) => {
+    el.classList.toggle('active', idx === i);
+  });
+  renderEditor(i);
+}
+
+// ─────────────────────────────────────────────
+// RENDER EDITOR
+// ─────────────────────────────────────────────
+function renderEditor(view) {
+  const area = document.getElementById('editorArea');
+  if (view === 'hero') {
+    area.innerHTML = renderHeroEditor();
+  } else if (typeof view === 'number' && state.sections[view]) {
+    area.innerHTML = renderSectionEditor(state.sections[view], view);
+    setupItemDragDrop(view);
+  } else {
+    area.innerHTML = `<div class="empty-state">
+      <div class="empty-state-icon">👈</div>
+      <h3>Select a section</h3>
+      <p>Click any section in the left panel to edit it, or click "Page Header" to edit the title and subtitle.</p>
+    </div>`;
+  }
+}
+
+// ─────────────────────────────────────────────
+// HERO EDITOR
+// ─────────────────────────────────────────────
+function renderHeroEditor() {
+  const fields = HERO_FIELDS[PAGE] || HERO_FIELDS.default;
+  let html = `
+    <div class="editor-section-header">
+      <div class="editor-section-icon">🎯</div>
+      <div>
+        <div class="editor-section-title">Page Header</div>
+        <div class="editor-section-sub">The main title, subtitle, and intro fields for this page.</div>
+      </div>
+    </div>
+    <div class="field-group">
+      <div class="field-group-title">Header Fields</div>
+  `;
+  fields.forEach(f => {
+    const val = escHtml(state[f.key] || '');
+    const hint = f.hint ? `<span class="field-hint">${f.hint}</span>` : '';
+    if (f.textarea) {
+      html += `<div class="field-row">
+        <label class="field-label">${f.label}${hint}</label>
+        <textarea class="field-textarea" rows="4" onchange="updateHeroField('${f.key}', this.value)" oninput="updateHeroField('${f.key}', this.value)">${unescHtml(state[f.key] || '')}</textarea>
+      </div>`;
+    } else {
+      html += `<div class="field-row">
+        <label class="field-label">${f.label}${hint}</label>
+        <input class="field-input" type="text" value="${val}" onchange="updateHeroField('${f.key}', this.value)" oninput="updateHeroField('${f.key}', this.value)" />
+      </div>`;
+    }
+  });
+
+  // Hero image field (for pages with 'image' in PAGE_FIELDS)
+  const pagesWithImage = ['about','manifesto','committee','events','achievements','news','reports','gallery','contact','testimonials','partners','newsletter','apply','timeline'];
+  if (pagesWithImage.includes(PAGE)) {
+    const imgVal = state.image || '';
+    html += `<div class="field-row">
+      <label class="field-label">Hero Image <span class="field-hint">Optional banner image</span></label>
+      <div class="image-upload-area" onclick="document.getElementById('heroImgInput').click()">
+        ${imgVal ? `<img src="${escHtml(imgVal)}" alt="hero" />` : ''}
+        <div class="image-upload-text">${imgVal ? '📷 Click to change image' : '📷 Click to upload an image'}</div>
+        <input class="image-upload-input" type="file" id="heroImgInput" accept="image/*" onchange="uploadHeroImage(this)" />
+      </div>
+      ${imgVal ? `<button class="image-remove-btn" onclick="removeHeroImage()">✕ Remove image</button>` : ''}
+    </div>`;
+  }
+
+  html += '</div>';
+  return html;
+}
+
+function updateHeroField(key, value) {
+  state[key] = value;
+  markDirty();
+  // Update left panel preview title
+  updateSectionListTitles();
+}
+
+function updateSectionListTitles() {
+  // no-op for hero; section items are self-contained
+}
+
+async function uploadHeroImage(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const url = await uploadImage(file);
+  if (url) {
+    state.image = url;
+    markDirty();
+    renderEditor('hero');
+  }
+}
+function removeHeroImage() {
+  state.image = '';
+  markDirty();
+  renderEditor('hero');
+}
+
+// ─────────────────────────────────────────────
+// SECTION EDITOR
+// ─────────────────────────────────────────────
+function renderSectionEditor(sec, si) {
+  const meta = LAYOUT_META[sec.layout] || { name: sec.layout, icon: '📄' };
+  let html = `
+    <div class="editor-section-header">
+      <div class="editor-section-icon">${meta.icon}</div>
+      <div>
+        <div class="editor-section-title">${meta.name}</div>
+        <div class="editor-section-sub">Section ${si + 1} of ${state.sections.length}</div>
+      </div>
+    </div>
+
+    <div class="field-group">
+      <div class="field-group-title">Section Info</div>
+      <div class="field-row-2col">
+        <div>
+          <label class="field-label">Section Title</label>
+          <input class="field-input" type="text" placeholder="e.g. What We Do"
+            value="${escHtml(sec.title || '')}"
+            oninput="updateSection(${si}, 'title', this.value)" />
+        </div>
+        <div>
+          <label class="field-label">Subtitle / Eyebrow <span class="field-hint">optional</span></label>
+          <input class="field-input" type="text" placeholder="e.g. Programmes"
+            value="${escHtml(sec.subtitle || '')}"
+            oninput="updateSection(${si}, 'subtitle', this.value)" />
+        </div>
+      </div>
+  `;
+
+  // Layout-specific fields
+  if (['text', 'two_col', 'cta'].includes(sec.layout)) {
+    html += `<div class="field-row">
+      <label class="field-label">Body Text <span class="field-hint">HTML allowed</span></label>
+      <textarea class="field-textarea" rows="5" placeholder="Write your content here…"
+        oninput="updateSection(${si}, 'text', this.value)">${escHtml(sec.text || '')}</textarea>
+    </div>`;
+  }
+
+  if (sec.layout === 'cta') {
+    html += `<div class="field-row-2col">
+      <div>
+        <label class="field-label">Button Label</label>
+        <input class="field-input" type="text" placeholder="e.g. Apply Now"
+          value="${escHtml(sec.cta_text || '')}"
+          oninput="updateSection(${si}, 'cta_text', this.value)" />
+      </div>
+      <div>
+        <label class="field-label">Button Link</label>
+        <input class="field-input" type="text" placeholder="e.g. /apply"
+          value="${escHtml(sec.cta_link || '')}"
+          oninput="updateSection(${si}, 'cta_link', this.value)" />
+      </div>
+    </div>`;
+  }
+
+  if (['text', 'two_col'].includes(sec.layout)) {
+    const imgVal = sec.image || '';
+    html += `<div class="field-row">
+      <label class="field-label">Section Image <span class="field-hint">optional</span></label>
+      <div class="image-upload-area" onclick="document.getElementById('secImg_${si}').click()">
+        ${imgVal ? `<img src="${escHtml(imgVal)}" alt="" />` : ''}
+        <div class="image-upload-text">${imgVal ? '📷 Click to change image' : '📷 Click to upload an image'}</div>
+        <input class="image-upload-input" type="file" id="secImg_${si}" accept="image/*"
+          onchange="uploadSectionImage(${si}, this)" />
+      </div>
+      ${imgVal ? `<button class="image-remove-btn" onclick="updateSection(${si},'image','');renderEditor(${si})">✕ Remove</button>` : ''}
+    </div>`;
+  }
+
+  html += '</div>'; // close field-group
+
+  // Items section
+  if (['cards', 'stats', 'gallery'].includes(sec.layout)) {
+    html += renderItemsEditor(sec, si);
+  }
+
+  return html;
+}
+
+function updateSection(si, key, value) {
+  if (!state.sections[si]) return;
+  state.sections[si][key] = value;
+  markDirty();
+  // Update side panel title if title changed
+  if (key === 'title') {
+    const items = document.querySelectorAll('.section-item');
+    if (items[si]) {
+      const titleEl = items[si].querySelector('.section-item-title');
+      if (titleEl) titleEl.textContent = value || `Untitled ${LAYOUT_META[state.sections[si].layout]?.name || ''}`;
+    }
+  }
+}
+
+async function uploadSectionImage(si, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const url = await uploadImage(file);
+  if (url) {
+    state.sections[si].image = url;
+    markDirty();
+    renderEditor(si);
+  }
+}
+
+// ─────────────────────────────────────────────
+// ITEMS EDITOR
+// ─────────────────────────────────────────────
+function renderItemsEditor(sec, si) {
+  const items = sec.items || [];
+  const isStats   = sec.layout === 'stats';
+  const isGallery = sec.layout === 'gallery';
+
+  let html = `<div class="field-group">
+    <div class="items-header">
+      <div class="items-label">${isStats ? 'Statistics' : isGallery ? 'Photos' : 'Items'} (${items.length})</div>
+      <button class="add-item-btn" onclick="addItem(${si})">+ Add ${isStats ? 'Stat' : isGallery ? 'Photo' : 'Item'}</button>
+    </div>
+    <div id="itemList_${si}">
+  `;
+
+  items.forEach((it, j) => {
+    const previewTitle = isStats ? (it.value + ' ' + it.label) : (it.heading || 'Item ' + (j+1));
+    html += `<div class="item-card" draggable="true" data-si="${si}" data-j="${j}">
+      <div class="item-card-top">
+        <span class="item-drag-handle" title="Drag to reorder">⠿</span>
+        <div class="item-index">${j+1}</div>
+        <div class="item-title-preview">${escHtml(previewTitle) || 'Empty item'}</div>
+        <button class="item-delete-btn" onclick="removeItem(${si},${j})">✕</button>
+      </div>
+      <div class="item-fields">
+    `;
+
+    if (isStats) {
+      html += `<div class="item-field-row-2">
+        <input class="item-field-input" type="text" placeholder="Value (e.g. 320)" value="${escHtml(it.value||'')}"
+          oninput="updateItem(${si},${j},'value',this.value)" />
+        <input class="item-field-input" type="text" placeholder="Label (e.g. Active Members)" value="${escHtml(it.label||'')}"
+          oninput="updateItem(${si},${j},'label',this.value)" />
+      </div>`;
+    } else {
+      html += `<input class="item-field-input" type="text" placeholder="Heading / Title" value="${escHtml(it.heading||'')}"
+        oninput="updateItem(${si},${j},'heading',this.value)" />`;
+      if (!isGallery) {
+        html += `<textarea class="item-field-textarea" placeholder="Description…"
+          oninput="updateItem(${si},${j},'text',this.value)">${escHtml(it.text||'')}</textarea>`;
+      }
+    }
+
+    // Image upload for cards and gallery
+    if (!isStats) {
+      const imgVal = it.image || '';
+      html += `<div class="item-image-area" onclick="document.getElementById('itemImg_${si}_${j}').click()">
+        ${imgVal ? `<img class="item-image-preview" src="${escHtml(imgVal)}" alt="" />` : '<span style="font-size:20px">🖼️</span>'}
+        <span class="item-image-text">${imgVal ? 'Click to change image' : 'Click to add image (optional)'}</span>
+        <input class="item-image-input" type="file" id="itemImg_${si}_${j}" accept="image/*"
+          onchange="uploadItemImage(${si},${j},this)" />
+        ${imgVal ? `<button class="item-image-remove" onclick="event.stopPropagation();updateItem(${si},${j},'image','');renderEditor(${si})">✕</button>` : ''}
+      </div>`;
+    }
+
+    html += `</div></div>`; // item-fields, item-card
+  });
+
+  html += `</div></div>`; // itemList, field-group
+  return html;
+}
+
+function setupItemDragDrop(si) {
+  const list = document.getElementById(`itemList_${si}`);
+  if (!list) return;
+  let dragJ = null;
+
+  list.querySelectorAll('.item-card').forEach(card => {
+    card.addEventListener('dragstart', e => {
+      dragJ = parseInt(e.currentTarget.dataset.j);
+      e.currentTarget.classList.add('item-dragging');
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    card.addEventListener('dragover', e => {
+      e.preventDefault();
+      list.querySelectorAll('.item-card').forEach(c => c.classList.remove('item-drag-over'));
+      e.currentTarget.classList.add('item-drag-over');
+    });
+    card.addEventListener('drop', e => {
+      e.preventDefault();
+      const targetJ = parseInt(e.currentTarget.dataset.j);
+      if (dragJ === null || dragJ === targetJ) return;
+      const items = state.sections[si].items;
+      const moved = items.splice(dragJ, 1)[0];
+      items.splice(targetJ, 0, moved);
+      markDirty();
+      renderEditor(si);
+    });
+    card.addEventListener('dragend', e => {
+      e.currentTarget.classList.remove('item-dragging');
+      list.querySelectorAll('.item-card').forEach(c => c.classList.remove('item-drag-over'));
+      dragJ = null;
+    });
+  });
+}
+
+function updateItem(si, j, key, value) {
+  if (!state.sections[si] || !state.sections[si].items[j]) return;
+  state.sections[si].items[j][key] = value;
+  markDirty();
+  // Update preview title in card header
+  const card = document.querySelector(`[data-si="${si}"][data-j="${j}"] .item-title-preview`);
+  if (card) {
+    const it = state.sections[si].items[j];
+    card.textContent = (it.value && it.label) ? `${it.value} ${it.label}` : (it.heading || 'Empty item');
+  }
+}
+
+function addItem(si) {
+  if (!state.sections[si]) return;
+  if (!state.sections[si].items) state.sections[si].items = [];
+  state.sections[si].items.push({ heading: '', text: '', image: '', value: '', label: '' });
+  markDirty();
+  renderEditor(si);
+  setupItemDragDrop(si);
+}
+
+function removeItem(si, j) {
+  if (!state.sections[si] || !state.sections[si].items[j]) return;
+  state.sections[si].items.splice(j, 1);
+  markDirty();
+  renderEditor(si);
+  setupItemDragDrop(si);
+}
+
+async function uploadItemImage(si, j, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const url = await uploadImage(file);
+  if (url) {
+    if (!state.sections[si].items[j]) return;
+    state.sections[si].items[j].image = url;
+    markDirty();
+    renderEditor(si);
+    setupItemDragDrop(si);
+  }
+}
+
+// ─────────────────────────────────────────────
+// SECTIONS: ADD / DELETE
+// ─────────────────────────────────────────────
+function addSection(layout) {
+  closeLayoutPicker();
+  const newSec = {
+    layout, title: '', subtitle: '', text: '',
+    image: '', cta_text: 'Learn More', cta_link: '/',
+    items: (layout === 'cards' || layout === 'stats' || layout === 'gallery')
+           ? [{ heading: '', text: '', image: '', value: '', label: '' }] : [],
+  };
+  state.sections.push(newSec);
+  markDirty();
+  renderSectionList();
+  selectSection(state.sections.length - 1);
+}
+
+function confirmDeleteSection(i) {
+  pendingDeleteIdx = i;
+  document.getElementById('confirmDeleteBtn').onclick = () => {
+    deleteSection(pendingDeleteIdx);
+    closeConfirmModal();
+  };
+  document.getElementById('confirmModal').classList.add('open');
+}
+function closeConfirmModal() {
+  document.getElementById('confirmModal').classList.remove('open');
+  pendingDeleteIdx = null;
+}
+function deleteSection(i) {
+  state.sections.splice(i, 1);
+  markDirty();
+  if (selectedView === i) { selectedView = 'hero'; selectHero(); }
+  else if (typeof selectedView === 'number' && selectedView > i) selectedView--;
+  renderSectionList();
+  renderEditor(selectedView);
+}
+
+// ─────────────────────────────────────────────
+// LAYOUT PICKER
+// ─────────────────────────────────────────────
+function openLayoutPicker() {
+  document.getElementById('layoutPickerModal').classList.add('open');
+}
+function closeLayoutPicker() {
+  document.getElementById('layoutPickerModal').classList.remove('open');
+}
+
+// ─────────────────────────────────────────────
+// IMAGE UPLOAD
+// ─────────────────────────────────────────────
+async function uploadImage(file) {
+  const fd = new FormData();
+  fd.append('image', file);
+  try {
+    const res = await fetch('/admin/api/upload', { method: 'POST', body: fd });
+    const json = await res.json();
+    if (json.ok) return json.url;
+    showToast('Image upload failed: ' + (json.error || 'unknown error'), 'error');
+    return null;
+  } catch(e) {
+    showToast('Image upload error: ' + e.message, 'error');
+    return null;
+  }
+}
+
+// ─────────────────────────────────────────────
+// PUBLISH
+// ─────────────────────────────────────────────
+async function publishChanges() {
+  const btn = document.getElementById('publishBtn');
+  btn.classList.add('saving');
+  btn.textContent = '⏳ Publishing…';
+  try {
+    const res = await fetch(`/admin/api/save/${PAGE}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page_data: state }),
+    });
+    const json = await res.json();
+    if (json.ok) {
+      markClean();
+      showToast('✅ Changes published successfully!', 'success');
+    } else {
+      showToast('❌ Save failed: ' + (json.error || 'unknown'), 'error');
+    }
+  } catch(e) {
+    showToast('❌ Network error: ' + e.message, 'error');
+  }
+  btn.classList.remove('saving');
+  btn.innerHTML = '🚀 Publish Changes';
+}
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+function showToast(msg, type = 'success') {
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = msg;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.classList.add('removing');
+    setTimeout(() => toast.remove(), 300);
+  }, 3500);
+}
+
+// ─────────────────────────────────────────────
+// UTILITIES
+// ─────────────────────────────────────────────
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+function unescHtml(str) {
+  return String(str)
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'");
+}
+
+// ─────────────────────────────────────────────
+// KEYBOARD SHORTCUTS
+// ─────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    publishChanges();
+  }
+  if (e.key === 'Escape') {
+    closeLayoutPicker();
+    closeConfirmModal();
+  }
+});
+
+// Close modals on overlay click
+document.getElementById('layoutPickerModal').addEventListener('click', function(e) {
+  if (e.target === this) closeLayoutPicker();
+});
+document.getElementById('confirmModal').addEventListener('click', function(e) {
+  if (e.target === this) closeConfirmModal();
+});
+
+// Warn on page leave if dirty
+window.addEventListener('beforeunload', e => {
+  if (isDirty) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+// ─────────────────────────────────────────────
+// START
+// ─────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>

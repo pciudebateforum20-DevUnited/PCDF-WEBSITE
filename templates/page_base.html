@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+
+{% block mobile_nav_links %}
+<a href="/about" onclick="closeMobileMenu()">About <span class="arrow">→</span></a>
+<a href="/committee" onclick="closeMobileMenu()">Committee <span class="arrow">→</span></a>
+<a href="/events" onclick="closeMobileMenu()">Events <span class="arrow">→</span></a>
+<a href="/news" onclick="closeMobileMenu()">News & Notices <span class="arrow">→</span></a>
+<a href="/reports" onclick="closeMobileMenu()">Reports <span class="arrow">→</span></a>
+<a href="/timeline" onclick="closeMobileMenu()">Timeline <span class="arrow">→</span></a>
+<a href="/gallery" onclick="closeMobileMenu()">Gallery <span class="arrow">→</span></a>
+<a href="/achievements" onclick="closeMobileMenu()">Achievements <span class="arrow">→</span></a>
+<a href="/contact" onclick="closeMobileMenu()">Contact <span class="arrow">→</span></a>
+{% endblock %}
+
+{% block content %}
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+    <div class="flex justify-between items-center w-full max-w-[1400px] mx-auto px-5 md:px-10 h-16 md:h-20">
+        <a href="/" class="flex items-center gap-3 md:gap-4 group">
+            <img src="{{ url_for('static', filename='images/logoPCDF.png') }}" alt="PCDF Logo"
+                class="h-10 md:h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
+            <div
+                class="text-sm md:text-xl cinzel font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase hidden sm:block text-gray-900">
+                PCIU Debating Forum
+            </div>
+        </a>
+
+        <!-- DESKTOP NAV -->
+        <nav class="hidden xl:flex items-center gap-6 2xl:gap-8 h-12">
+            <a href="/about" class="text-xs tracking-[0.2em] uppercase text-gray-500 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-red-600 hover:after:w-full after:transition-all after:duration-300">About</a>
+            <a href="/committee" class="text-xs tracking-[0.2em] uppercase text-gray-500 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-red-600 hover:after:w-full after:transition-all after:duration-300">Committee</a>
+
+            <!-- ACTIVITIES DROPDOWN -->
+            <div class="relative group/nav py-4">
+                <button type="button" class="flex items-center gap-1.5 text-xs tracking-[0.2em] uppercase text-gray-500 group-hover/nav:text-black transition-colors focus:outline-none relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-red-600 group-hover/nav:after:w-full after:transition-all after:duration-300">
+                    <span>Activities</span>
+                    <svg class="w-3 h-3 text-gray-400 group-hover/nav:text-red-600 group-hover/nav:rotate-180 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                
+                <!-- DROPDOWN PANEL -->
+                <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible translate-y-2 group-hover/nav:translate-y-0 transition-all duration-300 ease-out z-50 pointer-events-none group-hover/nav:pointer-events-auto">
+                    <div class="w-80 bg-white/95 backdrop-blur-xl border border-gray-100 rounded-xl shadow-2xl p-2 space-y-1 ring-1 ring-black/5">
+                        <a href="/events" class="group/item flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all duration-200">
+                            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="cinzel font-bold text-xs uppercase tracking-wider text-gray-900 group-hover/item:text-red-600 transition-colors">Events</span>
+                                    <span class="text-[0.65rem] text-gray-400 group-hover/item:translate-x-0.5 transition-transform">→</span>
+                                </div>
+                                <p class="text-[0.7rem] text-gray-500 font-light truncate mt-0.5">Tournaments, workshops & leagues</p>
+                            </div>
+                        </a>
+                        <a href="/achievements" class="group/item flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all duration-200">
+                            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="cinzel font-bold text-xs uppercase tracking-wider text-gray-900 group-hover/item:text-red-600 transition-colors">Achievements</span>
+                                    <span class="text-[0.65rem] text-gray-400 group-hover/item:translate-x-0.5 transition-transform">→</span>
+                                </div>
+                                <p class="text-[0.7rem] text-gray-500 font-light truncate mt-0.5">Championships, trophies & accolades</p>
+                            </div>
+                        </a>
+                        <a href="/news" class="group/item flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all duration-200">
+                            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="cinzel font-bold text-xs uppercase tracking-wider text-gray-900 group-hover/item:text-red-600 transition-colors">News & Notices</span>
+                                    <span class="text-[0.65rem] text-gray-400 group-hover/item:translate-x-0.5 transition-transform">→</span>
+                                </div>
+                                <p class="text-[0.7rem] text-gray-500 font-light truncate mt-0.5">Circulars, club alerts & updates</p>
+                            </div>
+                        </a>
+                        <a href="/reports" class="group/item flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all duration-200">
+                            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="cinzel font-bold text-xs uppercase tracking-wider text-gray-900 group-hover/item:text-red-600 transition-colors">Reports</span>
+                                    <span class="text-[0.65rem] text-gray-400 group-hover/item:translate-x-0.5 transition-transform">→</span>
+                                </div>
+                                <p class="text-[0.7rem] text-gray-500 font-light truncate mt-0.5">Annual summaries & motion banks</p>
+                            </div>
+                        </a>
+                        <a href="/blog" class="group/item flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-all duration-200">
+                            <div class="w-8 h-8 rounded-lg bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover/item:bg-red-600 group-hover/item:text-white transition-colors duration-200">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <span class="cinzel font-bold text-xs uppercase tracking-wider text-gray-900 group-hover/item:text-red-600 transition-colors">The Journal (Blog)</span>
+                                    <span class="text-[0.65rem] text-gray-400 group-hover/item:translate-x-0.5 transition-transform">→</span>
+                                </div>
+                                <p class="text-[0.7rem] text-gray-500 font-light truncate mt-0.5">Debate tips, essays & motion analysis</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/timeline" class="text-xs tracking-[0.2em] uppercase text-gray-500 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-red-600 hover:after:w-full after:transition-all after:duration-300">Timeline</a>
+            <a href="/gallery" class="text-xs tracking-[0.2em] uppercase text-gray-500 hover:text-black transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-red-600 hover:after:w-full after:transition-all after:duration-300">Gallery</a>
+        </nav>
+
+        <!-- DESKTOP ACTIONS -->
+        <div class="hidden lg:flex items-center gap-4">
+            <a href="/contact" class="text-xs tracking-[0.2em] uppercase text-gray-500 hover:text-red-700 transition-colors px-4 py-2 border border-gray-300 hover:border-red-600 rounded transition-all duration-300">Contact</a>
+            <a href="/apply" class="art-btn px-5 py-2 text-xs">Apply Now</a>
+        </div>
+
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+{% block page %}{% endblock %}
+
+<!-- GLOBAL SUBPAGE FOOTER -->
+<footer class="py-8 md:py-12 px-6 md:px-8 border-t border-[#222] bg-[#0a0a0a] text-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-8 md:mb-12">
+            <div class="col-span-2 md:col-span-1">
+                <img src="{{ url_for('static', filename='images/logoPCDF.png') }}" alt="PCDF Logo"
+                    class="h-8 md:h-10 w-auto mb-3 md:mb-4">
+                <p class="text-[0.65rem] md:text-xs text-gray-500 font-light leading-relaxed max-w-xs">
+                    PCIU Debating Forum. Where logic meets passion, and every argument is a work of art. Est. 2017.
+                </p>
+            </div>
+            <div>
+                <h4
+                    class="text-[0.65rem] md:text-xs tracking-[0.2em] uppercase text-gray-400 mb-3 md:mb-4 cinzel font-bold">
+                    Quick Links</h4>
+                <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-400 font-light">
+                    <li><a href="/committee" class="hover:text-white transition-colors">Committee</a></li>
+                    <li><a href="/timeline" class="hover:text-white transition-colors">Timeline</a></li>
+                    <li><a href="/gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                    <li><a href="/achievements" class="hover:text-white transition-colors">Achievements</a></li>
+                    <li><a href="/events" class="hover:text-white transition-colors">Events</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-[0.65rem] md:text-xs tracking-[0.2em] uppercase text-gray-400 mb-3 md:mb-4 cinzel font-bold">
+                    Connect</h4>
+                <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-400 font-light">
+                    <li><a href="#" class="hover:text-white transition-colors">Facebook</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4
+                    class="text-[0.65rem] md:text-xs tracking-[0.2em] uppercase text-gray-400 mb-3 md:mb-4 cinzel font-bold">
+                    Legal</h4>
+                <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-400 font-light">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Terms of Use</a></li>
+                    <li><a href="/contact" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="border-t border-[#222] pt-6 md:pt-8 flex flex-col sm:flex-row justify-between items-center text-[0.6rem] md:text-xs tracking-widest text-gray-500 uppercase font-light gap-3">
+            <div>© 2026 PCDF. The Art of Debate.</div>
+            <div class="flex gap-6 md:gap-8">
+                <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms</a>
+                <a href="/contact" class="hover:text-white transition-colors">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}

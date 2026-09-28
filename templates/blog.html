@@ -1,0 +1,29 @@
+{% extends "page_base.html" %}
+{% block title %}The Orator's Journal — {{ site_title }}{% endblock %}
+
+{% block page %}
+{% from "macros.html" import page_hero, render_sections %}
+
+{{ page_hero('blog', 'Insights & Thought Leadership', 'The Orator&#39;s <span class="font-bold">Journal</span>', 'Debating strategies, motion breakdowns, speaker techniques, and philosophical inquiries from PCIU Debating Forum members and adjudicators.') }}
+
+<!-- Editorial Filter / Category Pills -->
+<section class="py-6 px-6 md:px-16 bg-[#fafafa] hairline-border border-y border-gray-100">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 max-w-full">
+            <span class="text-xs uppercase tracking-[0.2em] font-semibold text-gray-400 mr-2">Topics:</span>
+            <button class="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase bg-black text-white font-medium hover:opacity-90 transition-all">All Articles</button>
+            <button class="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase bg-white border border-gray-200 text-gray-700 hover:border-black transition-all">Strategy</button>
+            <button class="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase bg-white border border-gray-200 text-gray-700 hover:border-black transition-all">Adjudication</button>
+            <button class="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase bg-white border border-gray-200 text-gray-700 hover:border-black transition-all">Techniques</button>
+            <button class="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase bg-white border border-gray-200 text-gray-700 hover:border-black transition-all">Economics</button>
+            <button class="px-3 py-1.5 rounded-full text-xs tracking-wider uppercase bg-white border border-gray-200 text-gray-700 hover:border-black transition-all">Oratory</button>
+        </div>
+        <div class="text-xs text-gray-400 tracking-wider">
+            Curated by PCDF Editorial Board
+        </div>
+    </div>
+</section>
+
+{{ render_sections('blog') }}
+
+{% endblock %}

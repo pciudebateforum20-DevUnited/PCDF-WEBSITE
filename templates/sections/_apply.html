@@ -1,0 +1,53 @@
+<!-- APPLY SECTION -->
+<section id="apply" class="py-16 md:py-24 px-6 md:px-16 bg-[#0a0a0a] text-white section-reveal">
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-10 md:mb-16">
+            <h3 class="text-[0.65rem] md:text-xs tracking-[0.4em] uppercase text-gray-400 mb-2 blur-in scroll-element">
+                Join the Forum</h3>
+            <h2
+                class="text-2xl sm:text-3xl md:text-5xl font-black cinzel uppercase mb-4 md:mb-6 fade-in-up scroll-element">
+                BECOME A MEMBER</h2>
+            <p class="text-gray-400 font-light max-w-2xl mx-auto text-sm md:text-base fade-in-up scroll-element"
+                style="transition-delay:100ms">
+                We recruit twice a year—spring and fall. No prior debate experience required. What we look for:
+                intellectual curiosity, a willingness to be challenged, and the courage to challenge others.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12">
+            <div class="p-5 md:p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 text-center scale-in scroll-element"
+                style="transition-delay:100ms">
+                <div class="text-2xl md:text-3xl cinzel font-bold text-red-600 mb-2">01</div>
+                <h4 class="cinzel font-bold text-sm md:text-base mb-2">Submit Application</h4>
+                <p class="text-xs md:text-sm text-gray-400 font-light">Fill out the online form. Tell us why you want to
+                    join and what intellectual battles you dream of fighting.</p>
+            </div>
+            <div class="p-5 md:p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 text-center scale-in scroll-element"
+                style="transition-delay:200ms">
+                <div class="text-2xl md:text-3xl cinzel font-bold text-red-600 mb-2">02</div>
+                <h4 class="cinzel font-bold text-sm md:text-base mb-2">Audition Round</h4>
+                <p class="text-xs md:text-sm text-gray-400 font-light">A friendly 10-minute debate session with senior
+                    members. We evaluate clarity, logic, and potential—not perfection.</p>
+            </div>
+            <div class="p-5 md:p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:-translate-y-1 text-center scale-in scroll-element"
+                style="transition-delay:300ms">
+                <div class="text-2xl md:text-3xl cinzel font-bold text-red-600 mb-2">03</div>
+                <h4 class="cinzel font-bold text-sm md:text-base mb-2">Welcome to PCDF</h4>
+                <p class="text-xs md:text-sm text-gray-400 font-light">Accepted members undergo a 4-week induction.
+                    Training, mentorship, and your first competitive round.</p>
+            </div>
+        </div>
+
+        <div class="text-center fade-in-up scroll-element" style="transition-delay:400ms">
+            <!-- PCDF TALENT SCOUT BOT (SEARCHING FOR FUTURE DEBATERS) -->
+            {% include "components/scout_bot.html" %}
+
+            <p class="text-xs text-gray-500 mb-6">Next recruitment cycle opens <span
+                    class="text-white font-semibold">September 2025</span></p>
+            <a href="/contact"
+                class="inline-block bg-white text-black px-10 md:px-12 py-4 md:py-5 cinzel font-bold tracking-[0.2em] uppercase text-xs md:text-sm hover:bg-red-600 hover:text-white transition-all duration-500">
+                Start Application
+            </a>
+        </div>
+    </div>
+</section>
