@@ -795,6 +795,39 @@
         style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); mix-blend-mode: multiply;">
     </div>
 
+    <!-- PCDF Crest / Watermark & Subtle Architectural Blueprint Background -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
+        <!-- Central PCDF Emblem Watermark with subtle celestial drafting circles -->
+        <div class="relative w-[320px] sm:w-[420px] md:w-[520px] lg:w-[600px] aspect-square flex items-center justify-center">
+            <div class="absolute inset-0 rounded-full border border-[#8b7d6b]/15 animate-[spin_120s_linear_infinite]"></div>
+            <div class="absolute inset-8 rounded-full border border-dashed border-[#8b1e1e]/10 animate-[spin_90s_linear_infinite_reverse]"></div>
+            <div class="absolute inset-16 rounded-full border border-[#d4cbb3]/20"></div>
+            
+            <!-- PCDF Logo Emblem Watermark -->
+            <img src="{{ url_for('static', filename='images/logoPCDF.png') }}" alt=""
+                class="w-44 sm:w-56 md:w-72 h-44 sm:h-56 md:h-72 object-contain opacity-[0.05] mix-blend-multiply filter contrast-125">
+        </div>
+    </div>
+
+    <!-- Subtle Minimal PCDF Archival Annotations (Top Right) -->
+    <div class="absolute top-6 right-6 md:top-10 md:right-10 z-0 pointer-events-none text-right hidden sm:block opacity-40 select-none">
+        <div class="flex items-center justify-end gap-2 mb-1">
+            <span class="text-[8.5px] font-mono tracking-[0.35em] uppercase text-[#8b7d6b]">REG. CODEX // PCDF-PCIU</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8b1e1e]"></span>
+        </div>
+        <div class="text-[11px] font-bold cinzel text-[#2c2825] tracking-widest uppercase">Port City International University</div>
+        <div class="text-[9.5px] font-serif italic text-[#8b1e1e] tracking-wider mt-0.5">"The Art of Dialectic & Rational Discourse"</div>
+    </div>
+
+    <!-- Subtle Minimal Coordinates & Foundation (Bottom Left) -->
+    <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-0 pointer-events-none hidden sm:block opacity-35 select-none">
+        <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#8b1e1e]"></span>
+            <span class="text-[8.5px] font-mono tracking-[0.35em] uppercase text-[#8b7d6b]">PCDF FORUM • EST. 2023</span>
+        </div>
+        <div class="text-[9.5px] font-mono tracking-[0.25em] text-[#5c544d] mt-0.5 uppercase">22.3569° N, 91.7832° E • CHITTAGONG</div>
+    </div>
+
     <!-- UI Overlay for the map (Top Left Title) -->
     <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none">
         <div class="flex items-center gap-2 mb-1.5">
