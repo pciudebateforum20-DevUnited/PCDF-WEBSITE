@@ -3082,20 +3082,20 @@
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
 
-            // General fade-in-up for sections
-            const sections = gsap.utils.toArray('.fade-in-up, section:not(#hero-section):not(#achievements)');
-            sections.forEach((sec) => {
-                gsap.fromTo(sec,
-                    { y: 35, opacity: 0 },
+            // Subtle fade-in-up for inner content elements only (prevents full section layout shifts)
+            const elements = gsap.utils.toArray('.fade-in-up:not(section)');
+            elements.forEach((el) => {
+                gsap.fromTo(el,
+                    { y: 20, opacity: 0 },
                     {
                         y: 0,
                         opacity: 1,
-                        duration: 0.8,
+                        duration: 0.6,
                         ease: "power2.out",
                         clearProps: "transform",
                         scrollTrigger: {
-                            trigger: sec,
-                            start: "top 88%",
+                            trigger: el,
+                            start: "top 92%",
                             once: true
                         }
                     }

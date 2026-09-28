@@ -428,7 +428,7 @@
         </div>
 
         <!-- Controls & Button -->
-        <div class="flex flex-col items-center mt-6 sm:mt-8 md:mt-10 space-y-4 sm:space-y-6 relative z-20">
+        <div class="flex flex-col items-center mt-7 sm:mt-9 md:mt-10 space-y-4 sm:space-y-6 relative z-20">
             <!-- Dots Indicators -->
             <div class="flex items-center justify-center gap-1.5 sm:gap-2 max-w-full overflow-x-auto py-1 px-2" id="committee-dots"></div>
 
@@ -586,14 +586,14 @@
         function generateCardContent(member) {
             if (!member) return '';
             return `
-                <div class="w-full h-full flex flex-col items-center justify-between group bg-white p-3.5 sm:p-4 border border-[#dedad2] shadow-[4px_4px_0_0_#8b1e1e] sm:shadow-[5px_5px_0_0_#8b1e1e] hover:-translate-y-1.5 hover:shadow-[6px_6px_0_0_#8b1e1e] sm:hover:shadow-[9px_9px_0_0_#8b1e1e] transition-all duration-400 cursor-pointer rounded-sm">
-                    <div class="w-full aspect-[3/4] overflow-hidden mb-3 relative bg-[#f5f3ef] flex-shrink-0">
+                <div class="w-full h-full flex flex-col items-center justify-between group bg-white p-3 sm:p-4 border border-[#dedad2] shadow-[4px_4px_0_0_#8b1e1e] sm:shadow-[5px_5px_0_0_#8b1e1e] hover:-translate-y-1.5 hover:shadow-[6px_6px_0_0_#8b1e1e] sm:hover:shadow-[9px_9px_0_0_#8b1e1e] transition-all duration-400 cursor-pointer rounded-sm overflow-hidden box-border">
+                    <div class="w-full flex-1 min-h-0 overflow-hidden mb-2.5 sm:mb-3 relative bg-[#f5f3ef] flex-shrink-0 rounded-xs">
                         <img src="${member.img}" alt="${member.name}" class="w-full h-full object-cover object-top transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
                         <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
-                    <div class="w-full flex flex-col items-center justify-center text-center pb-0.5">
-                        <h4 class="text-sm sm:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide leading-snug line-clamp-1 w-full px-1">${member.name}</h4>
-                        <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-1 line-clamp-1 w-full">${member.role}</p>
+                    <div class="w-full flex flex-col items-center justify-center text-center pb-0.5 shrink-0">
+                        <h4 class="text-xs sm:text-sm md:text-base font-bold cinzel text-[#2c2825] uppercase tracking-wide leading-snug line-clamp-1 w-full px-1">${member.name}</h4>
+                        <p class="text-[0.65rem] sm:text-xs text-[#8b1e1e] font-semibold tracking-wider uppercase mt-0.5 sm:mt-1 line-clamp-1 w-full">${member.role}</p>
                     </div>
                 </div>
             `;
@@ -619,7 +619,7 @@
             gridContainer.innerHTML = '';
             for (let i = 0; i < visibleItems; i++) {
                 const slot = document.createElement('div');
-                slot.className = 'committee-slot w-full max-w-[320px] sm:max-w-none sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] h-[375px] sm:h-[395px] md:h-[420px]';
+                slot.className = 'committee-slot w-full max-w-[280px] xs:max-w-[310px] sm:max-w-none sm:w-[calc(50%-10px)] md:w-[calc(33.333%-14px)] lg:w-[calc(20%-16px)] h-[410px] xs:h-[440px] sm:h-[395px] md:h-[420px]';
                 slot.innerHTML = `
                     <div class="flip-card-inner">
                         <div class="flip-card-front w-full h-full"></div>
