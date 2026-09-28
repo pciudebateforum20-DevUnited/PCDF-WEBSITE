@@ -18,7 +18,7 @@
         const holeOverlay = document.getElementById('holeOverlay');
         const expandBtn = document.getElementById('expandBtn');
 
-        let width, height;
+        let width = 0, height = 0;
         let streams = [];
         let mouse = { x: null, y: null };
         let boundsExpanded = false;
@@ -30,25 +30,44 @@
         const BLACK_INK = 'rgba(17, 17, 17, 0.15)';
 
         function resize() {
-            width = canvas.width = heroSection.clientWidth;
-            height = canvas.height = heroSection.clientHeight;
+            const newW = heroSection.clientWidth || window.innerWidth || 360;
+            const newH = heroSection.clientHeight || window.innerHeight || 600;
 
-            ctx.fillStyle = '#ffffff';
-            ctx.fillRect(0, 0, width, height);
+            if (Math.abs(newW - width) > 10 || Math.abs(newH - height) > 150 || width === 0) {
+                width = canvas.width = newW;
+                height = canvas.height = newH;
 
-            if (mouse.x === null) {
+                ctx.fillStyle = '#ffffff';
+                ctx.fillRect(0, 0, width, height);
+
                 mouse.x = width / 2;
                 mouse.y = height / 2;
             }
         }
 
         let rT;
-        window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 80); });
+        window.addEventListener('resize', () => { 
+            clearTimeout(rT); 
+            rT = setTimeout(resize, 100); 
+        }, { passive: true });
 
         heroSection.addEventListener('mousemove', (e) => {
             const rect = canvas.getBoundingClientRect();
             mouse.x = e.clientX - rect.left;
             mouse.y = e.clientY - rect.top;
+        }, { passive: true });
+
+        heroSection.addEventListener('mouseleave', () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
+        });
+
+        heroSection.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.touches[0].clientX - rect.left;
+                mouse.y = e.touches[0].clientY - rect.top;
+            }
         }, { passive: true });
 
         heroSection.addEventListener('touchmove', (e) => {
@@ -57,6 +76,16 @@
                 mouse.x = e.touches[0].clientX - rect.left;
                 mouse.y = e.touches[0].clientY - rect.top;
             }
+        }, { passive: true });
+
+        heroSection.addEventListener('touchend', () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
+        }, { passive: true });
+
+        heroSection.addEventListener('touchcancel', () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
         }, { passive: true });
 
         resize();

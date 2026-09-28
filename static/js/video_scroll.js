@@ -67,8 +67,12 @@
         observer.observe(heroEl);
 
         function resize() {
-            cw = canvas.width = heroEl.offsetWidth;
-            ch = canvas.height = heroEl.offsetHeight;
+            const newW = heroEl.offsetWidth || window.innerWidth || 360;
+            const newH = heroEl.offsetHeight || window.innerHeight || 600;
+            if (Math.abs(newW - cw) > 10 || Math.abs(newH - ch) > 150 || cw === 0) {
+                cw = canvas.width = newW;
+                ch = canvas.height = newH;
+            }
         }
         let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 100); }, { passive: true });
         resize();
@@ -82,8 +86,11 @@
             frame = (frame % FRAME_COUNT) + 1;
             if (frame > loadedMax) frame = 1;   // safe wrap during load
 
-            ctx.clearRect(0, 0, cw, ch);
-            paintCover(ctx, images[frame], cw, ch, HERO_ALPHA);
+            const img = images[frame];
+            if (img && img.complete && img.naturalWidth > 0) {
+                ctx.clearRect(0, 0, cw, ch);
+                paintCover(ctx, img, cw, ch, HERO_ALPHA);
+            }
         }
 
         function start() {
