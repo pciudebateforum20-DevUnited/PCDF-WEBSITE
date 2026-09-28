@@ -52,6 +52,22 @@
             overflow-x: hidden;
         }
 
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
+        }
+
         /* Hide native cursor on desktop fine pointers */
         @media (pointer: fine) and (min-width: 768px) {
 
@@ -2998,27 +3014,34 @@
             window.addEventListener('load', dismissPreloader);
         }
 
-        // --- LENIS SMOOTH SCROLL (SILKY SMOOTH 60FPS/120FPS) ---
+        // --- LENIS SMOOTH SCROLL (SILKY SMOOTH 90FPS/120FPS CHROMIUM ENGINE) ---
         if (typeof Lenis !== 'undefined') {
             const lenis = new Lenis({
-                duration: 1.0,
+                duration: 1.05,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 orientation: 'vertical',
                 gestureOrientation: 'vertical',
                 smoothWheel: true,
                 wheelMultiplier: 1.0,
                 smoothTouch: false,
-                touchMultiplier: 1.5,
+                touchMultiplier: 1.2,
                 infinite: false,
             });
 
             window.lenis = lenis;
 
-            function raf(time) {
-                lenis.raf(time);
+            if (typeof gsap !== 'undefined' && gsap.ticker) {
+                gsap.ticker.add((time) => {
+                    lenis.raf(time * 1000);
+                });
+                gsap.ticker.lagSmoothing(0);
+            } else {
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
                 requestAnimationFrame(raf);
             }
-            requestAnimationFrame(raf);
 
             // Integrate Lenis with GSAP ScrollTrigger cleanly
             if (typeof ScrollTrigger !== 'undefined') {

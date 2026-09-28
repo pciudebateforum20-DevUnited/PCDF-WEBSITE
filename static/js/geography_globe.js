@@ -558,20 +558,36 @@ window.initGeographyGlobe = function() {
         world.globeMaterial(oceanMaterial);
     }
 
-    world.controls().autoRotate = true;
-    world.controls().autoRotateSpeed = 0.5;
+    if (world.controls()) {
+        world.controls().autoRotate = true;
+        world.controls().autoRotateSpeed = 0.5;
+        world.controls().enableZoom = false; // Prevents wheel hijacking: page scrolls seamlessly over globe!
+        world.controls().enablePan = false;
+        world.controls().enableDamping = true;
+        world.controls().dampingFactor = 0.05;
+        world.controls().rotateSpeed = 0.8;
+    }
+
+    globeContainer.style.touchAction = 'pan-y';
+    const globeCanvas = globeContainer.querySelector('canvas');
+    if (globeCanvas) {
+        globeCanvas.style.touchAction = 'pan-y';
+    }
+
     let isGlobePaused = false;
     world.onGlobeClick(() => {
         isGlobePaused = !isGlobePaused;
-        world.controls().autoRotate = !isGlobePaused;
+        if (world.controls()) {
+            world.controls().autoRotate = !isGlobePaused;
+        }
     });
-
-    world.controls().enableZoom = true;
 
     if ('IntersectionObserver' in window) {
         const globeObserver = new IntersectionObserver((entries) => {
             const isVisible = entries[0].isIntersecting;
-            world.controls().autoRotate = isVisible && !isGlobePaused;
+            if (world.controls()) {
+                world.controls().autoRotate = isVisible && !isGlobePaused;
+            }
         }, { threshold: 0.05 });
         globeObserver.observe(section);
     }
