@@ -870,6 +870,22 @@
         </div>
     </div>
 
+    <style>
+        .animate-marquee-vertical {
+            animation: marqueeVertical 45s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes marqueeVertical {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(0, -50%, 0);
+            }
+        }
+    </style>
+
     <!-- Subtle Minimal PCDF Archival Annotations (Top Right) -->
     <div class="absolute top-6 right-6 md:top-10 md:right-10 z-0 pointer-events-none text-right hidden sm:block opacity-40 select-none">
         <div class="flex items-center justify-end gap-2 mb-1">
