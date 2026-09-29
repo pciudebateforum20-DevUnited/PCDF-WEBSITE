@@ -1,16 +1,15 @@
 /**
- * PCDF – Video Frame Controller  (Production)
- * =============================================
+ * PCDF – Video Frame Controller (Continuous Ultra-Smooth Streaming)
+ * =================================================================
  *
  * 1. HERO LOOP  (#heroFilmCanvas, z:1)
- *    - Plays all 393 frames at 24fps, looping forever
- *    - globalAlpha = 1.0  →  fully visible background video
- *    - Canvas covers entire hero section
+ *    - Plays all 393 frames at 24fps, looping continuously
+ *    - Instant startup upon Frame 1 load (from memory cache or network)
+ *    - High performance cover-fit draw loop with smooth fallback
  *
  * 2. SCROLL SECTION  (#videoScrollCanvas, inside #video-scroll-section)
  *    - 400vh sticky section
  *    - Scroll progress 0→1 drives frame 1→393
- *    - globalAlpha = 0.45 (clearly a background, text readable on top)
  *    - Live chapter text + red progress bar
  */
 (function () {
@@ -18,17 +17,16 @@
 
     const FRAME_COUNT = 393;
     const HERO_FPS = 24;
-    const HERO_ALPHA = 1.0;    // CSS opacity:0.22 + mix-blend-mode:multiply handles blending
+    const HERO_ALPHA = 1.0;
     const SCROLL_ALPHA = 0.45;
-    const INITIAL_BATCH = 60;
-    const BATCH_SIZE = 30;
 
     const frameSrc = (n) =>
         `/static/framesnew/frame_${String(n).padStart(4, '0')}.webp`;
 
     /* ── Shared image cache (1-indexed) ────────────────────────────────── */
-    const images = [];
-    let loadedMax = 0;
+    const images = new Array(FRAME_COUNT + 1);
+    let loadedCount = 0;
+    let maxLoadedIndex = 0;
 
     /* ── Cover-fit draw helper ─────────────────────────────────────────── */
     function paintCover(ctx, img, cw, ch, alpha) {
@@ -53,22 +51,23 @@
         const heroEl = document.getElementById('hero-section');
         const MS = 1000 / HERO_FPS;
 
-        let cw = 0, ch = 0, frame = 1, last = 0, running = false, raf;
+        let cw = 0, ch = 0, currentFrame = 1, last = 0, running = false, raf = null;
         let isVisible = true;
+
         const observer = new IntersectionObserver((entries) => {
             const wasVisible = isVisible;
             isVisible = entries[0].isIntersecting;
             if (isVisible && !wasVisible && running) {
                 raf = requestAnimationFrame(loop);
             } else if (!isVisible && wasVisible) {
-                cancelAnimationFrame(raf);
+                if (raf) cancelAnimationFrame(raf);
             }
         }, { threshold: 0 });
-        observer.observe(heroEl);
+        if (heroEl) observer.observe(heroEl);
 
         function resize() {
-            const newW = heroEl.offsetWidth || window.innerWidth || 360;
-            const newH = heroEl.offsetHeight || window.innerHeight || 600;
+            const newW = (heroEl && heroEl.offsetWidth) || window.innerWidth || 360;
+            const newH = (heroEl && heroEl.offsetHeight) || window.innerHeight || 600;
             if (Math.abs(newW - cw) > 10 || Math.abs(newH - ch) > 150 || cw === 0) {
                 cw = canvas.width = newW;
                 ch = canvas.height = newH;
@@ -77,40 +76,54 @@
         let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 100); }, { passive: true });
         resize();
 
+        function drawFrame(idx) {
+            let img = images[idx];
+            if (!img || !img.complete || img.naturalWidth === 0) {
+                // Find closest loaded frame <= idx
+                for (let f = idx; f >= 1; f--) {
+                    if (images[f] && images[f].complete && images[f].naturalWidth > 0) {
+                        img = images[f];
+                        break;
+                    }
+                }
+            }
+            if (!img || !img.complete || img.naturalWidth === 0) {
+                img = images[1];
+            }
+            if (img && img.complete && img.naturalWidth > 0) {
+                ctx.clearRect(0, 0, cw, ch);
+                paintCover(ctx, img, cw, ch, HERO_ALPHA);
+            }
+        }
+
         function loop(ts) {
             if (!isVisible) return;
             raf = requestAnimationFrame(loop);
             if (ts - last < MS) return;
             last = ts;
 
-            frame = (frame % FRAME_COUNT) + 1;
-            if (frame > loadedMax) frame = 1;   // safe wrap during load
-
-            const img = images[frame];
-            if (img && img.complete && img.naturalWidth > 0) {
-                ctx.clearRect(0, 0, cw, ch);
-                paintCover(ctx, img, cw, ch, HERO_ALPHA);
-            }
+            currentFrame = (currentFrame % FRAME_COUNT) + 1;
+            drawFrame(currentFrame);
         }
 
         function start() {
             if (running) return;
             running = true;
             resize();
-            const img = images[1];
-            if (img && img.complete && img.naturalWidth > 0) {
-                ctx.clearRect(0, 0, cw, ch);
-                paintCover(ctx, img, cw, ch, HERO_ALPHA);
-            }
-            canvas.classList.add('film-ready');  // CSS opacity 0→1
+            drawFrame(1);
+            canvas.classList.add('film-ready');
             if (isVisible) raf = requestAnimationFrame(loop);
         }
 
         window._heroStart = start;
 
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden) { cancelAnimationFrame(raf); running = false; }
-            else if (!running && loadedMax >= 1) start();
+            if (document.hidden) {
+                if (raf) cancelAnimationFrame(raf);
+                running = false;
+            } else if (!running) {
+                start();
+            }
         });
     }());
 
@@ -150,7 +163,15 @@
         resize2();
 
         function render() {
-            const img = images[active];
+            let img = images[active];
+            if (!img || !img.complete || img.naturalWidth === 0) {
+                for (let f = active; f >= 1; f--) {
+                    if (images[f] && images[f].complete && images[f].naturalWidth > 0) {
+                        img = images[f];
+                        break;
+                    }
+                }
+            }
             if (!img || !img.complete || img.naturalWidth === 0) return;
             ctx.clearRect(0, 0, cw, ch2);
             paintCover(ctx, img, cw, ch2, SCROLL_ALPHA);
@@ -199,84 +220,74 @@
     }());
 
     /* ══════════════════════════════════════════════════════════════════════
-       PRELOADER — non-blocking progressive image streaming
+       PRELOADER & STREAMING ENGINE — Fast, Continuous, Non-blocking
        ══════════════════════════════════════════════════════════════════════ */
-    function loadBatch(from, size, done) {
-        const to = Math.min(from + size, FRAME_COUNT + 1);
-        let n = to - from;
-        if (n <= 0) { done && done(); return; }
-        for (let i = from; i < to; i++) {
-            if (images[i]) { if (!--n) done && done(); continue; }
-            const img = new Image();
-            images[i] = img;
-            img.onload = img.onerror = function () {
-                if (this.naturalWidth) loadedMax = Math.max(loadedMax, i);
-                if (!--n) done && done();
-            };
-            img.src = frameSrc(i);
+    function loadSingleFrame(i) {
+        if (images[i]) return images[i];
+        const img = new Image();
+        images[i] = img;
+        img.onload = function () {
+            if (this.naturalWidth > 0) {
+                loadedCount++;
+                maxLoadedIndex = Math.max(maxLoadedIndex, i);
+                if (i === 1 && window._heroStart) {
+                    window._heroStart();
+                }
+            }
+        };
+        img.onerror = function () {
+            // Silently continue
+        };
+        img.src = frameSrc(i);
+
+        if (img.complete && img.naturalWidth > 0) {
+            loadedCount++;
+            maxLoadedIndex = Math.max(maxLoadedIndex, i);
+            if (i === 1 && window._heroStart) {
+                window._heroStart();
+            }
         }
+        return img;
     }
 
     function preload() {
-        let startedRemaining = false;
-        function loadRemaining() {
-            if (startedRemaining) return;
-            startedRemaining = true;
-            let next = 26;
-            (function more() {
-                if (next > FRAME_COUNT) return;
-                loadBatch(next, 20, () => {
-                    next += 20;
-                    setTimeout(more, 40);
-                });
-            })();
-        }
-
-        // 1. Immediately request Frame 1 so Hero starts in milliseconds
-        const f1 = new Image();
-        images[1] = f1;
-        f1.onload = function () {
-            if (this.naturalWidth) loadedMax = Math.max(loadedMax, 1);
-            if (window._heroStart) window._heroStart();
-            // Start the next 24 frames right away so hero loop continues seamlessly
-            loadBatch(2, 24, () => {
-                loadedMax = Math.max(loadedMax, 25);
-                loadRemaining();
-            });
-        };
-        f1.onerror = function () {
-            loadBatch(2, 24, () => {
-                if (window._heroStart) window._heroStart();
-                loadRemaining();
-            });
-        };
-        f1.src = frameSrc(1);
-
+        // 1. Immediately load frame 1
+        const f1 = loadSingleFrame(1);
         if (f1.complete && f1.naturalWidth > 0) {
-            loadedMax = Math.max(loadedMax, 1);
             if (window._heroStart) window._heroStart();
         }
 
-        // 2. Eagerly load remaining frames when user approaches or on idle
-        const scrollSec = document.getElementById('video-scroll-section');
-        if (scrollSec) {
-            const obs = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    obs.disconnect();
-                    loadRemaining();
+        // 2. Continuous pipelined loader for all 393 frames
+        let currentIndex = 2;
+        const CHUNK_SIZE = 12;
+
+        function loadNextChunk() {
+            if (currentIndex > FRAME_COUNT) return;
+            const end = Math.min(currentIndex + CHUNK_SIZE, FRAME_COUNT + 1);
+            for (let i = currentIndex; i < end; i++) {
+                loadSingleFrame(i);
+            }
+            currentIndex = end;
+
+            // Schedule next chunk with small delay so browser main thread stays silky 60fps
+            if (currentIndex <= FRAME_COUNT) {
+                if (currentIndex <= 60) {
+                    // Hero priority frames load instantly
+                    setTimeout(loadNextChunk, 15);
+                } else {
+                    setTimeout(loadNextChunk, 35);
                 }
-            }, { rootMargin: '800px 0px' });
-            obs.observe(scrollSec);
+            }
         }
 
-        if ('requestIdleCallback' in window) {
-            requestIdleCallback(() => setTimeout(loadRemaining, 800));
-        } else {
-            setTimeout(loadRemaining, 1200);
-        }
+        // Kick off streaming immediately
+        loadNextChunk();
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', preload);
-    else preload();
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', preload);
+    } else {
+        preload();
+    }
 
 }());
