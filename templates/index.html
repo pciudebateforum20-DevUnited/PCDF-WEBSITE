@@ -278,7 +278,7 @@
     </div>
     <style>
         .animate-marquee {
-            animation: marquee 20s linear infinite;
+            animation: marquee 50s linear infinite;
         }
 
         @keyframes marquee {
@@ -891,17 +891,7 @@
 
     <!-- UI Overlay for the map (Top Left Title + Live Animated Typewriter Telemetry) -->
     <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none max-w-lg lg:max-w-xl">
-        <div class="flex items-center gap-2 mb-1.5">
-            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] inline-block animate-pulse"></span>
-            <h3 class="text-[0.65rem] tracking-[0.4em] uppercase text-[#8b7d6b] font-semibold blur-in">Classical Rhetoric</h3>
-        </div>
         <h2 class="text-2xl md:text-4xl font-bold cinzel uppercase text-[#2c2825] fade-in-up">Architecture of Logic</h2>
-        <p class="text-[#5c544d] text-xs md:text-sm mt-1.5 md:mt-2.5 max-w-xs md:max-w-sm fade-in-up leading-relaxed"
-            style="transition-delay: 100ms;">
-            Explore the geometric foundations of a perfect argument. <br class="hidden sm:block">
-            Hover over classical focal points to reveal rhetoric principles.
-        </p>
-
     </div>
 
     <!-- The actual interactive canvas -->
@@ -1525,7 +1515,7 @@
         <!-- Continuous Auto-Scrolling Marquee -->
         <div class="flex overflow-hidden w-full">
             <div class="flex min-w-max animate-marquee-fast mt-1 mb-1 will-change-transform" style="transform: translateZ(0);"><!-- Wrapper 1 -->
-<div class="flex gap-1 pr-1">
+<div class="flex gap-1 pr-1 flex-shrink-0 min-w-max">
                 <!-- Frame 1 -->
                 <div
                     class="flex-shrink-0 w-[6rem] md:w-[9rem] aspect-[4/3] bg-black relative overflow-hidden border-2 border-[#111] group/frame cursor-pointer">
@@ -1781,7 +1771,7 @@
                 </div>
 
                 </div><!-- Wrapper 2 -->
-<div class="flex gap-1 pr-1" aria-hidden="true">
+<div class="flex gap-1 pr-1 flex-shrink-0 min-w-max" aria-hidden="true">
                 <!-- Frame 1 -->
                 <div
                     class="flex-shrink-0 w-[6rem] md:w-[9rem] aspect-[4/3] bg-black relative overflow-hidden border-2 border-[#111] group/frame cursor-pointer">
@@ -2447,14 +2437,6 @@
                                 class="px-4 py-1.5 rounded-full text-xs font-sans font-semibold uppercase tracking-wider transition-all duration-300 bg-white border border-gray-300 text-gray-700 hover:border-red-600 cursor-pointer">
                                 <span>✦ Our Objectives</span>
                             </button>
-                        </div>
-                        
-                        <!-- 5s Timer Indicator Pill -->
-                        <div class="flex items-center gap-2 text-[10px] font-sans text-gray-500 uppercase font-semibold">
-                            <span>Auto-Swap (5s)</span>
-                            <div class="w-12 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                                <div id="aboutSwapProgress" class="h-full bg-red-600 rounded-full w-0"></div>
-                            </div>
                         </div>
                     </div>
 

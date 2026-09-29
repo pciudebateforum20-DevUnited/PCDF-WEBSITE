@@ -502,7 +502,7 @@
     // =========================================================================
     let currentBulkIndex = 0;
     const totalBulks = 2;
-    const bulkIntervalMs = 3500; // Auto-transition interval
+    const bulkIntervalMs = 3000; // Auto-transition interval
     let autoBulkTimer = null;
 
     function updateBulkView(animate = true) {
@@ -603,6 +603,7 @@
                 startAutoTimer();
             } else if (window.innerWidth >= 768 && autoBulkTimer) {
                 clearInterval(autoBulkTimer);
+                autoBulkTimer = null;
             }
         });
     });
