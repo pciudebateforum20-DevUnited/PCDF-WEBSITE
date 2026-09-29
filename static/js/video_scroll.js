@@ -153,6 +153,20 @@
 
         let lastCh = null;
         let ticking = false;
+        let cachedTop = 0;
+        let cachedHeight = 0;
+        let metricsCached = false;
+
+        function updateMetrics() {
+            if (!section) return;
+            cachedTop = section.offsetTop;
+            cachedHeight = section.offsetHeight - window.innerHeight;
+            metricsCached = true;
+        }
+
+        window.addEventListener('resize', () => {
+            metricsCached = false; // Force refresh on resize
+        }, { passive: true });
 
         window.addEventListener('scroll', () => {
             if (!ticking) {
@@ -161,10 +175,11 @@
                         ticking = false;
                         return;
                     }
-                    const rect = section.getBoundingClientRect();
-                    const track = section.offsetHeight - window.innerHeight;
-                    if (track > 0) {
-                        const prog = Math.max(0, Math.min(1, -rect.top / track));
+                    if (!metricsCached) updateMetrics();
+                    
+                    if (cachedHeight > 0) {
+                        const scrollPos = window.scrollY - cachedTop;
+                        const prog = Math.max(0, Math.min(1, scrollPos / cachedHeight));
                         const frame = Math.min(FRAME_COUNT, Math.max(1, Math.round(prog * (FRAME_COUNT - 1)) + 1));
 
                         if (frame !== active) {
