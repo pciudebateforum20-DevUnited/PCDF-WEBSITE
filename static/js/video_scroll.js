@@ -96,6 +96,12 @@
         function start() {
             if (running) return;
             running = true;
+            resize();
+            const img = images[1];
+            if (img && img.complete && img.naturalWidth > 0) {
+                ctx.clearRect(0, 0, cw, ch);
+                paintCover(ctx, img, cw, ch, HERO_ALPHA);
+            }
             canvas.classList.add('film-ready');  // CSS opacity 0→1
             if (isVisible) raf = requestAnimationFrame(loop);
         }
@@ -104,7 +110,7 @@
 
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) { cancelAnimationFrame(raf); running = false; }
-            else if (!running && loadedMax >= INITIAL_BATCH) start();
+            else if (!running && loadedMax >= 1) start();
         });
     }());
 
@@ -193,7 +199,7 @@
     }());
 
     /* ══════════════════════════════════════════════════════════════════════
-       PRELOADER — non-blocking batched image loading
+       PRELOADER — non-blocking progressive image streaming
        ══════════════════════════════════════════════════════════════════════ */
     function loadBatch(from, size, done) {
         const to = Math.min(from + size, FRAME_COUNT + 1);
@@ -212,40 +218,62 @@
     }
 
     function preload() {
-        // Load first 25 frames immediately so Hero loop plays instantly
-        loadBatch(1, 25, () => {
-            loadedMax = 25;
+        let startedRemaining = false;
+        function loadRemaining() {
+            if (startedRemaining) return;
+            startedRemaining = true;
+            let next = 26;
+            (function more() {
+                if (next > FRAME_COUNT) return;
+                loadBatch(next, 20, () => {
+                    next += 20;
+                    setTimeout(more, 40);
+                });
+            })();
+        }
+
+        // 1. Immediately request Frame 1 so Hero starts in milliseconds
+        const f1 = new Image();
+        images[1] = f1;
+        f1.onload = function () {
+            if (this.naturalWidth) loadedMax = Math.max(loadedMax, 1);
             if (window._heroStart) window._heroStart();
+            // Start the next 24 frames right away so hero loop continues seamlessly
+            loadBatch(2, 24, () => {
+                loadedMax = Math.max(loadedMax, 25);
+                loadRemaining();
+            });
+        };
+        f1.onerror = function () {
+            loadBatch(2, 24, () => {
+                if (window._heroStart) window._heroStart();
+                loadRemaining();
+            });
+        };
+        f1.src = frameSrc(1);
 
-            const scrollSec = document.getElementById('video-scroll-section');
-            let startedRemaining = false;
+        if (f1.complete && f1.naturalWidth > 0) {
+            loadedMax = Math.max(loadedMax, 1);
+            if (window._heroStart) window._heroStart();
+        }
 
-            function loadRemaining() {
-                if (startedRemaining) return;
-                startedRemaining = true;
-                let next = 26;
-                (function more() {
-                    if (next > FRAME_COUNT) return;
-                    loadBatch(next, 15, () => { next += 15; setTimeout(more, 100); });
-                })();
-            }
+        // 2. Eagerly load remaining frames when user approaches or on idle
+        const scrollSec = document.getElementById('video-scroll-section');
+        if (scrollSec) {
+            const obs = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    obs.disconnect();
+                    loadRemaining();
+                }
+            }, { rootMargin: '800px 0px' });
+            obs.observe(scrollSec);
+        }
 
-            if (scrollSec) {
-                const obs = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) {
-                        obs.disconnect();
-                        loadRemaining();
-                    }
-                }, { rootMargin: '600px 0px' });
-                obs.observe(scrollSec);
-            }
-
-            if ('requestIdleCallback' in window) {
-                requestIdleCallback(() => setTimeout(loadRemaining, 1500));
-            } else {
-                setTimeout(loadRemaining, 2500);
-            }
-        });
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(() => setTimeout(loadRemaining, 800));
+        } else {
+            setTimeout(loadRemaining, 1200);
+        }
     }
 
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', preload);

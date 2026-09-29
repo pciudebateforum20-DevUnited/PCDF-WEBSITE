@@ -526,6 +526,14 @@
         let flipState = 0; // Increments forward (+1) or backward (-1)
         let autoPlayTimer = null;
 
+        // Preload committee member images for instantaneous flips
+        membersData.forEach(member => {
+            if (member.img) {
+                const img = new Image();
+                img.src = member.img;
+            }
+        });
+
         function getVisibleItems() {
             const width = window.innerWidth;
             if (width < 640) return 1;
@@ -588,7 +596,7 @@
             return `
                 <div class="w-full h-full flex flex-col items-center justify-between group bg-white p-3 sm:p-4 border border-[#dedad2] shadow-[4px_4px_0_0_#8b1e1e] sm:shadow-[5px_5px_0_0_#8b1e1e] hover:-translate-y-1.5 hover:shadow-[6px_6px_0_0_#8b1e1e] sm:hover:shadow-[9px_9px_0_0_#8b1e1e] transition-all duration-400 cursor-pointer rounded-sm overflow-hidden box-border">
                     <div class="w-full flex-1 min-h-0 overflow-hidden mb-2.5 sm:mb-3 relative bg-[#f5f3ef] flex-shrink-0 rounded-xs">
-                        <img src="${member.img}" alt="${member.name}" class="w-full h-full object-cover object-top transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+                        <img src="${member.img}" alt="${member.name}" class="w-full h-full object-cover object-top transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out" decoding="async">
                         <div class="absolute inset-0 bg-[#8b1e1e]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
                     </div>
                     <div class="w-full flex flex-col items-center justify-center text-center pb-0.5 shrink-0">
@@ -892,12 +900,20 @@
             Hover over classical focal points to reveal rhetoric principles.
         </p>
 
-        <!-- LIVE ANIMATED TYPEWRITER TRANSMISSION (Eye-catchy PCDF Information Stream) -->
-        <div class="mt-3 md:mt-4 pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-[#d4cbb3] shadow-xs max-w-full group hover:border-[#8b1e1e]/40 transition-colors">
-            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] shrink-0 animate-ping"></span>
-            <span class="text-[8.5px] sm:text-[9.5px] font-mono tracking-wider uppercase text-[#8b1e1e] font-bold shrink-0">PCDF //</span>
-            <span id="logic-typewriter-text" class="text-[10px] sm:text-[11.5px] font-mono text-[#2c2825] font-semibold truncate"></span>
-            <span class="inline-block w-1.5 h-3 bg-[#8b1e1e] animate-pulse -ml-1 shrink-0"></span>
+        <!-- LIVE ANIMATED PCDF MANIFESTO & ESSENCE STREAM (Modern Transparent 2-Line Glass Card) -->
+        <div class="mt-3 md:mt-4 pointer-events-auto w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[400px] md:max-w-[430px] p-3 sm:p-3.5 rounded-2xl bg-white/80 backdrop-blur-xl border border-[#d4cbb3]/70 shadow-[0_8px_24px_-6px_rgba(62,54,46,0.12)] hover:border-[#8b1e1e]/40 hover:shadow-[0_12px_32px_-8px_rgba(139,30,30,0.18)] transition-all duration-300">
+            <div class="flex items-center justify-between gap-2 pb-1.5 mb-1.5 border-b border-[#e2dfd8]/60">
+                <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#8b1e1e] animate-pulse"></span>
+                    <span class="text-[9px] sm:text-[9.5px] tracking-[0.22em] uppercase text-[#8b1e1e] font-bold cinzel">Port City International University</span>
+                </div>
+                <span class="text-[8px] font-mono uppercase text-[#8b7d6b] tracking-wider hidden xs:inline">PCDF</span>
+            </div>
+            <div class="min-h-[38px] sm:min-h-[42px] flex items-center">
+                <p class="text-[11px] sm:text-xs md:text-[12.5px] font-sans font-medium text-[#2c2825] leading-snug break-words whitespace-normal">
+                    <span id="logic-typewriter-text"></span><span class="inline-block w-1.5 h-3.5 bg-[#8b1e1e] animate-pulse ml-0.5 align-middle"></span>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -1085,11 +1101,11 @@
         const typewriterEl = document.getElementById('logic-typewriter-text');
         if (typewriterEl) {
             const telemetryMessages = [
-                "WHAT IS PCDF? — The premier student-led debating society of Port City International University.",
-                "WHY PCDF? — Where logic is the structure, passion is the color, and reason conquers noise.",
-                "OUR PURPOSE — Cultivating critical thinking, eloquent public speaking, and parliamentary supremacy.",
-                "CORE GOALS — BP/AP mastery, national circuit championship breaks, and ethical leadership.",
-                "OUR MOTTO — \"We do more than debate.\" — Estd. 2023, Chittagong, Bangladesh."
+                "What is PCDF? The premier student-led debating society of Port City International University.",
+                "Why We Debate: Where logic is the structure, passion is the color, and reason wins.",
+                "Our Purpose: Cultivating fearless critical thinkers, eloquent orators, and leaders.",
+                "Core Goals: Parliamentary mastery, national circuit championship breaks, and public speaking.",
+                "\"We do more than debate.\" — Estd. 2023, Port City International University."
             ];
             let msgIdx = 0;
             let charIdx = 0;
