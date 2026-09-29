@@ -789,13 +789,13 @@
 
 <!-- SECTION 2.5: RENAISSANCE OF THOUGHT -->
 <section id="renaissance-section"
-    class="relative w-full min-h-[75vh] md:h-[85vh] bg-[#fdfcf9] overflow-hidden border-y border-[#e2dfd8] flex flex-col justify-between">
+    class="relative w-full min-h-[80vh] md:min-h-[85vh] bg-[#fdfcf9] overflow-hidden border-y border-[#e2dfd8] flex flex-col justify-between">
     <!-- Vintage paper texture overlay -->
     <div class="absolute inset-0 z-0 opacity-40 pointer-events-none"
         style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); mix-blend-mode: multiply;">
     </div>
 
-    <!-- PCDF Crest / Watermark & Subtle Architectural Blueprint Background -->
+    <!-- PCDF Crest / Watermark & Architectural Blueprint Background Grid -->
     <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
         <!-- Central PCDF Emblem Watermark with subtle celestial drafting circles -->
         <div class="relative w-[320px] sm:w-[420px] md:w-[520px] lg:w-[600px] aspect-square flex items-center justify-center">
@@ -806,6 +806,57 @@
             <!-- PCDF Logo Emblem Watermark -->
             <img src="{{ url_for('static', filename='images/logoPCDF.png') }}" alt=""
                 class="w-44 sm:w-56 md:w-72 h-44 sm:h-56 md:h-72 object-contain opacity-[0.05] mix-blend-multiply filter contrast-125">
+        </div>
+    </div>
+
+    <!-- BACKGROUND INFORMATIONAL BLUEPRINT PLATES (Subtle, delicate architectural watermark text about PCDF) -->
+    <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden p-6 md:p-10 hidden sm:block">
+        
+        <!-- Blueprint Plate 1: WHAT IS PCDF? (Upper-Mid Left) -->
+        <div class="absolute top-28 sm:top-36 left-8 sm:left-12 max-w-[280px] lg:max-w-[320px] opacity-[0.14] hover:opacity-40 transition-opacity duration-500">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-[#8b1e1e] font-bold">[ CODEX 01 // DEFINITION ]</span>
+                <div class="h-[1px] flex-1 bg-[#d4cbb3]/60"></div>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold cinzel text-[#2c2825] uppercase tracking-wider">What is PCDF?</h4>
+            <p class="text-[10px] sm:text-[11px] font-serif text-[#5c544d] leading-relaxed mt-1 italic">
+                The premier student-led debating society of Port City International University (PCIU). A platform cultivating critical reasoning, public speaking eloquence, and rational inquiry.
+            </p>
+            <div class="flex items-center gap-2 mt-1.5 text-[8px] font-mono text-[#8b7d6b]">
+                <span class="px-1.5 py-0.5 bg-white/60 border border-[#d4cbb3]/50 rounded-xs">INTRA-VARSITY</span>
+                <span class="px-1.5 py-0.5 bg-white/60 border border-[#d4cbb3]/50 rounded-xs">NATIONAL BP</span>
+                <span class="px-1.5 py-0.5 bg-white/60 border border-[#d4cbb3]/50 rounded-xs">EST. 2023</span>
+            </div>
+        </div>
+
+        <!-- Blueprint Plate 2: WHY PCDF / THE PHILOSOPHY (Center-Bottom) -->
+        <div class="absolute bottom-16 sm:bottom-20 left-1/4 sm:left-1/3 max-w-[280px] lg:max-w-[340px] opacity-[0.12] hover:opacity-40 transition-opacity duration-500 -translate-x-12">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-[#8b1e1e] font-bold">[ CODEX 02 // PHILOSOPHY ]</span>
+                <div class="h-[1px] flex-1 bg-[#d4cbb3]/60"></div>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold cinzel text-[#2c2825] uppercase tracking-wider">Why We Debate</h4>
+            <p class="text-[10px] sm:text-[11px] font-serif text-[#5c544d] leading-relaxed mt-1 italic">
+                "Every argument is a blank canvas. Logic is the structure. Passion is the color." We strip away the noise to build stunning geometric patterns of thought.
+            </p>
+            <div class="text-[8.5px] font-mono text-[#8b1e1e] mt-1 font-semibold tracking-wider">
+                ✦ "WE DO MORE THAN DEBATE."
+            </div>
+        </div>
+
+        <!-- Blueprint Plate 3: CORE GOALS & PILLARS (Top Center-Right) -->
+        <div class="absolute top-24 sm:top-28 right-1/4 md:right-[38%] max-w-[240px] lg:max-w-[280px] opacity-[0.12] hover:opacity-40 transition-opacity duration-500">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-[#8b1e1e] font-bold">[ CODEX 03 // GOALS ]</span>
+                <div class="h-[1px] flex-1 bg-[#d4cbb3]/60"></div>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold cinzel text-[#2c2825] uppercase tracking-wider">Strategic Pillars</h4>
+            <ul class="text-[9.5px] sm:text-[10.5px] font-mono text-[#5c544d] space-y-1 mt-1">
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">01.</span> Rhetorical Eloquence</li>
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">02.</span> Parliamentary Mastery</li>
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">03.</span> National Circuit Excellence</li>
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">04.</span> Ethical Leadership</li>
+            </ul>
         </div>
     </div>
 
@@ -828,19 +879,26 @@
         <div class="text-[9.5px] font-mono tracking-[0.25em] text-[#5c544d] mt-0.5 uppercase">22.3569° N, 91.7832° E • CHITTAGONG</div>
     </div>
 
-    <!-- UI Overlay for the map (Top Left Title) -->
-    <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none">
+    <!-- UI Overlay for the map (Top Left Title + Live Animated Typewriter Telemetry) -->
+    <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none max-w-lg lg:max-w-xl">
         <div class="flex items-center gap-2 mb-1.5">
-            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] inline-block"></span>
-            <h3 class="text-[0.65rem] tracking-[0.4em] uppercase text-[#8b7d6b] font-semibold blur-in">Classical
-                Rhetoric</h3>
+            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] inline-block animate-pulse"></span>
+            <h3 class="text-[0.65rem] tracking-[0.4em] uppercase text-[#8b7d6b] font-semibold blur-in">Classical Rhetoric</h3>
         </div>
         <h2 class="text-2xl md:text-4xl font-bold cinzel uppercase text-[#2c2825] fade-in-up">Architecture of Logic</h2>
-        <p class="text-[#5c544d] text-xs md:text-sm mt-2 md:mt-4 max-w-xs md:max-w-sm fade-in-up leading-relaxed"
+        <p class="text-[#5c544d] text-xs md:text-sm mt-1.5 md:mt-2.5 max-w-xs md:max-w-sm fade-in-up leading-relaxed"
             style="transition-delay: 100ms;">
             Explore the geometric foundations of a perfect argument. <br class="hidden sm:block">
-            Hover over the classical focal points to reveal the principles of rhetoric.
+            Hover over classical focal points to reveal rhetoric principles.
         </p>
+
+        <!-- LIVE ANIMATED TYPEWRITER TRANSMISSION (Eye-catchy PCDF Information Stream) -->
+        <div class="mt-3 md:mt-4 pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-[#d4cbb3] shadow-xs max-w-full group hover:border-[#8b1e1e]/40 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] shrink-0 animate-ping"></span>
+            <span class="text-[8.5px] sm:text-[9.5px] font-mono tracking-wider uppercase text-[#8b1e1e] font-bold shrink-0">PCDF //</span>
+            <span id="logic-typewriter-text" class="text-[10px] sm:text-[11.5px] font-mono text-[#2c2825] font-semibold truncate"></span>
+            <span class="inline-block w-1.5 h-3 bg-[#8b1e1e] animate-pulse -ml-1 shrink-0"></span>
+        </div>
     </div>
 
     <!-- The actual interactive canvas -->
@@ -1021,6 +1079,47 @@
             codexCard.addEventListener('mouseleave', () => {
                 codexCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
             });
+        }
+
+        // 3. Live Animated Typewriter Telemetry Stream (Cycling PCDF Information)
+        const typewriterEl = document.getElementById('logic-typewriter-text');
+        if (typewriterEl) {
+            const telemetryMessages = [
+                "WHAT IS PCDF? — The premier student-led debating society of Port City International University.",
+                "WHY PCDF? — Where logic is the structure, passion is the color, and reason conquers noise.",
+                "OUR PURPOSE — Cultivating critical thinking, eloquent public speaking, and parliamentary supremacy.",
+                "CORE GOALS — BP/AP mastery, national circuit championship breaks, and ethical leadership.",
+                "OUR MOTTO — \"We do more than debate.\" — Estd. 2023, Chittagong, Bangladesh."
+            ];
+            let msgIdx = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+            let typingSpeed = 40;
+
+            function typeLoop() {
+                const currentMsg = telemetryMessages[msgIdx];
+                if (isDeleting) {
+                    typewriterEl.textContent = currentMsg.substring(0, charIdx - 1);
+                    charIdx--;
+                    typingSpeed = 18;
+                } else {
+                    typewriterEl.textContent = currentMsg.substring(0, charIdx + 1);
+                    charIdx++;
+                    typingSpeed = 38;
+                }
+
+                if (!isDeleting && charIdx === currentMsg.length) {
+                    isDeleting = true;
+                    typingSpeed = 2400; // Pause when complete
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    msgIdx = (msgIdx + 1) % telemetryMessages.length;
+                    typingSpeed = 400; // Pause before next sentence
+                }
+
+                setTimeout(typeLoop, typingSpeed);
+            }
+            typeLoop();
         }
     });
 </script>
@@ -1940,151 +2039,404 @@
 </section>
 
 <!-- SECTION 8: UPCOMING EVENTS -->
-<section id="events" class="py-16 md:py-24 px-6 md:px-16 bg-[#fafafa] hairline-border section-reveal">
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col sm:flex-row justify-between sm:items-end mb-10 md:mb-16 gap-4">
+<section id="events" class="py-16 md:py-24 px-5 sm:px-8 md:px-16 bg-[#fafafa] hairline-border border-b border-gray-200 section-reveal relative overflow-hidden">
+    <!-- Subtle architectural background accent -->
+    <div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-red-600/5 blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-24 -bottom-24 w-96 h-96 rounded-full bg-black/5 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10">
+        <!-- Section Header -->
+        <div class="flex flex-col sm:flex-row justify-between sm:items-end mb-10 md:mb-14 gap-4">
             <div>
-                <h3
-                    class="text-[0.65rem] md:text-xs tracking-[0.4em] uppercase text-gray-400 mb-2 blur-in scroll-element">
-                    Calendar</h3>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold cinzel uppercase fade-in-up scroll-element">
-                    Upcoming Engagements</h2>
+                <div class="inline-flex items-center gap-2 mb-2 blur-in scroll-element">
+                    <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                    <span class="text-[0.65rem] md:text-xs font-semibold tracking-[0.35em] uppercase text-red-600">Upcoming Engagements</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold cinzel uppercase fade-in-up scroll-element text-gray-900 tracking-tight">
+                    Calendar & Tournaments
+                </h2>
+                <p class="text-xs md:text-sm text-gray-500 font-light mt-2 max-w-2xl fade-in-up scroll-element">
+                    Official schedule for the <span class="font-semibold text-black">PCDF 1st Debate Fest & Oratory Festival 2026</span> — a 4-stage voyage of intellectual clash and eloquence.
+                </p>
             </div>
-            <a href="#"
-                class="text-xs tracking-[0.2em] uppercase hover:text-red-700 transition-colors pb-1 border-b border-black self-start sm:self-auto fade-in-right scroll-element">Full
-                Calendar</a>
+            <a href="/apply"
+                class="text-xs tracking-[0.2em] uppercase text-gray-900 hover:text-red-600 transition-colors pb-1 border-b border-black hover:border-red-600 self-start sm:self-auto fade-in-right scroll-element flex items-center gap-2 group">
+                <span>Registration Portal</span>
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
         </div>
 
+        <!-- FEATURED FESTIVAL HERO SPOTLIGHT BANNER -->
+        <div class="mb-10 md:mb-14 rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-xl hover:shadow-2xl transition-all duration-500 fade-in-up scroll-element group">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                <!-- Banner Image -->
+                <div class="lg:col-span-7 relative overflow-hidden bg-black min-h-[220px] sm:min-h-[280px] lg:min-h-[340px] flex items-center justify-center">
+                    <img src="{{ url_for('static', filename='images/pcdf_debate_fest_2026_banner.webp') }}"
+                         onerror="this.onerror=null; this.src='/static/images/pcdf_debate_fest_2026_banner.png'"
+                         alt="PCDF 1st Debate Fest & Oratory Festival 2026"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:via-black/30 lg:to-black/80 pointer-events-none"></div>
+                    <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-red-600 text-white text-[0.65rem] tracking-[0.25em] uppercase font-bold cinzel shadow-md">
+                            Flagship Fest 2026
+                        </span>
+                        <span class="px-3 py-1 bg-black/80 backdrop-blur-md text-white text-[0.65rem] tracking-[0.2em] uppercase font-semibold cinzel border border-white/20">
+                            Port City International University
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Banner Right Info Box -->
+                <div class="lg:col-span-5 p-6 sm:p-8 md:p-10 flex flex-col justify-between bg-gradient-to-br from-white to-gray-50 border-t lg:border-t-0 lg:border-l border-gray-100">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-red-600 mb-2 cinzel">
+                            <span>Grand Voyage Edition</span>
+                            <span class="text-gray-300">•</span>
+                            <span>October 2026</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl md:text-3xl font-bold cinzel text-gray-900 leading-tight mb-3">
+                            PCDF 1st Debate Fest & Oratory Festival 2026
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 font-light leading-relaxed mb-6">
+                            Where logic meets the high seas of rhetoric. Four monumental stages uniting solo orators, interdepartmental gladiators, and national debate champions across October.
+                        </p>
+
+                        <!-- 4-Stage Voyage Route Mini-Stepper -->
+                        <div class="space-y-2.5 mb-6 pt-2 border-t border-gray-200">
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="w-6 h-6 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-[0.65rem] flex-shrink-0 cinzel">1</span>
+                                <span class="font-semibold text-gray-900 cinzel text-[0.7rem] sm:text-xs">13 OCT: First Voyage</span>
+                                <span class="text-gray-400 text-[0.7rem]">— Public Speaking Competition</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="w-6 h-6 rounded-full bg-black text-white font-bold flex items-center justify-center text-[0.65rem] flex-shrink-0 cinzel">2</span>
+                                <span class="font-semibold text-gray-900 cinzel text-[0.7rem] sm:text-xs">23 OCT: New World</span>
+                                <span class="text-gray-400 text-[0.7rem]">— 8th Interdepartmental Debate</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="w-6 h-6 rounded-full bg-red-600 text-white font-bold flex items-center justify-center text-[0.65rem] flex-shrink-0 cinzel">3</span>
+                                <span class="font-semibold text-gray-900 cinzel text-[0.7rem] sm:text-xs">30 OCT: Grand Line</span>
+                                <span class="text-gray-400 text-[0.7rem]">— National Debate Fest (BP)</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs">
+                                <span class="w-6 h-6 rounded-full bg-gradient-to-r from-red-600 to-black text-white font-bold flex items-center justify-center text-[0.65rem] flex-shrink-0 cinzel">4</span>
+                                <span class="font-semibold text-gray-900 cinzel text-[0.7rem] sm:text-xs">31 OCT: The Final Voyage</span>
+                                <span class="text-gray-400 text-[0.7rem]">— Grand Finale & Gala Awards</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-4 border-t border-gray-200">
+                        <a href="/apply" class="art-btn text-xs py-2.5 px-6 font-semibold shadow-md">
+                            Register For Events
+                        </a>
+                        <a href="/events" class="text-xs uppercase tracking-widest text-gray-600 hover:text-black py-2.5 px-4 font-semibold cinzel border border-gray-300 hover:border-black transition-colors">
+                            Event Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4 INDIVIDUAL EVENT CARDS -->
         <div class="space-y-4 md:space-y-6">
 
-            <div class="flex flex-col sm:flex-row gap-4 md:gap-8 p-4 md:p-6 border border-gray-100 hover:border-black transition-all duration-300 group hover:shadow-lg fade-in-left scroll-element"
+            <!-- EVENT 1: FIRST VOYAGE (13 OCT 2026) -->
+            <div class="flex flex-col lg:flex-row gap-5 md:gap-6 p-5 sm:p-6 md:p-7 bg-white rounded-xl border border-gray-200 hover:border-red-600/60 transition-all duration-300 group hover:shadow-xl fade-in-left scroll-element relative overflow-hidden"
                 style="transition-delay:100ms">
-                <div
-                    class="w-full sm:w-20 md:w-24 flex-shrink-0 flex items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden py-3 sm:py-0">
-                    <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-black cinzel text-red-600">15</div>
-                        <div class="text-[0.6rem] md:text-xs tracking-[0.2em] uppercase text-gray-400">MAR</div>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300">
-                    </div>
-                </div>
-                <div class="flex-1 flex flex-col justify-center">
-                    <div class="flex flex-wrap items-center gap-2 md:gap-4 mb-1 md:mb-2">
-                        <span
-                            class="px-2 md:px-3 py-0.5 md:py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-red-600 text-white cinzel">Tournament</span>
-                        <span class="text-[0.6rem] md:text-xs text-gray-400">Hybrid</span>
-                    </div>
-                    <h3 class="cinzel font-bold text-base md:text-2xl mb-1 md:mb-2">PCDF Spring Open 2025</h3>
-                    <p class="text-xs md:text-sm text-gray-500 font-light mb-3 md:mb-4 max-w-2xl">Our flagship annual
-                        tournament returns. 6 preliminary rounds, power-paired elimination, and a grand final in the
-                        main auditorium.</p>
-                    <div class="flex flex-wrap gap-3 md:gap-4 text-[0.6rem] md:text-xs text-gray-400">
-                        <span>Main Campus</span>
-                        <span>09:00 - 18:00</span>
-                        <span>BDT 2,000/team</span>
-                    </div>
-                </div>
-                <div class="flex items-center justify-start sm:justify-center">
-                    <button class="art-btn text-[0.65rem] md:text-xs py-2 px-4 md:px-6">Register</button>
-                </div>
-            </div>
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-red-600 group-hover:w-2 transition-all duration-300"></div>
 
-            <div class="flex flex-col sm:flex-row gap-4 md:gap-8 p-4 md:p-6 border border-gray-100 hover:border-black transition-all duration-300 group hover:shadow-lg fade-in-left scroll-element"
-                style="transition-delay:200ms">
-                <div
-                    class="w-full sm:w-20 md:w-24 flex-shrink-0 flex items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden py-3 sm:py-0">
-                    <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-black cinzel text-black">22</div>
-                        <div class="text-[0.6rem] md:text-xs tracking-[0.2em] uppercase text-gray-400">APR</div>
+                <!-- Date & Individual Banner Visual -->
+                <div class="flex flex-row sm:flex-row lg:flex-col items-center gap-4 flex-shrink-0">
+                    <!-- Date Badge -->
+                    <div class="w-20 sm:w-24 h-24 sm:h-28 flex-shrink-0 flex flex-col items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden rounded-lg group-hover:border-red-600/40 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black cinzel text-red-600 leading-none">13</div>
+                        <div class="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase text-gray-600 mt-1">OCT</div>
+                        <div class="text-[0.55rem] tracking-[0.2em] text-gray-400 mt-0.5 font-medium">2026</div>
+                        <div class="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
                     </div>
-                </div>
-                <div class="flex-1 flex flex-col justify-center">
-                    <div class="flex flex-wrap items-center gap-2 md:gap-4 mb-1 md:mb-2">
-                        <span
-                            class="px-2 md:px-3 py-0.5 md:py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-black text-white cinzel">Workshop</span>
-                        <span class="text-[0.6rem] md:text-xs text-gray-400">Members Only</span>
-                    </div>
-                    <h3 class="cinzel font-bold text-base md:text-2xl mb-1 md:mb-2">Advanced Rebuttal Mechanics</h3>
-                    <p class="text-xs md:text-sm text-gray-500 font-light mb-3 md:mb-4 max-w-2xl">Deep dive into
-                        second-half strategy. Covering shadow extensions, vertical/horizontal development, and framing
-                        clashes.</p>
-                    <div class="flex flex-wrap gap-3 md:gap-4 text-[0.6rem] md:text-xs text-gray-400">
-                        <span>Room 304, Debate Center</span>
-                        <span>14:00 - 17:00</span>
-                        <span>Free for Members</span>
-                    </div>
-                </div>
-                <div class="flex items-center justify-start sm:justify-center">
-                    <button
-                        class="art-btn text-[0.65rem] md:text-xs py-2 px-4 md:px-6 border-gray-300 hover:border-black">RSVP</button>
-                </div>
-            </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 md:gap-8 p-4 md:p-6 border border-gray-100 hover:border-black transition-all duration-300 group hover:shadow-lg fade-in-left scroll-element"
-                style="transition-delay:300ms">
-                <div
-                    class="w-full sm:w-20 md:w-24 flex-shrink-0 flex items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden py-3 sm:py-0">
-                    <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-black cinzel text-red-600">05</div>
-                        <div class="text-[0.6rem] md:text-xs tracking-[0.2em] uppercase text-gray-400">MAY</div>
+                    <!-- Individual Sub-Banner Thumbnail -->
+                    <div class="w-32 sm:w-36 h-24 sm:h-28 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200 bg-gray-900 relative shadow-sm group-hover:shadow-md transition-all">
+                        <img src="{{ url_for('static', filename='images/banner_first_voyage.webp') }}"
+                             onerror="this.onerror=null; this.src='/static/images/banner_first_voyage.png'"
+                             alt="First Voyage - PCDF Public Speaking Competition"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-1 right-1 bg-red-600/90 text-white text-[0.55rem] px-1.5 py-0.5 rounded font-bold uppercase cinzel tracking-wider">
+                            Voyage 01
+                        </div>
                     </div>
                 </div>
+
+                <!-- Content Details -->
                 <div class="flex-1 flex flex-col justify-center">
-                    <div class="flex flex-wrap items-center gap-2 md:gap-4 mb-1 md:mb-2">
-                        <span
-                            class="px-2 md:px-3 py-0.5 md:py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-red-600 text-white cinzel">Championship</span>
-                        <span class="text-[0.6rem] md:text-xs text-gray-400">Invitation Only</span>
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-red-600 text-white font-semibold cinzel rounded-xs shadow-xs">
+                            First Voyage
+                        </span>
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-black text-white font-semibold cinzel rounded-xs">
+                            Public Speaking
+                        </span>
+                        <span class="text-[0.65rem] md:text-xs text-gray-500 font-medium tracking-wider uppercase flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span> Solo Oratory
+                        </span>
                     </div>
-                    <h3 class="cinzel font-bold text-base md:text-2xl mb-1 md:mb-2">Inter-Varsity Championship</h3>
-                    <p class="text-xs md:text-sm text-gray-500 font-light mb-3 md:mb-4 max-w-2xl">The region's most
-                        prestigious university debate championship. 16 top teams, 3 days, British Parliamentary format.
+
+                    <h3 class="cinzel font-bold text-lg sm:text-xl md:text-2xl text-gray-900 group-hover:text-red-600 transition-colors mb-2">
+                        PCDF Public Speaking Competition 2026
+                    </h3>
+                    <p class="text-xs md:text-sm text-gray-600 font-light mb-4 max-w-3xl leading-relaxed">
+                        Setting sail on the First Voyage — the opening stage of our festival dedicated to rhetoric, compelling delivery, and the art of persuasive eloquence. Open for solo orators across all departments to demonstrate platform speaking excellence.
                     </p>
-                    <div class="flex flex-wrap gap-3 md:gap-4 text-[0.6rem] md:text-xs text-gray-400">
-                        <span>Convention Center, Dhaka</span>
-                        <span>3-Day Event</span>
-                        <span>By Invitation</span>
+
+                    <!-- Meta Tags -->
+                    <div class="flex flex-wrap gap-3 sm:gap-5 text-[0.65rem] sm:text-xs text-gray-500 font-medium">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            PCIU Central Auditorium
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            10:00 AM - 05:00 PM
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+                            Solo (Bengali & English)
+                        </span>
                     </div>
                 </div>
-                <div class="flex items-center justify-start sm:justify-center">
-                    <button
-                        class="art-btn text-[0.65rem] md:text-xs py-2 px-4 md:px-6 border-gray-300 hover:border-black">Details</button>
+
+                <!-- CTA Button -->
+                <div class="flex items-center justify-start lg:justify-center flex-shrink-0 pt-2 lg:pt-0">
+                    <a href="/apply" class="art-btn text-[0.65rem] sm:text-xs py-2.5 px-6 font-semibold w-full sm:w-auto text-center">
+                        Register Now
+                    </a>
                 </div>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 md:gap-8 p-4 md:p-6 border border-gray-100 hover:border-black transition-all duration-300 group hover:shadow-lg fade-in-left scroll-element"
-                style="transition-delay:400ms">
-                <div
-                    class="w-full sm:w-20 md:w-24 flex-shrink-0 flex items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden py-3 sm:py-0">
-                    <div class="text-center">
-                        <div class="text-2xl md:text-3xl font-black cinzel text-black">18</div>
-                        <div class="text-[0.6rem] md:text-xs tracking-[0.2em] uppercase text-gray-400">JUN</div>
+            <!-- EVENT 2: NEW WORLD (23 OCT 2026) -->
+            <div class="flex flex-col lg:flex-row gap-5 md:gap-6 p-5 sm:p-6 md:p-7 bg-white rounded-xl border border-gray-200 hover:border-black transition-all duration-300 group hover:shadow-xl fade-in-left scroll-element relative overflow-hidden"
+                style="transition-delay:200ms">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-black group-hover:w-2 transition-all duration-300"></div>
+
+                <!-- Date & Individual Banner Visual -->
+                <div class="flex flex-row sm:flex-row lg:flex-col items-center gap-4 flex-shrink-0">
+                    <!-- Date Badge -->
+                    <div class="w-20 sm:w-24 h-24 sm:h-28 flex-shrink-0 flex flex-col items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden rounded-lg group-hover:border-black/40 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black cinzel text-black leading-none">23</div>
+                        <div class="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase text-gray-600 mt-1">OCT</div>
+                        <div class="text-[0.55rem] tracking-[0.2em] text-gray-400 mt-0.5 font-medium">2026</div>
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                    </div>
+
+                    <!-- Individual Sub-Banner Thumbnail -->
+                    <div class="w-32 sm:w-36 h-24 sm:h-28 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200 bg-gray-900 relative shadow-sm group-hover:shadow-md transition-all">
+                        <img src="{{ url_for('static', filename='images/banner_new_world.webp') }}"
+                             onerror="this.onerror=null; this.src='/static/images/banner_new_world.png'"
+                             alt="New World - PCDF 8th Interdepartmental Debate Competition"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-1 right-1 bg-black/90 text-white text-[0.55rem] px-1.5 py-0.5 rounded font-bold uppercase cinzel tracking-wider border border-white/20">
+                            Voyage 02
+                        </div>
                     </div>
                 </div>
+
+                <!-- Content Details -->
                 <div class="flex-1 flex flex-col justify-center">
-                    <div class="flex flex-wrap items-center gap-2 md:gap-4 mb-1 md:mb-2">
-                        <span
-                            class="px-2 md:px-3 py-0.5 md:py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase border border-gray-300 text-gray-500 cinzel">Social</span>
-                        <span class="text-[0.6rem] md:text-xs text-gray-400">Members + Alumni</span>
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-black text-white font-semibold cinzel rounded-xs shadow-xs">
+                            New World
+                        </span>
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-red-600 text-white font-semibold cinzel rounded-xs">
+                            8th Interdepartmental
+                        </span>
+                        <span class="text-[0.65rem] md:text-xs text-gray-500 font-medium tracking-wider uppercase flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-black"></span> Departmental Clash
+                        </span>
                     </div>
-                    <h3 class="cinzel font-bold text-base md:text-2xl mb-1 md:mb-2">Annual Debate Gala & Awards</h3>
-                    <p class="text-xs md:text-sm text-gray-500 font-light mb-3 md:mb-4 max-w-2xl">Celebrating the
-                        season's achievements. Awards ceremony, alumni networking, keynote address, and the passing of
-                        the gavel.</p>
-                    <div class="flex flex-wrap gap-3 md:gap-4 text-[0.6rem] md:text-xs text-gray-400">
-                        <span>Grand Ballroom, Radisson</span>
-                        <span>19:00 Onwards</span>
-                        <span>Members: Free</span>
+
+                    <h3 class="cinzel font-bold text-lg sm:text-xl md:text-2xl text-gray-900 group-hover:text-red-600 transition-colors mb-2">
+                        PCDF 8th Interdepartmental Debate Championship 2026
+                    </h3>
+                    <p class="text-xs md:text-sm text-gray-600 font-light mb-4 max-w-3xl leading-relaxed">
+                        Venturing into the fierce New World — academic departments clash head-to-head in high-stakes parliamentary debate rounds to prove intellectual supremacy and claim the coveted interdepartmental championship shield.
+                    </p>
+
+                    <!-- Meta Tags -->
+                    <div class="flex flex-wrap gap-3 sm:gap-5 text-[0.65rem] sm:text-xs text-gray-500 font-medium">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            Academic Arenas & Debate Rooms
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            09:30 AM - 06:30 PM
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                            3-Speaker Departmental Teams
+                        </span>
                     </div>
                 </div>
-                <div class="flex items-center justify-start sm:justify-center">
-                    <button
-                        class="art-btn text-[0.65rem] md:text-xs py-2 px-4 md:px-6 border-gray-300 hover:border-black">Invite</button>
+
+                <!-- CTA Button -->
+                <div class="flex items-center justify-start lg:justify-center flex-shrink-0 pt-2 lg:pt-0">
+                    <a href="/apply" class="art-btn text-[0.65rem] sm:text-xs py-2.5 px-6 font-semibold w-full sm:w-auto text-center border-gray-400 hover:border-black">
+                        Register Team
+                    </a>
                 </div>
             </div>
+
+            <!-- EVENT 3: GRAND LINE (30 OCT 2026) -->
+            <div class="flex flex-col lg:flex-row gap-5 md:gap-6 p-5 sm:p-6 md:p-7 bg-white rounded-xl border border-gray-200 hover:border-red-600/60 transition-all duration-300 group hover:shadow-xl fade-in-left scroll-element relative overflow-hidden"
+                style="transition-delay:300ms">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-red-600 group-hover:w-2 transition-all duration-300"></div>
+
+                <!-- Date & Individual Banner Visual -->
+                <div class="flex flex-row sm:flex-row lg:flex-col items-center gap-4 flex-shrink-0">
+                    <!-- Date Badge -->
+                    <div class="w-20 sm:w-24 h-24 sm:h-28 flex-shrink-0 flex flex-col items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden rounded-lg group-hover:border-red-600/40 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black cinzel text-red-600 leading-none">30</div>
+                        <div class="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase text-gray-600 mt-1">OCT</div>
+                        <div class="text-[0.55rem] tracking-[0.2em] text-gray-400 mt-0.5 font-medium">2026</div>
+                        <div class="absolute inset-0 bg-red-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                    </div>
+
+                    <!-- Individual Sub-Banner Thumbnail -->
+                    <div class="w-32 sm:w-36 h-24 sm:h-28 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200 bg-gray-900 relative shadow-sm group-hover:shadow-md transition-all">
+                        <img src="{{ url_for('static', filename='images/banner_grand_line.webp') }}"
+                             onerror="this.onerror=null; this.src='/static/images/banner_grand_line.png'"
+                             alt="Grand Line - PCDF National Debate Fest 2026"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-1 right-1 bg-red-600/90 text-white text-[0.55rem] px-1.5 py-0.5 rounded font-bold uppercase cinzel tracking-wider">
+                            Voyage 03
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Details -->
+                <div class="flex-1 flex flex-col justify-center">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-red-600 text-white font-semibold cinzel rounded-xs shadow-xs">
+                            Grand Line
+                        </span>
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-black text-white font-semibold cinzel rounded-xs">
+                            National Debate Fest
+                        </span>
+                        <span class="text-[0.65rem] md:text-xs text-gray-500 font-medium tracking-wider uppercase flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse"></span> National Open Circuit
+                        </span>
+                    </div>
+
+                    <h3 class="cinzel font-bold text-lg sm:text-xl md:text-2xl text-gray-900 group-hover:text-red-600 transition-colors mb-2">
+                        PCDF National Debate Fest 2026
+                    </h3>
+                    <p class="text-xs md:text-sm text-gray-600 font-light mb-4 max-w-3xl leading-relaxed">
+                        Navigating the legendary Grand Line — Bangladesh's premier university debate institutions, national break adjudicators, and collegiate champions converge for high-octane British Parliamentary clash on the national stage.
+                    </p>
+
+                    <!-- Meta Tags -->
+                    <div class="flex flex-wrap gap-3 sm:gap-5 text-[0.65rem] sm:text-xs text-gray-500 font-medium">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            PCIU Main Campus & Grand Auditoriums
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            09:00 AM - 08:00 PM
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            British Parliamentary (BP) Format
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="flex items-center justify-start lg:justify-center flex-shrink-0 pt-2 lg:pt-0">
+                    <a href="/apply" class="art-btn text-[0.65rem] sm:text-xs py-2.5 px-6 font-semibold w-full sm:w-auto text-center">
+                        Register Delegation
+                    </a>
+                </div>
+            </div>
+
+            <!-- EVENT 4: THE FINAL VOYAGE (31 OCT 2026) -->
+            <div class="flex flex-col lg:flex-row gap-5 md:gap-6 p-5 sm:p-6 md:p-7 bg-white rounded-xl border border-gray-200 hover:border-black transition-all duration-300 group hover:shadow-xl fade-in-left scroll-element relative overflow-hidden"
+                style="transition-delay:400ms">
+                <div class="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-red-600 via-amber-500 to-black group-hover:w-2 transition-all duration-300"></div>
+
+                <!-- Date & Individual Banner Visual -->
+                <div class="flex flex-row sm:flex-row lg:flex-col items-center gap-4 flex-shrink-0">
+                    <!-- Date Badge -->
+                    <div class="w-20 sm:w-24 h-24 sm:h-28 flex-shrink-0 flex flex-col items-center justify-center bg-gray-50 border border-gray-200 relative overflow-hidden rounded-lg group-hover:border-black/40 transition-colors">
+                        <div class="text-3xl sm:text-4xl font-black cinzel text-gray-900 leading-none">31</div>
+                        <div class="text-[0.65rem] md:text-xs font-bold tracking-[0.25em] uppercase text-gray-600 mt-1">OCT</div>
+                        <div class="text-[0.55rem] tracking-[0.2em] text-gray-400 mt-0.5 font-medium">2026</div>
+                        <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                    </div>
+
+                    <!-- Individual Sub-Banner Thumbnail -->
+                    <div class="w-32 sm:w-36 h-24 sm:h-28 flex-shrink-0 rounded-lg overflow-hidden border border-gray-200 bg-gray-900 relative shadow-sm group-hover:shadow-md transition-all">
+                        <img src="{{ url_for('static', filename='images/banner_final_voyage.webp') }}"
+                             onerror="this.onerror=null; this.src='/static/images/banner_final_voyage.png'"
+                             alt="The Final Voyage - Debate Fest Grand Finale & Awards Gala"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute bottom-1 right-1 bg-gradient-to-r from-red-600 to-black text-white text-[0.55rem] px-1.5 py-0.5 rounded font-bold uppercase cinzel tracking-wider border border-white/20">
+                            Voyage 04
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Details -->
+                <div class="flex-1 flex flex-col justify-center">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-2">
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-gradient-to-r from-red-600 to-black text-white font-semibold cinzel rounded-xs shadow-xs">
+                            The Final Voyage
+                        </span>
+                        <span class="px-2.5 py-1 text-[0.6rem] md:text-xs tracking-[0.2em] uppercase bg-black text-white font-semibold cinzel rounded-xs">
+                            Grand Finale
+                        </span>
+                        <span class="text-[0.65rem] md:text-xs text-amber-600 font-medium tracking-wider uppercase flex items-center gap-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-ping"></span> Gala & Awards Ceremony
+                        </span>
+                    </div>
+
+                    <h3 class="cinzel font-bold text-lg sm:text-xl md:text-2xl text-gray-900 group-hover:text-red-600 transition-colors mb-2">
+                        Debate Fest Grand Finale & Awards Gala 2026
+                    </h3>
+                    <p class="text-xs md:text-sm text-gray-600 font-light mb-4 max-w-3xl leading-relaxed">
+                        Reaching the final destination of our grand voyage — the thrilling Championship Grand Finals showdown, coronation of national champions, awards ceremony, VIP keynote addresses, and the celebratory closing gala dinner.
+                    </p>
+
+                    <!-- Meta Tags -->
+                    <div class="flex flex-wrap gap-3 sm:gap-5 text-[0.65rem] sm:text-xs text-gray-500 font-medium">
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            Grand Ballroom & Main Auditorium Stage
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            04:00 PM - 09:30 PM
+                        </span>
+                        <span class="flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+                            All Attendees, Alumni & Dignitaries
+                        </span>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="flex items-center justify-start lg:justify-center flex-shrink-0 pt-2 lg:pt-0">
+                    <a href="/apply" class="art-btn text-[0.65rem] sm:text-xs py-2.5 px-6 font-semibold w-full sm:w-auto text-center border-gray-400 hover:border-black">
+                        RSVP / Pass
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
+
 
 <!-- SECTION: REPORTS & PUBLICATIONS -->
 <section id="reports" class="py-16 md:py-24 px-6 md:px-16 bg-[#fafafa] hairline-border section-reveal">
