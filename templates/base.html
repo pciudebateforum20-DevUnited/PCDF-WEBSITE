@@ -18,6 +18,9 @@
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="image" href="/static/framesnew/frame_0001.webp" type="image/webp">
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -50,6 +53,22 @@
             color: var(--text-dark);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+        }
+
+        html.lenis, html.lenis body {
+            height: auto;
+        }
+        .lenis.lenis-smooth {
+            scroll-behavior: auto !important;
+        }
+        .lenis.lenis-smooth [data-lenis-prevent] {
+            overscroll-behavior: contain;
+        }
+        .lenis.lenis-stopped {
+            overflow: hidden;
+        }
+        .lenis.lenis-scrolling iframe {
+            pointer-events: none;
         }
 
         /* Hide native cursor on desktop fine pointers */
@@ -667,6 +686,9 @@
             min-height: 600px;
             overflow: hidden;
             background-color: #ffffff;
+            contain: paint;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
         }
 
         /* z:0 — art canvas: white bg, red+black lines build up over ~8s */
@@ -677,6 +699,7 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            contain: strict;
         }
 
         /* Complete, prominent central spotlight circle */
@@ -708,8 +731,9 @@
             z-index: 3;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 1.5s ease;
+            transition: opacity 0.4s ease;
             mix-blend-mode: multiply;
+            contain: strict;
         }
 
         #heroFilmCanvas.film-ready {
@@ -2998,27 +3022,34 @@
             window.addEventListener('load', dismissPreloader);
         }
 
-        // --- LENIS SMOOTH SCROLL (SILKY SMOOTH 60FPS/120FPS) ---
+        // --- LENIS SMOOTH SCROLL (SILKY SMOOTH 90FPS/120FPS CHROMIUM ENGINE) ---
         if (typeof Lenis !== 'undefined') {
             const lenis = new Lenis({
-                duration: 1.0,
+                duration: 1.05,
                 easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
                 orientation: 'vertical',
                 gestureOrientation: 'vertical',
                 smoothWheel: true,
                 wheelMultiplier: 1.0,
                 smoothTouch: false,
-                touchMultiplier: 1.5,
+                touchMultiplier: 1.2,
                 infinite: false,
             });
 
             window.lenis = lenis;
 
-            function raf(time) {
-                lenis.raf(time);
+            if (typeof gsap !== 'undefined' && gsap.ticker) {
+                gsap.ticker.add((time) => {
+                    lenis.raf(time * 1000);
+                });
+                gsap.ticker.lagSmoothing(0);
+            } else {
+                function raf(time) {
+                    lenis.raf(time);
+                    requestAnimationFrame(raf);
+                }
                 requestAnimationFrame(raf);
             }
-            requestAnimationFrame(raf);
 
             // Integrate Lenis with GSAP ScrollTrigger cleanly
             if (typeof ScrollTrigger !== 'undefined') {
@@ -3059,20 +3090,20 @@
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
 
-            // General fade-in-up for sections
-            const sections = gsap.utils.toArray('.fade-in-up, section:not(#hero-section):not(#achievements)');
-            sections.forEach((sec) => {
-                gsap.fromTo(sec,
-                    { y: 35, opacity: 0 },
+            // Subtle fade-in-up for inner content elements only (prevents full section layout shifts)
+            const elements = gsap.utils.toArray('.fade-in-up:not(section)');
+            elements.forEach((el) => {
+                gsap.fromTo(el,
+                    { y: 20, opacity: 0 },
                     {
                         y: 0,
                         opacity: 1,
-                        duration: 0.8,
+                        duration: 0.6,
                         ease: "power2.out",
                         clearProps: "transform",
                         scrollTrigger: {
-                            trigger: sec,
-                            start: "top 88%",
+                            trigger: el,
+                            start: "top 92%",
                             once: true
                         }
                     }

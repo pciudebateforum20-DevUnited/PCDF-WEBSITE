@@ -31,10 +31,8 @@ def load_events():
 
 @app.after_request
 def add_cache_headers(response):
-    # Disable cache in local development so changes reflect instantly
-    if os.environ.get('RENDER') or os.environ.get('PRODUCTION'):
-        if request.path.startswith('/static/'):
-            response.headers['Cache-Control'] = 'public, max-age=604800'
+    if request.path.startswith('/static/'):
+        response.headers['Cache-Control'] = 'public, max-age=604800'
     else:
         response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate, max-age=0'
         response.headers['Pragma'] = 'no-cache'

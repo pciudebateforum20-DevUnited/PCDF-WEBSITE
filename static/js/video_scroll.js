@@ -64,14 +64,25 @@
                 cancelAnimationFrame(raf);
             }
         }, { threshold: 0 });
-        observer.observe(heroEl);
+        if (heroEl) observer.observe(heroEl);
 
         function resize() {
-            cw = canvas.width = heroEl.offsetWidth;
-            ch = canvas.height = heroEl.offsetHeight;
+            cw = canvas.width = (heroEl ? heroEl.offsetWidth : window.innerWidth) || window.innerWidth;
+            ch = canvas.height = (heroEl ? heroEl.offsetHeight : window.innerHeight) || window.innerHeight;
+            if (images[frame] && images[frame].complete) {
+                paintCover(ctx, images[frame], cw, ch, HERO_ALPHA);
+            }
         }
-        let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 100); }, { passive: true });
+        let rT; window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 80); }, { passive: true });
         resize();
+
+        function drawHero(idx) {
+            const img = images[idx];
+            if (img && img.complete && img.naturalWidth > 0) {
+                ctx.clearRect(0, 0, cw, ch);
+                paintCover(ctx, img, cw, ch, HERO_ALPHA);
+            }
+        }
 
         function loop(ts) {
             if (!isVisible) return;
@@ -79,25 +90,28 @@
             if (ts - last < MS) return;
             last = ts;
 
-            frame = (frame % FRAME_COUNT) + 1;
-            if (frame > loadedMax) frame = 1;   // safe wrap during load
-
-            ctx.clearRect(0, 0, cw, ch);
-            paintCover(ctx, images[frame], cw, ch, HERO_ALPHA);
+            const maxPlay = Math.min(FRAME_COUNT, Math.max(1, loadedMax));
+            frame = (frame % maxPlay) + 1;
+            drawHero(frame);
         }
 
         function start() {
             if (running) return;
             running = true;
             canvas.classList.add('film-ready');  // CSS opacity 0→1
+            drawHero(1);
             if (isVisible) raf = requestAnimationFrame(loop);
         }
 
         window._heroStart = start;
 
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden) { cancelAnimationFrame(raf); running = false; }
-            else if (!running && loadedMax >= INITIAL_BATCH) start();
+            if (document.hidden) { 
+                cancelAnimationFrame(raf); 
+                running = false; 
+            } else if (!running && loadedMax >= 1) {
+                start();
+            }
         });
     }());
 
@@ -186,18 +200,24 @@
     }());
 
     /* ══════════════════════════════════════════════════════════════════════
-       PRELOADER — non-blocking batched image loading
+       PRELOADER — Progressive & Non-blocking Batched Image Loading
        ══════════════════════════════════════════════════════════════════════ */
     function loadBatch(from, size, done) {
         const to = Math.min(from + size, FRAME_COUNT + 1);
         let n = to - from;
         if (n <= 0) { done && done(); return; }
         for (let i = from; i < to; i++) {
-            if (images[i]) { if (!--n) done && done(); continue; }
+            if (images[i]) { 
+                if (!--n) done && done(); 
+                continue; 
+            }
             const img = new Image();
             images[i] = img;
-            img.onload = img.onerror = function () {
+            img.onload = function () {
                 if (this.naturalWidth) loadedMax = Math.max(loadedMax, i);
+                if (!--n) done && done();
+            };
+            img.onerror = function () {
                 if (!--n) done && done();
             };
             img.src = frameSrc(i);
@@ -205,11 +225,22 @@
     }
 
     function preload() {
-        // Load first 25 frames immediately so Hero loop plays instantly
-        loadBatch(1, 25, () => {
-            loadedMax = 25;
+        // Step 1: Instantly load frame 1 and start immediately
+        const firstImg = new Image();
+        firstImg.onload = function () {
+            images[1] = firstImg;
+            loadedMax = Math.max(loadedMax, 1);
+            if (window._heroStart) window._heroStart();
+        };
+        firstImg.src = frameSrc(1);
+        images[1] = firstImg;
+
+        // Step 2: Load initial batch of 25 frames
+        loadBatch(2, 24, () => {
+            loadedMax = Math.max(loadedMax, 25);
             if (window._heroStart) window._heroStart();
 
+            // Step 3: Lazy-load remaining frames
             const scrollSec = document.getElementById('video-scroll-section');
             let startedRemaining = false;
 
@@ -219,11 +250,14 @@
                 let next = 26;
                 (function more() {
                     if (next > FRAME_COUNT) return;
-                    loadBatch(next, 15, () => { next += 15; setTimeout(more, 100); });
+                    loadBatch(next, 20, () => { 
+                        next += 20; 
+                        setTimeout(more, 60); 
+                    });
                 })();
             }
 
-            if (scrollSec) {
+            if (scrollSec && 'IntersectionObserver' in window) {
                 const obs = new IntersectionObserver((entries) => {
                     if (entries[0].isIntersecting) {
                         obs.disconnect();
@@ -234,9 +268,9 @@
             }
 
             if ('requestIdleCallback' in window) {
-                requestIdleCallback(() => setTimeout(loadRemaining, 1500));
+                requestIdleCallback(() => setTimeout(loadRemaining, 1000));
             } else {
-                setTimeout(loadRemaining, 2500);
+                setTimeout(loadRemaining, 2000);
             }
         });
     }

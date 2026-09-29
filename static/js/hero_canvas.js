@@ -43,12 +43,28 @@
         }
 
         let rT;
-        window.addEventListener('resize', () => { clearTimeout(rT); rT = setTimeout(resize, 80); });
+        window.addEventListener('resize', () => { 
+            clearTimeout(rT); 
+            rT = setTimeout(resize, 80); 
+        }, { passive: true });
 
         heroSection.addEventListener('mousemove', (e) => {
             const rect = canvas.getBoundingClientRect();
             mouse.x = e.clientX - rect.left;
             mouse.y = e.clientY - rect.top;
+        }, { passive: true });
+
+        heroSection.addEventListener('mouseleave', () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
+        });
+
+        heroSection.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                const rect = canvas.getBoundingClientRect();
+                mouse.x = e.touches[0].clientX - rect.left;
+                mouse.y = e.touches[0].clientY - rect.top;
+            }
         }, { passive: true });
 
         heroSection.addEventListener('touchmove', (e) => {
@@ -57,6 +73,16 @@
                 mouse.x = e.touches[0].clientX - rect.left;
                 mouse.y = e.touches[0].clientY - rect.top;
             }
+        }, { passive: true });
+
+        heroSection.addEventListener('touchend', () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
+        }, { passive: true });
+
+        heroSection.addEventListener('touchcancel', () => {
+            mouse.x = width / 2;
+            mouse.y = height / 2;
         }, { passive: true });
 
         resize();

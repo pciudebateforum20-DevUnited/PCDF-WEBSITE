@@ -56,26 +56,47 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let ticking = false;
+    let cachedTop = 0;
+    let cachedHeight = 0;
+
+    function updateSectionMetrics() {
+        cachedTop = framesSection.offsetTop;
+        cachedHeight = framesSection.clientHeight - window.innerHeight;
+    }
+
+    updateSectionMetrics();
+    window.addEventListener('resize', updateSectionMetrics, { passive: true });
+
     window.addEventListener('scroll', () => {
-        const sectionTop = framesSection.offsetTop;
-        const sectionHeight = framesSection.clientHeight - window.innerHeight;
-        const scrollPosition = window.scrollY - sectionTop;
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrollPosition = window.scrollY - cachedTop;
+                if (scrollPosition >= 0 && scrollPosition <= cachedHeight && cachedHeight > 0) {
+                    const scrollFraction = scrollPosition / cachedHeight;
+                    const frameIndex = Math.min(
+                        frameCount - 1,
+                        Math.floor(scrollFraction * frameCount)
+                    );
 
-        if (scrollPosition >= 0 && scrollPosition <= sectionHeight) {
-            const scrollFraction = scrollPosition / sectionHeight;
-            const frameIndex = Math.min(
-                frameCount - 1,
-                Math.floor(scrollFraction * frameCount)
-            );
-
-            if (frameIndex !== currentFrameIndex) {
-                currentFrameIndex = frameIndex;
-                updateFrame(currentFrameIndex);
-            }
-        } else if (scrollPosition < 0) {
-            updateFrame(0);
-        } else if (scrollPosition > sectionHeight) {
-            updateFrame(frameCount - 1);
+                    if (frameIndex !== currentFrameIndex) {
+                        currentFrameIndex = frameIndex;
+                        updateFrame(currentFrameIndex);
+                    }
+                } else if (scrollPosition < 0) {
+                    if (currentFrameIndex !== 0) {
+                        currentFrameIndex = 0;
+                        updateFrame(0);
+                    }
+                } else if (scrollPosition > cachedHeight) {
+                    if (currentFrameIndex !== frameCount - 1) {
+                        currentFrameIndex = frameCount - 1;
+                        updateFrame(frameCount - 1);
+                    }
+                }
+                ticking = false;
+            });
+            ticking = true;
         }
-    });
+    }, { passive: true });
 });
