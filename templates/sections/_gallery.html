@@ -28,6 +28,13 @@
         <!-- MOBILE VIEW ONLY (< md): CLEAN 3-PHOTO BULK CAROUSEL (7 SETS) -->
         <!-- ============================================================== -->
         <div class="block md:hidden mb-6" id="mobileGalleryBulkSection">
+            <!-- Mobile Bulk Navigation Dots -->
+            <div class="flex justify-center items-center gap-2 mb-4" id="mobileBulkDots">
+                <button type="button" class="bulk-dot w-5 h-1.5 rounded-full bg-red-600 transition-all duration-300" onclick="goToBulk(0)"></button>
+                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(1)"></button>
+                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(2)"></button>
+                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(3)"></button>
+            </div>
             
             <!-- Swipeable Bulks Viewport -->
             <div class="relative overflow-hidden rounded-2xl touch-pan-y" id="mobileBulkTrackContainer">
@@ -35,6 +42,7 @@
                     
                     <!-- BULK 1: (3 Photos) -->
                     <div class="w-full flex-shrink-0 space-y-3 px-0.5">
+                        <!-- ROW 1 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
                              onclick="openGalleryModal('/static/img/gallery_showcase/row1_h1.webp', '7th Inter-Department Championship', 'Flagship Tournament • February 2026', '8 University departments clashed in intense parliamentary debates across preliminary and auditorium grand final rounds.')">
                             <img src="/static/img/gallery_showcase/row1_h1.webp" alt="7th Inter-Department Debate Championship" loading="lazy" class="w-full h-full object-cover">
@@ -47,6 +55,7 @@
                             </div>
                         </div>
 
+                        <!-- ROW 2 (2 Small) -->
                         <div class="grid grid-cols-2 gap-3">
                             <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
                                  onclick="openGalleryModal('/static/img/gallery_showcase/row1_h2.webp', 'Annual PCDF Grand Iftar Mahfil', 'Reunion & Community • March 2026', 'Debaters, alumni, and honorable faculty advisors gathered in warm fellowship.')">
@@ -72,10 +81,12 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- BULK 2: (3 Photos) -->
                     <div class="w-full flex-shrink-0 space-y-3 px-0.5">
+                        <!-- ROW 2 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
                              onclick="openGalleryModal('/static/img/gallery_showcase/row2_v1.webp', 'Outdoor Green Campus Debate', 'Campus Debates • May 2026', 'Lively open-air debate circles under open sky and lush greenery.')">
                             <img src="/static/img/gallery_showcase/row2_v1.webp" alt="Outdoor Green Campus Debate" loading="lazy" class="w-full h-full object-cover">
@@ -88,6 +99,7 @@
                             </div>
                         </div>
 
+                        <!-- ROW 4 (2 Small) -->
                         <div class="grid grid-cols-2 gap-3">
                             <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
                                  onclick="openGalleryModal('/static/img/gallery_showcase/row2_v2.webp', 'Oath Taking & Induction', 'Executive Assembly • September 2025', 'Formal oath of leadership and commitment taken on the central stage.')">
@@ -117,6 +129,7 @@
 
                     <!-- BULK 3: (3 Photos) -->
                     <div class="w-full flex-shrink-0 space-y-3 px-0.5">
+                        <!-- ROW 1 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
                              onclick="openGalleryModal('/static/img/gallery_showcase/row3_h1.webp', '37th Batch Grand Orientation', 'Induction & Welcome • January 2026', 'Hundreds of enthusiastic freshmen inducted into the PCDF debating community.')">
                             <img src="/static/img/gallery_showcase/row3_h1.webp" alt="37th Batch Grand Orientation" loading="lazy" class="w-full h-full object-cover">
@@ -129,6 +142,7 @@
                             </div>
                         </div>
 
+                        <!-- ROW 2 (2 Small) -->
                         <div class="grid grid-cols-2 gap-3">
                             <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
                                  onclick="openGalleryModal('/static/img/gallery_showcase/row3_h2.webp', 'Public Speaking & Oratory Clinic', 'Skill Masterclass • October 2025', 'Interactive hall training in stage presence and structured rhetoric.')">
@@ -143,26 +157,28 @@
                             </div>
 
                             <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/row3_h3.webp', 'Inter-Varsity Friendly Debate', 'Inter-Varsity Circuit • August 2025', 'High-spirited debate battle strengthening ties across regional universities.')">
+                                 onclick="openGalleryModal('/static/img/gallery_showcase/row3_h3.webp', 'Inter-University Friendly Debate', 'Inter-Varsity Circuit • August 2025', 'Collegiate intellectual clash fostering debate standards and inter-club friendship.')">
                                 <img src="/static/img/gallery_showcase/row3_h3.webp" alt="Inter-University Friendly Debate" loading="lazy" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-rose-700 text-white text-[9px] font-sans font-bold uppercase">Friendly</span>
+                                    <span class="self-start px-2 py-0.5 rounded-full bg-rose-700 text-white text-[9px] font-sans font-bold uppercase">Friendly Clash</span>
                                     <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Friendly Clash</h4>
+                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Inter-Varsity Debate</h4>
                                         <p class="text-[9px] font-sans text-rose-200">August 2025</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!-- BULK 4: (3 Photos) -->
                     <div class="w-full flex-shrink-0 space-y-3 px-0.5">
+                        <!-- ROW 4 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
                              onclick="openGalleryModal('/static/img/gallery_showcase/row4_v1.webp', 'Debaters Mental Well-being Workshop', 'Special Workshop • November 2025', 'Interactive resilience and psychological balance session for active debaters.')">
                             <img src="/static/img/gallery_showcase/row4_v1.webp" alt="Debaters Mental Well-being Workshop" loading="lazy" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-between p-4">
-                                <span class="self-start px-2.5 py-0.5 rounded-full bg-teal-700 text-white text-[10px] font-sans font-bold uppercase tracking-wider">Well-being</span>
+                                <span class="self-start px-2.5 py-0.5 rounded-full bg-teal-700 text-white text-[10px] font-sans font-bold uppercase tracking-wider">Youth Well-being</span>
                                 <div>
                                     <p class="text-[10px] font-sans font-medium uppercase text-teal-300">November 2025</p>
                                     <h4 class="cinzel font-bold text-sm text-white leading-snug">Mental Well-being Workshop</h4>
@@ -170,12 +186,13 @@
                             </div>
                         </div>
 
+                        <!-- ROW 4 (2 Small) -->
                         <div class="grid grid-cols-2 gap-3">
                             <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/row4_v2.webp', 'Traditional Baishakhi Orator', 'Cultural Heritage • April 2026', 'Debating in festive red-and-white attires celebrating Bengali heritage.')">
+                                 onclick="openGalleryModal('/static/img/gallery_showcase/row4_v2.webp', 'Traditional Baishakhi Orator', 'Cultural Heritage • April 2026', 'Festive oratorical performances embracing traditional Bengali eloquence and cultural pride.')">
                                 <img src="/static/img/gallery_showcase/row4_v2.webp" alt="Traditional Baishakhi Orator" loading="lazy" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-orange-700 text-white text-[9px] font-sans font-bold uppercase">Oratory</span>
+                                    <span class="self-start px-2 py-0.5 rounded-full bg-orange-700 text-white text-[9px] font-sans font-bold uppercase">Festive Oratory</span>
                                     <div>
                                         <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Baishakhi Orator</h4>
                                         <p class="text-[9px] font-sans text-orange-200">April 2026</p>
@@ -184,159 +201,24 @@
                             </div>
 
                             <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/row4_v3.webp', 'Honorary Show Debate Exhibition', 'Showcase Debate • September 2025', 'Exemplary showcase debate featuring top adjudicators and senior debaters.')">
+                                 onclick="openGalleryModal('/static/img/gallery_showcase/row4_v3.webp', 'Honorary Show Debate Exhibition', 'Showcase Debate • September 2025', 'Celebrated debate exhibition demonstrating high-level British Parliamentary arguments.')">
                                 <img src="/static/img/gallery_showcase/row4_v3.webp" alt="Honorary Show Debate Exhibition" loading="lazy" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-rose-800 text-white text-[9px] font-sans font-bold uppercase">Showcase</span>
+                                    <span class="self-start px-2 py-0.5 rounded-full bg-rose-800 text-white text-[9px] font-sans font-bold uppercase">Showcase Debate</span>
                                     <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Show Exhibition</h4>
+                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Honorary Exhibition</h4>
                                         <p class="text-[9px] font-sans text-rose-200">September 2025</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- BULK 5: (3 Photos - Batch Welcomes & Inductions) -->
-                    <div class="w-full flex-shrink-0 space-y-3 px-0.5">
-                        <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
-                             onclick="openGalleryModal('/static/img/gallery_showcase/set5_p1.webp', '35th Batch Grand Welcome Reception', 'Fresher Induction • October 2025', 'Auditorium filled with hundreds of new debaters receiving honorary membership badges.')">
-                            <img src="/static/img/gallery_showcase/set5_p1.webp" alt="35th Batch Grand Welcome Reception" loading="lazy" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-between p-4">
-                                <span class="self-start px-2.5 py-0.5 rounded-full bg-emerald-800 text-white text-[10px] font-sans font-bold uppercase tracking-wider">Fresher Induction</span>
-                                <div>
-                                    <p class="text-[10px] font-sans font-medium uppercase text-emerald-300">October 2025</p>
-                                    <h4 class="cinzel font-bold text-sm text-white leading-snug">35th Batch Grand Welcome</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/set5_p2.webp', '36th Batch Orientation Gathering', 'Batch Welcomes • November 2025', 'Welcoming the 36th batch into parliamentary debating circuits.')">
-                                <img src="/static/img/gallery_showcase/set5_p2.webp" alt="36th Batch Orientation Gathering" loading="lazy" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-cyan-700 text-white text-[9px] font-sans font-bold uppercase">Orientation</span>
-                                    <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">36th Batch Session</h4>
-                                        <p class="text-[9px] font-sans text-cyan-200">November 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/set5_p3.webp', 'Spring 2026 Recruitment Drive', 'Club Enlistment • January 2026', 'Annual membership registration booth lively on campus.')">
-                                <img src="/static/img/gallery_showcase/set5_p3.webp" alt="Spring 2026 Recruitment Drive" loading="lazy" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-red-600 text-white text-[9px] font-sans font-bold uppercase">Recruitment</span>
-                                    <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Spring Drive</h4>
-                                        <p class="text-[9px] font-sans text-red-200">January 2026</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BULK 6: (3 Photos - Outdoor Ramma & Green Lawn Debates) -->
-                    <div class="w-full flex-shrink-0 space-y-3 px-0.5">
-                        <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
-                             onclick="openGalleryModal('/static/img/gallery_showcase/set6_p1.webp', 'Campus Lawn Ramma Debate', 'Outdoor Satire • April 2026', 'Enthusiastic debaters gathered on the university green for festive folk debates.')">
-                            <img src="/static/img/gallery_showcase/set6_p1.webp" alt="Campus Lawn Ramma Debate" loading="lazy" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-between p-4">
-                                <span class="self-start px-2.5 py-0.5 rounded-full bg-amber-700 text-white text-[10px] font-sans font-bold uppercase tracking-wider">Outdoor Satire</span>
-                                <div>
-                                    <p class="text-[10px] font-sans font-medium uppercase text-amber-300">April 2026</p>
-                                    <h4 class="cinzel font-bold text-sm text-white leading-snug">Campus Lawn Ramma Debate</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/set6_p2.webp', 'Green Circle Debate Session', 'Open Speech • April 2026', 'Impromptu arguments presented under natural shade.')">
-                                <img src="/static/img/gallery_showcase/set6_p2.webp" alt="Green Circle Debate Session" loading="lazy" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-green-700 text-white text-[9px] font-sans font-bold uppercase">Lawn Circle</span>
-                                    <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Green Speech</h4>
-                                        <p class="text-[9px] font-sans text-green-200">April 2026</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/set6_p3.webp', 'Sunlight Campus Debate Circle', 'Campus Practice • May 2026', 'Passionate orator addressing the assembly on lawn.')">
-                                <img src="/static/img/gallery_showcase/set6_p3.webp" alt="Sunlight Campus Debate Circle" loading="lazy" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-yellow-700 text-white text-[9px] font-sans font-bold uppercase">Outdoor</span>
-                                    <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">Sunlight Circle</h4>
-                                        <p class="text-[9px] font-sans text-yellow-200">May 2026</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- BULK 7: (3 Photos - National Circuit Delegations) -->
-                    <div class="w-full flex-shrink-0 space-y-3 px-0.5">
-                        <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
-                             onclick="openGalleryModal('/static/img/gallery_showcase/set7_p1.webp', 'CUET National Debate Fest Delegation', 'National Circuit • July 2026', 'PCDF debaters and breaking adjudicator on the national university tournament stage.')">
-                            <img src="/static/img/gallery_showcase/set7_p1.webp" alt="CUET National Debate Fest Delegation" loading="lazy" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-between p-4">
-                                <span class="self-start px-2.5 py-0.5 rounded-full bg-red-800 text-white text-[10px] font-sans font-bold uppercase tracking-wider">National Stage</span>
-                                <div>
-                                    <p class="text-[10px] font-sans font-medium uppercase text-red-300">July 2026</p>
-                                    <h4 class="cinzel font-bold text-sm text-white leading-snug">CUET National Fest Delegation</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/set7_p2.webp', 'USTC National Debate Delegation', 'Inter-Varsity Fest • August 2025', 'Competing with excellence at USTC National tournament.')">
-                                <img src="/static/img/gallery_showcase/set7_p2.webp" alt="USTC National Debate Delegation" loading="lazy" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-purple-800 text-white text-[9px] font-sans font-bold uppercase">Inter-Varsity</span>
-                                    <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">USTC National</h4>
-                                        <p class="text-[9px] font-sans text-purple-200">August 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="group relative overflow-hidden aspect-[4/3] rounded-xl cursor-pointer shadow-md bg-black"
-                                 onclick="openGalleryModal('/static/img/gallery_showcase/set7_p3.webp', 'CUDS Divisional Debate Championship', 'Divisional Stage • September 2025', 'Debaters representing PCDF at divisional championship.')">
-                                <img src="/static/img/gallery_showcase/set7_p3.webp" alt="CUDS Divisional Debate Championship" loading="lazy" class="w-full h-full object-cover">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex flex-col justify-between p-3">
-                                    <span class="self-start px-2 py-0.5 rounded-full bg-blue-900 text-white text-[9px] font-sans font-bold uppercase">Divisional</span>
-                                    <div>
-                                        <h4 class="cinzel font-bold text-xs text-white leading-tight line-clamp-1">CUDS Divisional</h4>
-                                        <p class="text-[9px] font-sans text-blue-200">September 2025</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-
-            <!-- Clean Mobile Pagination Dots (No loading bar or text counter) -->
-            <div class="flex items-center justify-center gap-1.5 mt-3" id="mobileBulkDots">
-                <button type="button" class="bulk-dot w-5 h-1.5 rounded-full bg-red-600 transition-all duration-300" onclick="goToBulk(0)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(1)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(2)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(3)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(4)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(5)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(6)"></button>
-            </div>
         </div>
-
+        
         <!-- ============================================================== -->
-        <!-- DESKTOP VIEW ONLY (>= md): COMPLETE 4-ROW EDITORIAL GRID -->
+        <!-- DESKTOP VIEW ONLY
         <!-- ============================================================== -->
         <div class="hidden md:block">
             
@@ -629,7 +511,7 @@
     // MOBILE 3-PHOTO BULK CAROUSEL LOGIC WITH AUTO-SWAP & TOUCH SWIPE (7 SETS)
     // =========================================================================
     let currentBulkIndex = 0;
-    const totalBulks = 7;
+    const totalBulks = 2;
     const bulkIntervalMs = 3500; // Auto-transition interval
     let autoBulkTimer = null;
 
