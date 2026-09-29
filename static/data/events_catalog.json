@@ -1,59 +1,5 @@
 [
   {
-    "id": "pcdf-debate-fest-2026",
-    "title": "PCDF 1st Debate Fest & Oratory Festival 2026",
-    "category": "Flagship Festival",
-    "year": "2026",
-    "date_label": "October 2026",
-    "tag": "Grand Voyage Edition",
-    "summary": "A 4-stage mega festival across October 2026 encompassing the Public Speaking Competition (13 Oct), 8th Interdepartmental Debate (23 Oct), National Debate Fest BP (30 Oct), and the Grand Finale Gala (31 Oct).",
-    "stats": [
-      "4 Voyage Stages",
-      "100+ Debaters",
-      "National Open BP",
-      "Auditorium Grand Gala"
-    ],
-    "images": [
-      {
-        "url": "/static/images/pcdf_debate_fest_2026_banner.webp",
-        "filename": "pcdf_debate_fest_2026_banner.webp",
-        "width": 1024,
-        "height": 512,
-        "size_kb": 120.0
-      },
-      {
-        "url": "/static/images/banner_first_voyage.webp",
-        "filename": "banner_first_voyage.webp",
-        "width": 260,
-        "height": 300,
-        "size_kb": 35.0
-      },
-      {
-        "url": "/static/images/banner_new_world.webp",
-        "filename": "banner_new_world.webp",
-        "width": 265,
-        "height": 300,
-        "size_kb": 35.0
-      },
-      {
-        "url": "/static/images/banner_grand_line.webp",
-        "filename": "banner_grand_line.webp",
-        "width": 265,
-        "height": 300,
-        "size_kb": 35.0
-      },
-      {
-        "url": "/static/images/banner_final_voyage.webp",
-        "filename": "banner_final_voyage.webp",
-        "width": 274,
-        "height": 300,
-        "size_kb": 35.0
-      }
-    ],
-    "featured_image": "/static/images/pcdf_debate_fest_2026_banner.webp",
-    "image_count": 5
-  },
-  {
     "id": "7th-inter-dept",
     "title": "7th Inter-Department Debate Championship",
     "category": "Championship",
