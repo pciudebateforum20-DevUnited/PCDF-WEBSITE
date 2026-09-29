@@ -826,9 +826,12 @@
         </div>
     </div>
 
-    <!-- BACKGROUND SCROLLING PCDF INFO (Movie Credits Style - SEAMLESS) -->
-    <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-        <div class="animate-marquee-vertical flex flex-col opacity-50 text-center cinzel" style="color: #8b1e1e">
+    <!-- The actual interactive canvas (Geometric Structure - Under Text) -->
+    <canvas id="argument-map" class="absolute inset-0 z-[1] w-full h-full cursor-crosshair"></canvas>
+
+    <!-- BACKGROUND SCROLLING PCDF INFO (Movie Credits Style - UPPER LAYER OVER GEOMETRIC CANVAS) -->
+    <div class="absolute inset-0 z-10 pointer-events-none select-none overflow-hidden">
+        <div class="animate-marquee-vertical flex flex-col opacity-60 text-center cinzel" style="color: #8b1e1e">
             <!-- Set 1 -->
             <div class="flex flex-col gap-12 sm:gap-20 pb-12 sm:pb-20">
                 <div class="max-w-4xl mx-auto px-4 pt-12 sm:pt-20">
@@ -887,7 +890,7 @@
     </style>
 
     <!-- Subtle Minimal PCDF Archival Annotations (Top Right) -->
-    <div class="absolute top-6 right-6 md:top-10 md:right-10 z-0 pointer-events-none text-right hidden sm:block opacity-40 select-none">
+    <div class="absolute top-6 right-6 md:top-10 md:right-10 z-20 pointer-events-none text-right hidden sm:block opacity-40 select-none">
         <div class="flex items-center justify-end gap-2 mb-1">
             <span class="text-[8.5px] font-mono tracking-[0.35em] uppercase text-[#8b7d6b]">REG. CODEX // PCDF-PCIU</span>
             <span class="w-1.5 h-1.5 rounded-full bg-[#8b1e1e]"></span>
@@ -897,7 +900,7 @@
     </div>
 
     <!-- Subtle Minimal Coordinates & Foundation (Bottom Left) -->
-    <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-0 pointer-events-none hidden sm:block opacity-35 select-none">
+    <div class="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-20 pointer-events-none hidden sm:block opacity-35 select-none">
         <div class="flex items-center gap-2">
             <span class="w-1.5 h-1.5 rounded-full bg-[#8b1e1e]"></span>
             <span class="text-[8.5px] font-mono tracking-[0.35em] uppercase text-[#8b7d6b]">PCDF FORUM • EST. 2023</span>
@@ -909,9 +912,6 @@
     <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none max-w-lg lg:max-w-xl">
         <h2 class="text-2xl md:text-4xl font-bold cinzel uppercase text-[#2c2825] fade-in-up">Architecture of Logic</h2>
     </div>
-
-    <!-- The actual interactive canvas -->
-    <canvas id="argument-map" class="absolute inset-0 z-10 w-full h-full cursor-crosshair"></canvas>
 
     <!-- Vintage Info Card (Hidden by default, shown on node hover) -->
     <div id="node-info-card"
