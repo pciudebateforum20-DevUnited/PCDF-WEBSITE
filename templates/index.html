@@ -789,13 +789,13 @@
 
 <!-- SECTION 2.5: RENAISSANCE OF THOUGHT -->
 <section id="renaissance-section"
-    class="relative w-full min-h-[75vh] md:h-[85vh] bg-[#fdfcf9] overflow-hidden border-y border-[#e2dfd8] flex flex-col justify-between">
+    class="relative w-full min-h-[80vh] md:min-h-[85vh] bg-[#fdfcf9] overflow-hidden border-y border-[#e2dfd8] flex flex-col justify-between">
     <!-- Vintage paper texture overlay -->
     <div class="absolute inset-0 z-0 opacity-40 pointer-events-none"
         style="background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22/%3E%3C/svg%3E'); mix-blend-mode: multiply;">
     </div>
 
-    <!-- PCDF Crest / Watermark & Subtle Architectural Blueprint Background -->
+    <!-- PCDF Crest / Watermark & Architectural Blueprint Background Grid -->
     <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
         <!-- Central PCDF Emblem Watermark with subtle celestial drafting circles -->
         <div class="relative w-[320px] sm:w-[420px] md:w-[520px] lg:w-[600px] aspect-square flex items-center justify-center">
@@ -806,6 +806,57 @@
             <!-- PCDF Logo Emblem Watermark -->
             <img src="{{ url_for('static', filename='images/logoPCDF.png') }}" alt=""
                 class="w-44 sm:w-56 md:w-72 h-44 sm:h-56 md:h-72 object-contain opacity-[0.05] mix-blend-multiply filter contrast-125">
+        </div>
+    </div>
+
+    <!-- BACKGROUND INFORMATIONAL BLUEPRINT PLATES (Subtle, architectural background text about PCDF) -->
+    <div class="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden p-6 md:p-10 hidden sm:block">
+        
+        <!-- Blueprint Plate 1: WHAT IS PCDF? (Upper-Mid Left) -->
+        <div class="absolute top-28 sm:top-36 left-8 sm:left-12 max-w-[280px] lg:max-w-[320px] opacity-35 hover:opacity-75 transition-opacity duration-500">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-[#8b1e1e] font-bold">[ CODEX 01 // DEFINITION ]</span>
+                <div class="h-[1px] flex-1 bg-[#d4cbb3]/60"></div>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold cinzel text-[#2c2825] uppercase tracking-wider">What is PCDF?</h4>
+            <p class="text-[10px] sm:text-[11px] font-serif text-[#5c544d] leading-relaxed mt-1 italic">
+                The premier student-led debating society of Port City International University (PCIU). A platform cultivating critical reasoning, public speaking eloquence, and rational inquiry.
+            </p>
+            <div class="flex items-center gap-2 mt-1.5 text-[8px] font-mono text-[#8b7d6b]">
+                <span class="px-1.5 py-0.5 bg-white/60 border border-[#d4cbb3]/50 rounded-xs">INTRA-VARSITY</span>
+                <span class="px-1.5 py-0.5 bg-white/60 border border-[#d4cbb3]/50 rounded-xs">NATIONAL BP</span>
+                <span class="px-1.5 py-0.5 bg-white/60 border border-[#d4cbb3]/50 rounded-xs">EST. 2023</span>
+            </div>
+        </div>
+
+        <!-- Blueprint Plate 2: WHY PCDF / THE PHILOSOPHY (Center-Bottom) -->
+        <div class="absolute bottom-16 sm:bottom-20 left-1/4 sm:left-1/3 max-w-[280px] lg:max-w-[340px] opacity-30 hover:opacity-75 transition-opacity duration-500 -translate-x-12">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-[#8b1e1e] font-bold">[ CODEX 02 // PHILOSOPHY ]</span>
+                <div class="h-[1px] flex-1 bg-[#d4cbb3]/60"></div>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold cinzel text-[#2c2825] uppercase tracking-wider">Why We Debate</h4>
+            <p class="text-[10px] sm:text-[11px] font-serif text-[#5c544d] leading-relaxed mt-1 italic">
+                "Every argument is a blank canvas. Logic is the structure. Passion is the color." We strip away the noise to build stunning geometric patterns of thought.
+            </p>
+            <div class="text-[8.5px] font-mono text-[#8b1e1e] mt-1 font-semibold tracking-wider">
+                ✦ "WE DO MORE THAN DEBATE."
+            </div>
+        </div>
+
+        <!-- Blueprint Plate 3: CORE GOALS & PILLARS (Top Center-Right) -->
+        <div class="absolute top-24 sm:top-28 right-1/4 md:right-[38%] max-w-[240px] lg:max-w-[280px] opacity-30 hover:opacity-75 transition-opacity duration-500">
+            <div class="flex items-center gap-2 mb-1">
+                <span class="text-[8px] font-mono tracking-[0.3em] uppercase text-[#8b1e1e] font-bold">[ CODEX 03 // GOALS ]</span>
+                <div class="h-[1px] flex-1 bg-[#d4cbb3]/60"></div>
+            </div>
+            <h4 class="text-xs sm:text-sm font-bold cinzel text-[#2c2825] uppercase tracking-wider">Strategic Pillars</h4>
+            <ul class="text-[9.5px] sm:text-[10.5px] font-mono text-[#5c544d] space-y-1 mt-1">
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">01.</span> Rhetorical Eloquence</li>
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">02.</span> Parliamentary Mastery</li>
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">03.</span> National Circuit Excellence</li>
+                <li class="flex items-center gap-1.5"><span class="text-[#8b1e1e]">04.</span> Ethical Leadership</li>
+            </ul>
         </div>
     </div>
 
@@ -828,19 +879,26 @@
         <div class="text-[9.5px] font-mono tracking-[0.25em] text-[#5c544d] mt-0.5 uppercase">22.3569° N, 91.7832° E • CHITTAGONG</div>
     </div>
 
-    <!-- UI Overlay for the map (Top Left Title) -->
-    <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none">
+    <!-- UI Overlay for the map (Top Left Title + Live Animated Typewriter Telemetry) -->
+    <div class="absolute top-6 left-6 md:top-10 md:left-10 z-20 pointer-events-none max-w-lg lg:max-w-xl">
         <div class="flex items-center gap-2 mb-1.5">
-            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] inline-block"></span>
-            <h3 class="text-[0.65rem] tracking-[0.4em] uppercase text-[#8b7d6b] font-semibold blur-in">Classical
-                Rhetoric</h3>
+            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] inline-block animate-pulse"></span>
+            <h3 class="text-[0.65rem] tracking-[0.4em] uppercase text-[#8b7d6b] font-semibold blur-in">Classical Rhetoric</h3>
         </div>
         <h2 class="text-2xl md:text-4xl font-bold cinzel uppercase text-[#2c2825] fade-in-up">Architecture of Logic</h2>
-        <p class="text-[#5c544d] text-xs md:text-sm mt-2 md:mt-4 max-w-xs md:max-w-sm fade-in-up leading-relaxed"
+        <p class="text-[#5c544d] text-xs md:text-sm mt-1.5 md:mt-2.5 max-w-xs md:max-w-sm fade-in-up leading-relaxed"
             style="transition-delay: 100ms;">
             Explore the geometric foundations of a perfect argument. <br class="hidden sm:block">
-            Hover over the classical focal points to reveal the principles of rhetoric.
+            Hover over classical focal points to reveal rhetoric principles.
         </p>
+
+        <!-- LIVE ANIMATED TYPEWRITER TRANSMISSION (Eye-catchy PCDF Information Stream) -->
+        <div class="mt-3 md:mt-4 pointer-events-auto inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-[#d4cbb3] shadow-xs max-w-full group hover:border-[#8b1e1e]/40 transition-colors">
+            <span class="w-2 h-2 rounded-full bg-[#8b1e1e] shrink-0 animate-ping"></span>
+            <span class="text-[8.5px] sm:text-[9.5px] font-mono tracking-wider uppercase text-[#8b1e1e] font-bold shrink-0">CODEX LOG:</span>
+            <span id="logic-typewriter-text" class="text-[10px] sm:text-[11.5px] font-mono text-[#2c2825] font-semibold truncate"></span>
+            <span class="inline-block w-1.5 h-3 bg-[#8b1e1e] animate-pulse -ml-1 shrink-0"></span>
+        </div>
     </div>
 
     <!-- The actual interactive canvas -->
@@ -1021,6 +1079,47 @@
             codexCard.addEventListener('mouseleave', () => {
                 codexCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
             });
+        }
+
+        // 3. Live Animated Typewriter Telemetry Stream (Cycling PCDF Information)
+        const typewriterEl = document.getElementById('logic-typewriter-text');
+        if (typewriterEl) {
+            const telemetryMessages = [
+                "WHAT IS PCDF? — The premier student-led debating society of Port City International University.",
+                "WHY PCDF? — Where logic is the structure, passion is the color, and reason conquers noise.",
+                "OUR PURPOSE — Cultivating critical thinking, eloquent public speaking, and parliamentary supremacy.",
+                "CORE GOALS — BP/AP mastery, national circuit championship breaks, and ethical leadership.",
+                "OUR MOTTO — \"We do more than debate.\" — Estd. 2023, Chittagong, Bangladesh."
+            ];
+            let msgIdx = 0;
+            let charIdx = 0;
+            let isDeleting = false;
+            let typingSpeed = 40;
+
+            function typeLoop() {
+                const currentMsg = telemetryMessages[msgIdx];
+                if (isDeleting) {
+                    typewriterEl.textContent = currentMsg.substring(0, charIdx - 1);
+                    charIdx--;
+                    typingSpeed = 18;
+                } else {
+                    typewriterEl.textContent = currentMsg.substring(0, charIdx + 1);
+                    charIdx++;
+                    typingSpeed = 38;
+                }
+
+                if (!isDeleting && charIdx === currentMsg.length) {
+                    isDeleting = true;
+                    typingSpeed = 2400; // Pause when complete
+                } else if (isDeleting && charIdx === 0) {
+                    isDeleting = false;
+                    msgIdx = (msgIdx + 1) % telemetryMessages.length;
+                    typingSpeed = 400; // Pause before next sentence
+                }
+
+                setTimeout(typeLoop, typingSpeed);
+            }
+            typeLoop();
         }
     });
 </script>
