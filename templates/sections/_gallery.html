@@ -32,15 +32,13 @@
             <div class="flex justify-center items-center gap-2 mb-4" id="mobileBulkDots">
                 <button type="button" class="bulk-dot w-5 h-1.5 rounded-full bg-red-600 transition-all duration-300" onclick="goToBulk(0)"></button>
                 <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(1)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(2)"></button>
-                <button type="button" class="bulk-dot w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300" onclick="goToBulk(3)"></button>
             </div>
             
             <!-- Swipeable Bulks Viewport -->
             <div class="relative overflow-hidden rounded-2xl touch-pan-y" id="mobileBulkTrackContainer">
                 <div id="mobileBulkTrack" class="flex transition-transform duration-500 ease-out" style="transform: translateX(0%);">
                     
-                    <!-- BULK 1: (3 Photos) -->
+                    <!-- BULK 1: (6 Photos, 4 Rows) -->
                     <div class="w-full flex-shrink-0 space-y-3 px-0.5">
                         <!-- ROW 1 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
@@ -82,11 +80,7 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <!-- BULK 2: (3 Photos) -->
-                    <div class="w-full flex-shrink-0 space-y-3 px-0.5">
-                        <!-- ROW 2 (Large) -->
+                        <!-- ROW 3 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
                              onclick="openGalleryModal('/static/img/gallery_showcase/row2_v1.webp', 'Outdoor Green Campus Debate', 'Campus Debates • May 2026', 'Lively open-air debate circles under open sky and lush greenery.')">
                             <img src="/static/img/gallery_showcase/row2_v1.webp" alt="Outdoor Green Campus Debate" loading="lazy" class="w-full h-full object-cover">
@@ -127,7 +121,7 @@
                         </div>
                     </div>
 
-                    <!-- BULK 3: (3 Photos) -->
+                    <!-- BULK 2: (6 Photos, 4 Rows) -->
                     <div class="w-full flex-shrink-0 space-y-3 px-0.5">
                         <!-- ROW 1 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
@@ -169,11 +163,7 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <!-- BULK 4: (3 Photos) -->
-                    <div class="w-full flex-shrink-0 space-y-3 px-0.5">
-                        <!-- ROW 4 (Large) -->
+                        <!-- ROW 3 (Large) -->
                         <div class="group relative overflow-hidden aspect-[16/10] rounded-xl cursor-pointer shadow-md bg-black"
                              onclick="openGalleryModal('/static/img/gallery_showcase/row4_v1.webp', 'Debaters Mental Well-being Workshop', 'Special Workshop • November 2025', 'Interactive resilience and psychological balance session for active debaters.')">
                             <img src="/static/img/gallery_showcase/row4_v1.webp" alt="Debaters Mental Well-being Workshop" loading="lazy" class="w-full h-full object-cover">
