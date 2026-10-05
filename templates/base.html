@@ -52,6 +52,12 @@
             overflow-x: hidden;
         }
 
+        @media (max-width: 768px) {
+            html {
+                font-size: 17px;
+            }
+        }
+
         html.lenis, html.lenis body {
             height: auto;
         }
@@ -801,7 +807,7 @@
         }
 
         .title-wrapper h2 {
-            font-size: clamp(0.55rem, 1.6vw, 0.85rem);
+            font-size: clamp(0.65rem, 2vw, 0.95rem);
             letter-spacing: 0.4em;
             margin: 0 0 0.8rem 0;
             white-space: nowrap;
@@ -893,6 +899,7 @@
             color: var(--text-dark);
             padding: 12px 32px;
             font-family: 'Cinzel', serif;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             font-size: 0.8rem;
@@ -901,6 +908,9 @@
             position: relative;
             overflow: hidden;
             pointer-events: auto;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
 
         .art-btn::before {
