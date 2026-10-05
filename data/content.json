@@ -263,43 +263,43 @@
         "items": [
           {
             "heading": "President",
-            "text": "Aarav Rahman — sets the vision and represents PCDF externally.",
-            "image": "",
+            "text": "Asabul Islam Rutul — sets the strategic vision and represents PCDF across national collegiate forums.",
+            "image": "/static/img/committee_members/asabul_islam_rutul.webp",
             "value": "",
             "label": ""
           },
           {
             "heading": "Vice President",
-            "text": "Sarah Khan — oversees training and tournament preparation.",
-            "image": "",
+            "text": "Muhammad Ibrahim — directs tournament preparations, competitive debating squads, and speaker development.",
+            "image": "/static/img/committee_members/muhammad_ibrahim.webp",
             "value": "",
             "label": ""
           },
           {
-            "heading": "Secretary General",
-            "text": "Mehdi Hasan — coordinates logistics and records.",
-            "image": "",
+            "heading": "Joint Secretary",
+            "text": "Umme Kulsum — leads organisational management and administrative coordination.",
+            "image": "/static/img/committee_members/umme_kulsum.webp",
             "value": "",
             "label": ""
           },
           {
-            "heading": "Treasurer",
-            "text": "Nafisa Faruque — manages the budget and partnerships.",
-            "image": "",
+            "heading": "Debate Secretary",
+            "text": "Jahedul Islam Rafi — manages debate modules, motions, and competitive workshops.",
+            "image": "/static/img/committee_members/jahedul_islam_rafi.webp",
             "value": "",
             "label": ""
           },
           {
-            "heading": "Communications Director",
-            "text": "Leena Aktar — leads media, newsletter, and socials.",
-            "image": "",
+            "heading": "Finance Secretary",
+            "text": "Fahmida Rubaiyat Nazifa — manages forum budget, sponsorship, and fiscal planning.",
+            "image": "/static/img/committee_members/fahmida_rubaiyat_nazifa.webp",
             "value": "",
             "label": ""
           },
           {
-            "heading": "Tournament Director",
-            "text": "Tariq Aziz — plans and runs PCDF events.",
-            "image": "",
+            "heading": "Press & Media Secretary",
+            "text": "Taqi Mahmud Chowdhury — heads public relations, branding, and media communications.",
+            "image": "/static/img/committee_members/taqi_mahmud_chowdhury.webp",
             "value": "",
             "label": ""
           }
@@ -857,14 +857,14 @@
         "image": "",
         "items": [
           {
-            "heading": "Aarav Rahman · President",
+            "heading": "Asabul Islam Rutul · President",
             "text": "PCDF turned my fear of public speaking into my favourite weapon.",
             "image": "",
             "value": "",
             "label": ""
           },
           {
-            "heading": "Sarah Khan · Vice President",
+            "heading": "Muhammad Ibrahim · Vice President",
             "text": "The discipline of rebuilding my argument under fire is the most useful skill I learned.",
             "image": "",
             "value": "",

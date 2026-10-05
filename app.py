@@ -291,11 +291,11 @@ DEFAULTS = {
         'sections': [
             {'layout': 'cards', 'title': 'Voices', 'subtitle': 'In Their Words', 'text': '', 'image': '',
              'items': [
-                 {'heading': 'Aarav Rahman · President', 'text': 'PCDF turned my fear of public speaking into my favourite weapon.', 'image': '', 'value': '', 'label': ''},
-                 {'heading': 'Sarah Khan · Vice President', 'text': 'The discipline of rebuilding my argument under fire is the most useful skill I learned.', 'image': '', 'value': '', 'label': ''},
+                 {'heading': 'Asabul Islam Rutul · President', 'text': 'PCDF turned my fear of public speaking into my favourite weapon.', 'image': '', 'value': '', 'label': ''},
+                 {'heading': 'Muhammad Ibrahim · Vice President', 'text': 'The discipline of rebuilding my argument under fire is the most useful skill I learned.', 'image': '', 'value': '', 'label': ''},
                  {'heading': 'Imran Hossain · Alumnus', 'text': 'I watch our members out-think people with twice their experience. That is the training paying off.', 'image': '', 'value': '', 'label': ''},
-                 {'heading': 'Nafisa Faruque · Treasurer', 'text': 'I joined for the debates and stayed for the people.', 'image': '', 'value': '', 'label': ''},
-                 {'heading': 'Mehdi Hasan · Secretary General', 'text': 'Our school outreach kids now run their own debates. That ripple effect is why I volunteer.', 'image': '', 'value': '', 'label': ''},
+                 {'heading': 'Fahmida Rubaiyat Nazifa · Finance Secretary', 'text': 'I joined for the debates and stayed for the leadership.', 'image': '', 'value': '', 'label': ''},
+                 {'heading': 'Umme Kulsum · Joint Secretary', 'text': 'Our outreach and competitive debaters now thrive across national opens. That is why I love PCDF.', 'image': '', 'value': '', 'label': ''},
                  {'heading': 'Partner · BRAC Bank', 'text': 'Sponsoring PCDF was an easy yes. We get sharp, thoughtful young people.', 'image': '', 'value': '', 'label': ''}]},
         ],
     },
@@ -888,10 +888,73 @@ def admin_api_upload():
     return jsonify({'ok': True, 'url': url})
 
 
+def load_events_catalog():
+    events_path = os.path.join(BASE_DIR, 'static', 'data', 'events_catalog.json')
+    if os.path.exists(events_path):
+        try:
+            with open(events_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return []
+
+
+def get_piddy_fallback_reply(user_msg):
+    """
+    Intelligent instant fallback generator when external API is unreachable or rate-limited.
+    Provides accurate, helpful, plain-text answers in English and Bengali.
+    """
+    msg_lower = (user_msg or '').lower().strip()
+    is_bn = any(ord(c) >= 0x0980 and ord(c) <= 0x09FF for c in user_msg) or any(w in msg_lower for w in ['kemon', 'ki', 'ke', 'kobe', 'taka', 'koto', 'nam', 'president ke', 'somporke'])
+    
+    # 1. President / Leadership / Committee queries
+    if any(k in msg_lower for k in ['president', 'presedent', 'head', 'sabha', 'shobhapoti', 'সভাপতির', 'সভাপতি', 'নেতৃত্ব', 'leader', 'committee', 'vp', 'vice president', 'secretary']):
+        if 'vice' in msg_lower or 'vp' in msg_lower or 'সহ-সভাপতি' in msg_lower:
+            if is_bn:
+                return "পিসিআইইউ ডিবেটিং ফোরাম (PCDF)-এর বর্তমান সহ-সভাপতি (Vice President) হলেন মুহাম্মদ ইব্রাহিম (Muhammad Ibrahim)। তিনি বিতর্ক প্রশিক্ষণ ও টুর্নামেন্ট প্রস্তুতি তত্ত্বাবধান করেন।"
+            return "The Vice President of the PCIU Debating Forum (PCDF) is Muhammad Ibrahim (Operations & Training). He directs competitive training, tournament preparations, and internal leagues."
+        if 'secretary' in msg_lower or 'সেক্রেটারি' in msg_lower:
+            if is_bn:
+                return "PCDF-এর বর্তমান সেক্রেটারিয়েট নেতৃত্ব:\n\n- যুগ্ম সম্পাদক (Joint Secretary): উম্মে কুলসুম (Umme Kulsum)\n- বিতর্ক সম্পাদক (Debate Secretary): জাহেদুল ইসলাম রাফি (Jahedul Islam Rafi)\n- অর্থ সম্পাদক (Finance Secretary): ফাহমিদা রুবাইয়াত নাজিফা (Fahmida Rubaiyat Nazifa)\n- প্রচার ও মিডিয়া সম্পাদক: তাকী মাহমুদ চৌধুরী (Taqi Mahmud Chowdhury)\n- দপ্তর সম্পাদক: মো. সোহরাফ (Md. Sohraf)"
+            return "PCDF Current Secretariat Leadership:\n\n- Joint Secretary: Umme Kulsum\n- Debate Secretary: Jahedul Islam Rafi\n- Finance Secretary: Fahmida Rubaiyat Nazifa\n- Press & Media Secretary: Taqi Mahmud Chowdhury\n- Office Secretary: Md. Sohraf"
+        if is_bn:
+            return "পিসিআইইউ ডিবেটিং ফোরাম (PCDF)-এর বর্তমান সভাপতি (President) হলেন আসাবুল ইসলাম রুতুল (Asabul Islam Rutul)। তিনি ক্লাবের সার্বিক কৌশলগত দিকনির্দেশনা ও জাতীয় পর্যায়ের প্রতিনিধিত্ব করেন।\n\nসহ-সভাপতি হলেন মুহাম্মদ ইব্রাহিম (Muhammad Ibrahim)।"
+        return "The current President of the PCIU Debating Forum (PCDF) is Asabul Islam Rutul (Executive Head).\n\nThe Vice President is Muhammad Ibrahim (Operations & Training)."
+
+    # 2. Fees / Cost / Entry queries
+    if any(k in msg_lower for k in ['fee', 'entry', 'cost', 'taka', 'free', 'tk', 'টাকা', 'ফি', 'খরচ', 'বেতন']):
+        if is_bn:
+            return "পিসিআইইউ ডিবেটিং ফোরামে (PCDF) কোনো এন্ট্রি ফি বা মাসিক ফি নেই (০ টাকা / সম্পূর্ণ বিনামূল্যে)।\n\nনির্বাচিত পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটির সকল শিক্ষার্থীর জন্য মেম্বারশিপ ও প্রশিক্ষণ সম্পূর্ণ ফ্রি।"
+        return "Joining and participating in the PCIU Debating Forum (PCDF) is 100% Free (0 Taka / 0 BDT).\n\nPCDF does not charge any entry fee or monthly fees. All workshops, practice sessions, and competitive training are provided free of charge for selected PCIU students."
+
+    # 3. Members / Statistics queries
+    if any(k in msg_lower for k in ['member', 'members', 'count', 'how many', 'stat', 'stats', 'সদস্য', 'কয়জন', 'ট্রফি', 'trophy', 'trophies']):
+        if is_bn:
+            return "PCDF-এর বর্তমান সদস্য সংখ্যা ও পরিসংখ্যান:\n\n- সক্রিয় সদস্য: ১৫০+ বিতার্কিক ও বিচারক\n- অর্জিত ট্রফি: ২৫+ টি জাতীয় ও আঞ্চলিক চ্যাম্পিয়নশিপ ট্রফি\n- বিশ্ববিদ্যালয়ের ৮টি একাডেমিক বিভাগের শিক্ষার্থীরা এতে সক্রিয়ভাবে অংশ নেয়\n- প্রতিষ্ঠা: ২০১৭ সাল।"
+        return "PCDF Key Statistics:\n\n- Active Members: 150+ active debaters and adjudicators\n- Trophies Won: 25+ national and regional championship trophies\n- Department Representation: 8 academic departments\n- Founded: 2017 (Active collegiate forum at PCIU)"
+
+    # 4. Events / Tournament / Fest queries
+    if any(k in msg_lower for k in ['event', 'events', 'tournament', 'fest', 'festival', 'ইভেন্ট', 'অনুষ্ঠান', 'প্রতিযোগিতা', 'খেলার']):
+        if is_bn:
+            return "PCDF-এর প্রধান ইভেন্ট ও ফেস্টিভ্যালসমূহ:\n\n১. PCDF ১ম বিতর্ক উৎসব ও বক্তৃতা প্রতিযোগিতা ২০২৬ (অক্টোবর ২০২৬):\n- ৪টি বিশেষ পর্ব: পাবলিক স্পিকিং (১৩ অক্টো), ৮ম আন্তঃবিভাগীয় বিতর্ক (২৩ অক্টো), জাতীয় বিতর্ক ফেস্ট বিপি (৩০ অক্টো) এবং গ্র্যান্ড ফিনালে গালা (৩১ অক্টো)।\n\n২. ৭ম আন্তঃবিভাগীয় বিতর্ক প্রতিযোগিতা (ফেব্রুয়ারি ২০২৬): ৮টি বিভাগের ২৪ জন সেরা বক্তার লড়াই।\n\n৩. জাতীয় প্রতিযোগিতা: চুয়েট (CUET) ন্যাশনাল বিতর্ক ফেস্ট ও পিইউডিএস (PUDS) ন্যাশনাল চ্যাম্পিয়নশিপ।"
+        return "Major PCDF Events & Tournaments:\n\n1. PCDF 1st Debate Fest & Oratory Festival 2026 (October 2026 - Grand Voyage Edition):\n- Stage 1: Public Speaking Competition (13 Oct)\n- Stage 2: 8th Inter-Department Debate Championship (23 Oct)\n- Stage 3: National Debate Fest BP Open (30 Oct)\n- Stage 4: Grand Finale Gala Night (31 Oct)\n\n2. 7th Inter-Department Debate Championship (February 2026): Intra-university clashes among 8 departments.\n\n3. National Circuit: Delegations to CUET National Debate Fest, PUDS Championship, and annual exhibition debates."
+
+    # 5. Joining / Admission queries
+    if any(k in msg_lower for k in ['join', 'apply', 'registration', 'audition', 'ভর্তি', 'যোগ', 'আবেদন']):
+        if is_bn:
+            return "PCDF-এ যোগদানের নিয়মাবলী:\n\n১. যোগ্যতা: পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটির (PCIU) যেকোনো বর্ষের শিক্ষার্থী আবেদন করতে পারেন। কোনো পূর্ব অভিজ্ঞতার প্রয়োজন নেই!\n২. আবেদন: আমাদের ওয়েবসাইটের /apply পেজে গিয়ে অনলাইনে ফরম পূরণ করুন।\n৩. অডিশন: একটি বন্ধুত্বপূর্ণ ১০ মিনিটের তাৎক্ষণিক বক্তব্য/বিতর্ক ও সংক্ষিপ্ত লিখিত পরীক্ষা।\n৪. ফি: ০ টাকা (সম্পূর্ণ ফ্রি)।\n৫. সাপ্তাহিক প্র্যাকটিস: প্রতি মঙ্গলবার বিকাল ৩:০০ - ৭:০০ টা (রুম ২০৪, স্টুডেন্ট ইউনিয়ন)।"
+        return "How to Join PCDF:\n\n1. Eligibility: Open to all undergraduate & postgraduate students of Port City International University (PCIU). Prior debate experience is not required.\n2. Application: Apply online at /apply.\n3. Audition: A friendly 10-minute speech or impromptu debate session.\n4. Cost: 0 Taka (100% Free).\n5. Weekly Sessions: Room 204 (Student Union), every Tuesday from 3:00 PM to 7:00 PM."
+
+    # Default greeting
+    if is_bn:
+        return "হ্যালো! আমি পিডি (Piddy), পিসিআইইউ ডিবেটিং ফোরামের (PCDF) এআই প্রতিনিধি।\n\n- বর্তমান সভাপতি: আসাবুল ইসলাম রুতুল\n- সহ-সভাপতি: মুহাম্মদ ইব্রাহিম\n- মেম্বারশিপ ফি: ০ টাকা (সম্পূর্ণ ফ্রি)\n- সক্রিয় সদস্য: ১৫০+ বিতার্কিক\n\nআপনি কমিটি, আসন্ন ২০২৬ বিতর্ক উৎসব, বিতর্ক ফরম্যাট বা মেম্বারশিপ নিয়ে যেকোনো প্রশ্ন করতে পারেন!"
+    return "Hello! I am Piddy, the friendly AI representative of the PCIU Debating Forum (PCDF).\n\n- Current President: Asabul Islam Rutul\n- Vice President: Muhammad Ibrahim\n- Membership Fee: 0 Taka (Free entry)\n- Active Members: 150+ debaters\n\nFeel free to ask me anything about our committee roster, upcoming 2026 Debate Fest, debate rules, or joining PCDF!"
+
+
 @app.route('/api/chat', methods=['POST'])
 def api_chat():
     data = request.get_json(silent=True) or {}
-    user_msg = data.get('message', '')
+    user_msg = data.get('message', '').strip()
     if not user_msg:
         return jsonify({'error': 'No message provided'}), 400
     
@@ -899,97 +962,123 @@ def api_chat():
     if not api_key:
         api_key_path = os.path.join(BASE_DIR, 'api.txt')
         try:
-            with open(api_key_path, 'r') as f:
+            with open(api_key_path, 'r', encoding='utf-8') as f:
                 api_key = f.read().strip()
         except Exception:
             pass
-    if not api_key:
-        return jsonify({'error': 'AI assistant is currently unavailable. Please provide a GROQ_API_KEY environment variable or api.txt file.'}), 503
-        
-    def _get(page, key):
-        return CONTENT.get(page, {}).get(key, '')
 
-    def _items(page):
-        rows = []
-        for s in CONTENT.get(page, {}).get('sections', []):
-            for it in s.get('items', []):
-                if it.get('heading'):
-                    rows.append(f"- {it['heading']}: {it.get('text','')}".strip(': '))
-        return '\n'.join(rows[:8])
+    # Dynamic events list from catalog
+    events_catalog = load_events_catalog()
+    events_summary_lines = []
+    for ev in events_catalog[:6]:
+        title = ev.get('title', '')
+        date = ev.get('date_label', '')
+        summary = ev.get('summary', '')
+        stats = ', '.join(ev.get('stats', []))
+        events_summary_lines.append(f"- {title} ({date}): {summary} [Highlights: {stats}]")
+    events_text = '\n'.join(events_summary_lines)
 
-    def _stats():
-        for s in CONTENT.get('about', {}).get('sections', []):
-            if s.get('layout') == 'stats':
-                return ', '.join(f"{it['value']} {it['label']}" for it in s.get('items', []) if it.get('value'))
-        return ''
+    system_prompt = f"""You are Piddy, the intelligent, friendly, and enthusiastic AI assistant and representative of the PCIU Debating Forum (PCDF) at Port City International University (PCIU), Chittagong, Bangladesh.
+Always speak warmly, clearly, and conversationally, just like a helpful club senior.
 
-    system_prompt = f"""You are Piddy, the friendly and intellectual AI representative of PCIU Debating Forum (PCDF).
-Speak naturally, warmly, and conversationally, just like a helpful club senior. 
-CRITICAL RULE: Do NOT use markdown formatting like **bold** or *italics* or # headers in your responses. Keep responses in clean, readable plain text.
-CRITICAL RULE: ALWAYS use double line breaks between paragraphs and bullet points so it is very easy to read on mobile and PC.
-LANGUAGE SUPPORT: If the user asks in Bengali (বাংলা) or Banglish, reply warmly in natural, fluent Bengali (বাংলা) or Banglish. If they ask in English, reply in English.
+CRITICAL RULES:
+1. Do NOT use markdown bolding with asterisks (do NOT use **bold** or *italics* or # headers). Keep your response in clean, readable plain text.
+2. ALWAYS use clear double line breaks between paragraphs and list items so it is very easy to read on mobile screens.
+3. LANGUAGE SUPPORT: If the user asks in Bengali (বাংলা) or Banglish, reply warmly in natural, fluent Bengali (বাংলা) or Banglish. If they ask in English, reply in English.
+4. Base your answers strictly on the verified knowledge base below.
 
-Answer ONLY about PCDF based on the knowledge base below. Do NOT invent facts.
+=== PCDF VERIFIED KNOWLEDGE BASE ===
+ORGANIZATION: Port City International University Debating Forum (PCDF)
+INSTITUTION: Port City International University (PCIU), Chittagong, Bangladesh
+FOUNDED: 2017 (Active era since 2023)
+MOTTO: "We do more than debate." / "Where logic meets passion, and every argument is a work of art."
+HEADQUARTERS / CLUB ROOM: Room 204, Student Union, Port City International University
+PRACTICE SESSIONS: Every Tuesday from 3:00 PM to 7:00 PM in Room 204.
 
-=== PCDF KNOWLEDGE BASE ===
-FORUM: {_get('site','title')} — {_get('site','tagline')}
-ABOUT: {_get('about','subtitle')}
-STATS: {_stats()}
+KEY STATS:
+- Member Count: 150+ active debaters, adjudicators, and alumni
+- Trophies Won: 25+ championship trophies & accolades across national and regional circuits
+- Department Representation: 8 academic departments actively competing
 
-FEES & COSTS:
-- Monthly Fee: 0 Taka (No monthly fee / সম্পূর্ন বিনামূল্যে). PCDF does not charge any monthly fee.
-- Membership: Free for all selected Port City International University students.
+FEES & COSTS (100% FREE):
+- Entry Fee: 0 Taka / 0 BDT (Completely Free / সম্পূর্ন বিনামূল্যে / কোনো ফি নেই).
+- Monthly Fee: 0 Taka (No monthly subscription).
+- Training Fee: 0 Taka (Free training and workshop modules for all selected members).
 
-JOINING PCDF & AUDITIONS:
-1. Eligibility: All PCIU students (undergraduate & postgraduate) can join. Complete beginners with zero prior debate experience are warmly welcomed and trained from scratch!
-2. Application: Applications open during the annual recruitment cycle (September). Submit interest statement or register before September 10 deadline.
-3. Audition Round: A friendly 10-minute speech / impromptu debate and a short written expression.
-4. Induction & Training: Selected candidates undergo a 4-week structured induction covering British Parliamentary (BP), Asian Parliamentary (AP), World Schools (WSDC), and public speaking.
-5. Weekly Drills & Practice: Room 204 (Student Union), every Tuesday from 3:00 PM to 7:00 PM.
+CURRENT EXECUTIVE COMMITTEE (2025–2026):
+- President (Executive Head): Asabul Islam Rutul (Sets overarching strategic vision, represents PCDF across national collegiate forums, oversees institutional relations)
+- Vice President (Operations & Training): Muhammad Ibrahim (Directs tournament preparations, competitive squads, internal leagues, speaker development)
+- Joint Secretary: Umme Kulsum (Organisational management and administrative coordination)
+- Assistant Secretary: Humaira Yeasmin Mila (Secretariat coordination and member correspondence)
+- Debate Secretary: Jahedul Islam Rafi (Manages debate modules, motions, and competitive workshops)
+- Finance Secretary: Fahmida Rubaiyat Nazifa (Manages forum budget, sponsorships, and fiscal planning)
+- Assistant Finance Secretary: Nur-A-Jannat Tarin (Fiscal accounting and fund management)
+- Office Secretary: Md. Sohraf (Club records, documentation, and logistical inventory)
+- Assistant Office Secretary: Ashikur Rahman Anik (Session logistics and records)
+- Assistant Organizing Secretary: Suprova Dev (Event logistics and festival planning)
+- Press & Media Secretary: Taqi Mahmud Chowdhury (Public relations, branding, media communications)
+- Assistant Media Secretary: Nosrahat Jahan Shefa (Visual media and coverage)
+- Executive Members: Aditya Das, Athoy Chakraborty, Mohima Sultana Masuma, Muhammad Shahria Nur Shishir, Swarna Barua
 
-COMMITTEE & LEADERSHIP:
-{_items('committee')}
+PREVIOUS LEADERSHIP (LEGACY):
+- 2023–2024: President Imran Hossain, Vice President Lamia Karim
+- 2022–2023: President Tanvir Rahman, Vice President Nusrat Jahan
+- 2021–2022: President Anika Tabassum, Vice President Rakibul Islam
 
-EVENTS & FORMATS:
-{_items('events')}
+KEY EVENTS & TOURNAMENTS:
+{events_text}
 
-ACHIEVEMENTS:
-{_items('achievements')}
+DEBATE FORMATS PRACTICED:
+- British Parliamentary (BP): 4 teams of 2 (OG, OO, CG, CO), 7-minute speeches with POIs between 1st & 6th minute.
+- Asian Parliamentary (AP): 2 teams of 3 (Gov vs Opp), 7-minute speeches + 4-minute reply speech.
+- World Schools Debating Championship (WSDC): 3 vs 3 format.
+- Public Speaking / Oratory: Bangla & English speech competitions.
+- Ramma Debate: Traditional Bengali satirical wit and humor debate.
 
-LATEST NEWS:
-{_items('news')}
+HOW TO JOIN PCDF:
+1. Eligibility: Open to all undergraduate & postgraduate students of Port City International University (PCIU). Complete beginners with zero prior debate experience are warmly welcomed and trained from scratch!
+2. Apply: Online application form available at /apply.
+3. Audition: Friendly 10-minute speech or impromptu debate + short written expression.
+4. Cost: 0 Taka (Free).
 
 CONTACT:
-Email: debate@pciu.edu | Phone: +880 1234 567890 | Office: Student Union Room 204 | Mon-Fri 3:00 PM - 7:00 PM
-==========================="""
+Email: debate@pciu.edu | Office: Student Union Room 204 | Website: /apply
+====================================="""
 
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_msg}
-    ]
-    
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json"
-    }
-    
-    payload = {
-        "model": "openai/gpt-oss-20b",
-        "messages": messages,
-        "max_tokens": 1024,
-        "temperature": 0.7
-    }
-    
-    try:
-        resp = requests.post("https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers)
-        resp.raise_for_status()
-        msg_obj = resp.json()['choices'][0]['message']
-        reply = msg_obj.get('content') or msg_obj.get('reasoning') or "I am here to assist you with PCIU Debating Forum queries."
-        return jsonify({'reply': reply})
-    except requests.exceptions.HTTPError as e:
-        error_msg = f"{str(e)} - {e.response.text}"
-        print(error_msg)
-        return jsonify({'error': error_msg}), 500
+    # Try external Groq LLM first, with fallback to local rule-engine
+    if api_key:
+        candidate_models = ["qwen/qwen3.8-27b", "openai/gpt-oss-120b", "openai/gpt-oss-20b"]
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json"
+        }
+        
+        for model_name in candidate_models:
+            payload = {
+                "model": model_name,
+                "messages": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_msg}
+                ],
+                "max_tokens": 800,
+                "temperature": 0.6
+            }
+            try:
+                resp = requests.post("https://api.groq.com/openai/v1/chat/completions", json=payload, headers=headers, timeout=12)
+                if resp.status_code == 200:
+                    msg_obj = resp.json()['choices'][0]['message']
+                    reply = msg_obj.get('content') or msg_obj.get('reasoning') or ''
+                    if reply.strip():
+                        # Clean any leftover markdown bolding for ultra-clean mobile display
+                        reply = reply.replace('**', '').replace('###', '').replace('##', '').strip()
+                        return jsonify({'reply': reply})
+            except Exception as e:
+                print(f"Groq model {model_name} attempt failed: {e}")
+                continue
+
+    # Instant intelligent local fallback
+    fallback_reply = get_piddy_fallback_reply(user_msg)
+    return jsonify({'reply': fallback_reply})
 # ---------------------------------------------------------------------------
 # ARENA / DIALECTIC MANDATE ENDPOINTS
 # ---------------------------------------------------------------------------
