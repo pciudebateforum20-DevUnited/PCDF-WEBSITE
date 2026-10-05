@@ -10,6 +10,7 @@ window.initGeographyGlobe = function() {
     const fogOverlay = document.getElementById('fog-overlay');
     const storyContent = document.getElementById('story-content');
     const closeStoryBtn = document.getElementById('close-story-btn');
+    const storyImageWrapper = document.getElementById('story-image-wrapper');
     const storyImage = document.getElementById('story-image');
     const storyEra = document.getElementById('story-era');
     const storyTitle = document.getElementById('story-title');
@@ -18,7 +19,6 @@ window.initGeographyGlobe = function() {
 
     let typingTimeout;
 
-
     const storyStatsHud = document.getElementById('story-stats-hud');
     const statCasualties = document.getElementById('stat-casualties');
     const statDuration = document.getElementById('stat-duration');
@@ -26,6 +26,8 @@ window.initGeographyGlobe = function() {
     const storyMiniMapContainer = document.getElementById('story-mini-map-container');
     let activeCountries = [];
     let globalCountriesGeoJson = null;
+
+    const getStandardAltitude = () => (window.innerWidth < 768 ? 2.35 : 2.4);
 
     const historicalData = {
         "athens": {
@@ -444,22 +446,24 @@ window.initGeographyGlobe = function() {
                         const targetFeatures = globalCountriesGeoJson.features.filter(f => actualCountries.includes(f.properties.name));
                         
                         if (targetFeatures.length > 0) {
+                            storyMiniMapContainer.style.display = 'flex';
                             const geoObj = { type: 'FeatureCollection', features: targetFeatures };
                             
-                            const width = cutoutWrapper.clientWidth || 180;
-                            const height = cutoutWrapper.clientHeight || 120;
+                            const width = cutoutWrapper.clientWidth || 140;
+                            const height = cutoutWrapper.clientHeight || 80;
                             
                             const svg = d3.select(cutoutWrapper)
                                 .append('svg')
                                 .attr('width', width)
                                 .attr('height', height)
+                                .attr('viewBox', `0 0 ${width} ${height}`)
                                 .style('overflow', 'visible');
                                 
                             // Add slight padding to fitSize
-                            const projection = d3.geoMercator().fitExtent([[10, 10], [width - 10, height - 10]], geoObj);
+                            const projection = d3.geoMercator().fitExtent([[6, 6], [width - 6, height - 6]], geoObj);
                             const pathGenerator = d3.geoPath().projection(projection);
                             
-                            const color = isWar ? '#ffcc00' : '#8b1e1e';
+                            const color = isWar ? '#d97706' : '#8b1e1e';
                             
                             svg.selectAll('path')
                                 .data(targetFeatures)
@@ -467,20 +471,25 @@ window.initGeographyGlobe = function() {
                                 .append('path')
                                 .attr('d', pathGenerator)
                                 .attr('fill', color)
-                                .attr('fill-opacity', 0.2)
+                                .attr('fill-opacity', 0.25)
                                 .attr('stroke', color)
                                 .attr('stroke-width', 1.5)
-                                .style('filter', `drop-shadow(0px 0px 8px ${color})`);
+                                .style('filter', `drop-shadow(0px 0px 6px ${color}66)`);
+                        } else {
+                            storyMiniMapContainer.style.display = 'none';
                         }
+                    } else {
+                        storyMiniMapContainer.style.display = 'none';
                     }
                 }
 
                 world.controls().autoRotate = false;
-                world.pointOfView({ lat: point.lat, lng: point.lng, altitude: 0.1 }, 2000);
+                world.pointOfView({ lat: point.lat, lng: point.lng, altitude: window.innerWidth < 768 ? 0.35 : 0.15 }, 2000);
                 
                 setTimeout(() => {
                     storyOverlay.classList.remove('pointer-events-none');
                     storyOverlay.classList.add('pointer-events-auto');
+                    storyOverlay.style.opacity = '1';
                     
                     fogOverlay.style.opacity = '1';
                     fogOverlay.style.transform = 'scale(2.5)';
@@ -491,8 +500,10 @@ window.initGeographyGlobe = function() {
                     if (data.image) {
                         storyImage.src = data.image;
                         storyImage.style.display = 'block';
+                        if (storyImageWrapper) storyImageWrapper.style.display = 'flex';
                     } else {
                         storyImage.style.display = 'none';
+                        if (storyImageWrapper) storyImageWrapper.style.display = 'none';
                     }
                     
                     storyWiki.href = data.wiki;
@@ -511,8 +522,8 @@ window.initGeographyGlobe = function() {
                             if (storyStatsHud) storyStatsHud.style.opacity = '1';
                             if (storyMiniMapContainer) storyMiniMapContainer.style.opacity = '1';
                             typeText(storyTextContainer, data.content);
-                        }, 500);
-                    }, 1200);
+                        }, 400);
+                    }, 1000);
                 }, 1000); 
             }
             startZoomAndStory();
@@ -592,9 +603,19 @@ window.initGeographyGlobe = function() {
         globeObserver.observe(section);
     }
 
+    let resizeTimeout;
     window.addEventListener('resize', () => {
-        world.width(globeContainer.clientWidth);
-        world.height(globeContainer.clientHeight);
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (globeContainer && world) {
+                const w = globeContainer.clientWidth;
+                const h = globeContainer.clientHeight;
+                if (w > 0 && h > 0) {
+                    world.width(w);
+                    world.height(h);
+                }
+            }
+        }, 150);
     }, { passive: true });
 
     // --- Audio Synthesis System (Web Audio API) ---
@@ -692,12 +713,19 @@ window.initGeographyGlobe = function() {
                 fogOverlay.style.transitionDuration = '1500ms';
             }, 50);
             
+            storyOverlay.style.opacity = '0';
             storyOverlay.classList.remove('pointer-events-auto');
             storyOverlay.classList.add('pointer-events-none');
             
-            world.pointOfView({ altitude: window.innerWidth < 768 ? 3.8 : 2.5 }, 1500);
+            world.pointOfView({ altitude: getStandardAltitude() }, 1500);
             world.controls().autoRotate = true;
-        }, 800);
+        }, 600);
+    });
+
+    storyOverlay.addEventListener('click', (e) => {
+        if (e.target === storyOverlay) {
+            closeStoryBtn.click();
+        }
     });
 
     traceBtn.addEventListener('click', () => {
@@ -717,7 +745,7 @@ window.initGeographyGlobe = function() {
                 traceBtn.disabled = false;
                 traceBtn.innerText = originalText;
                 world.controls().autoRotate = true;
-                world.pointOfView({ altitude: window.innerWidth < 768 ? 3.8 : 2.5 }, 2000);
+                world.pointOfView({ altitude: getStandardAltitude() }, 2000);
                 
                 setTimeout(() => { 
                     world.arcsData(tradeRoutes); 
@@ -732,7 +760,7 @@ window.initGeographyGlobe = function() {
             const currentId = tourOrder[currentIndex];
             const currentPlace = places.find(p => p.id === currentId);
             
-            world.pointOfView({ lat: currentPlace.lat, lng: currentPlace.lng, altitude: 0.7 }, 2000);
+            world.pointOfView({ lat: currentPlace.lat, lng: currentPlace.lng, altitude: window.innerWidth < 768 ? 0.85 : 0.7 }, 2000);
 
             setTimeout(() => {
                 if (currentIndex < tourOrder.length - 1) {
@@ -762,10 +790,10 @@ window.initGeographyGlobe = function() {
     }, { threshold: 0 });
     globeObs.observe(section);
 
-    // Default zoom logic based on device size
+    // Standard fixed size on load based on device
     setTimeout(() => {
         if (world && world.pointOfView) {
-            world.pointOfView({ altitude: window.innerWidth < 768 ? 3.8 : 2.5 }, 0);
+            world.pointOfView({ altitude: getStandardAltitude() }, 0);
         }
     }, 100);
 };

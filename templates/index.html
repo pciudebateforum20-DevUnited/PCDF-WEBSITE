@@ -1081,7 +1081,7 @@
 
     <!-- Cinematic Story Mode Overlay (Hidden by default) -->
     <div id="story-overlay"
-        class="absolute inset-0 z-50 pointer-events-none overflow-hidden flex items-center justify-center">
+        class="fixed inset-0 z-50 pointer-events-none overflow-hidden flex items-center justify-center p-3 sm:p-6 md:p-10 bg-black/45 backdrop-blur-sm opacity-0 transition-opacity duration-500">
 
         <!-- Fog Dive Transition Overlay -->
         <div id="fog-overlay"
@@ -1091,61 +1091,71 @@
 
         <!-- Content Container (Transparent Glass Overlay) -->
         <div id="story-content"
-            class="absolute inset-4 md:inset-10 bg-white/70 backdrop-blur-md opacity-0 transition-opacity duration-1000 delay-[1000ms] flex flex-col md:flex-row border border-[#e2dfd8]/50 shadow-2xl rounded-2xl overflow-hidden">
+            class="relative w-full max-w-4xl max-h-[90vh] bg-white/95 md:bg-white/90 backdrop-blur-2xl opacity-0 transition-all duration-700 delay-300 flex flex-col md:flex-row border border-[#e2dfd8] shadow-2xl rounded-2xl overflow-y-auto md:overflow-hidden overscroll-contain">
 
             <!-- Close Button -->
-            <button id="close-story-btn"
-                class="absolute top-6 right-6 md:top-10 md:right-10 z-50 text-4xl text-[#2c2825] hover:text-[#8b1e1e] transition-colors">&times;</button>
+            <button id="close-story-btn" aria-label="Close Story"
+                class="absolute top-3 right-3 sm:top-5 sm:right-5 z-50 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white/90 hover:bg-[#8b1e1e] hover:text-white text-[#2c2825] text-xl sm:text-2xl transition-all shadow-md border border-[#e2dfd8] cursor-pointer">&times;</button>
 
-            <!-- HUD Stats -->
-            <div id="story-stats-hud"
-                class="absolute left-6 md:left-10 top-1/2 transform -translate-y-1/2 flex flex-col gap-4 md:gap-6 font-sans text-[0.6rem] md:text-xs text-[#2c2825] uppercase tracking-widest opacity-0 transition-opacity duration-[2000ms] z-40 bg-white/60 p-4 backdrop-blur-sm rounded-lg border border-white/50 shadow-lg max-h-[90vh] overflow-y-auto">
-                <div class="border-l-2 border-[#8b1e1e] pl-3">
-                    <div class="text-[#8b7d6b] mb-1 text-[10px]">Casualties</div>
-                    <div id="stat-casualties" class="text-lg md:text-xl font-medium cinzel">0</div>
-                </div>
-                <div class="border-l-2 border-[#8b1e1e] pl-3">
-                    <div class="text-[#8b7d6b] mb-1 text-[10px]">Duration</div>
-                    <div id="stat-duration" class="text-base md:text-lg font-medium cinzel">-</div>
-                </div>
-                <div class="border-l-2 border-[#8b1e1e] pl-3">
-                    <div class="text-[#8b7d6b] mb-1 text-[10px]">Primary Weapon</div>
-                    <div id="stat-weapon" class="text-base md:text-lg font-medium cinzel text-[#8b1e1e]">Logic</div>
+            <!-- Left / Top Column: Visual + Stats HUD -->
+            <div id="story-visual-column"
+                class="w-full md:w-5/12 p-4 sm:p-6 md:p-8 flex flex-col justify-center items-center border-b md:border-b-0 md:border-r border-[#e2dfd8]/70 bg-gradient-to-b from-[#faf8f5] to-[#f2ede4]/60 shrink-0">
+                
+                <!-- Floating Image (Only shown if image URL exists) -->
+                <div id="story-image-wrapper" class="w-full flex items-center justify-center max-h-[160px] sm:max-h-[200px] md:max-h-[260px] mb-3 md:mb-5">
+                    <img id="story-image" src="" alt="Historical Context"
+                        class="max-h-[150px] sm:max-h-[190px] md:max-h-[240px] w-auto max-w-full object-contain object-center opacity-0 transition-opacity duration-[1500ms] ease-out filter grayscale contrast-125 brightness-90 mix-blend-multiply drop-shadow-xl">
                 </div>
 
-                <!-- Cutout Map (SVG) -->
-                <div id="story-mini-map-container"
-                    class="border-t border-[#8b7d6b]/30 pt-4 mt-2 flex flex-col justify-end opacity-0 transition-opacity duration-[2000ms]">
-                    <span
-                        class="text-[0.55rem] tracking-widest text-[#8b7d6b] uppercase mb-2 drop-shadow-md">Geographical
-                        Extent</span>
-                    <div id="cutout-svg-wrapper"
-                        class="w-24 md:w-32 h-24 md:h-32 flex items-center justify-center mx-auto">
-                        <!-- D3 will inject the SVG here -->
+                <!-- HUD Stats Card -->
+                <div id="story-stats-hud"
+                    class="w-full flex flex-col gap-2.5 sm:gap-3 font-sans text-[0.65rem] md:text-xs text-[#2c2825] uppercase tracking-widest opacity-0 transition-opacity duration-[1500ms] bg-white/95 p-3 sm:p-4 backdrop-blur-md rounded-xl border border-[#e2dfd8] shadow-sm">
+                    
+                    <div class="grid grid-cols-3 gap-2 text-left">
+                        <div class="border-l-2 border-[#8b1e1e] pl-2">
+                            <div class="text-[#8b7d6b] mb-0.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] font-semibold">Casualties</div>
+                            <div id="stat-casualties" class="text-xs sm:text-sm md:text-base font-medium cinzel">0</div>
+                        </div>
+                        <div class="border-l-2 border-[#8b1e1e] pl-2">
+                            <div class="text-[#8b7d6b] mb-0.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] font-semibold">Duration</div>
+                            <div id="stat-duration" class="text-xs sm:text-sm md:text-base font-medium cinzel">-</div>
+                        </div>
+                        <div class="border-l-2 border-[#8b1e1e] pl-2">
+                            <div class="text-[#8b7d6b] mb-0.5 text-[8.5px] sm:text-[9.5px] md:text-[10px] font-semibold">Weapon</div>
+                            <div id="stat-weapon" class="text-xs sm:text-sm md:text-base font-medium cinzel text-[#8b1e1e] truncate">Logic</div>
+                        </div>
+                    </div>
+
+                    <!-- Cutout Map (SVG) -->
+                    <div id="story-mini-map-container"
+                        class="border-t border-[#8b7d6b]/20 pt-2 mt-1 flex flex-col items-center justify-center opacity-0 transition-opacity duration-[1500ms]">
+                        <span class="text-[0.55rem] tracking-widest text-[#8b7d6b] uppercase mb-1 font-semibold">Geographical Extent</span>
+                        <div id="cutout-svg-wrapper"
+                            class="w-24 sm:w-28 md:w-32 h-16 sm:h-20 md:h-24 flex items-center justify-center mx-auto">
+                            <!-- D3 will inject the SVG here -->
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Left Side: Classical Floating Image -->
-            <div class="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden flex items-center justify-center p-4">
-                <img id="story-image" src="" alt="Historical Context"
-                    class="w-full h-full object-contain object-center opacity-0 transition-opacity duration-[2000ms] ease-out filter grayscale contrast-125 brightness-90 mix-blend-multiply drop-shadow-2xl">
-            </div>
+            <!-- Right / Bottom Column: Typing Narrative -->
+            <div class="w-full md:w-7/12 p-5 sm:p-7 md:p-10 lg:p-12 flex flex-col justify-between overflow-y-auto overscroll-contain">
+                <div>
+                    <h4 class="text-[0.65rem] sm:text-xs tracking-[0.35em] uppercase text-[#8b1e1e] font-semibold mb-1.5 sm:mb-2" id="story-era"></h4>
+                    <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium cinzel uppercase text-[#2c2825] mb-3 sm:mb-5 border-b border-[#e2dfd8] pb-2.5 sm:pb-3 leading-snug"
+                        id="story-title"></h2>
 
-            <!-- Right Side: Typing Text -->
-            <div class="w-full md:w-1/2 h-1/2 md:h-full p-8 md:p-16 flex flex-col justify-center overflow-y-auto">
-                <h4 class="text-[0.65rem] tracking-[0.4em] uppercase text-[#8b1e1e] mb-2" id="story-era"></h4>
-                <h2 class="text-3xl md:text-5xl font-medium cinzel uppercase text-[#2c2825] mb-6 border-b border-[#e2dfd8] pb-4"
-                    id="story-title"></h2>
-
-                <div class="prose prose-lg font-serif text-[#4a443d] leading-relaxed text-justify mb-8"
-                    id="story-text-container">
-                    <!-- Text will be typed here by JS -->
+                    <div class="prose prose-sm sm:prose-base font-serif text-[#3d3730] leading-relaxed text-left sm:text-justify mb-5 sm:mb-6"
+                        id="story-text-container">
+                        <!-- Text will be typed here by JS -->
+                    </div>
                 </div>
 
-                <a id="story-wiki-link" href="#" target="_blank"
-                    class="self-start text-xs tracking-widest uppercase text-[#8b7d6b] hover:text-[#8b1e1e] border-b border-[#8b7d6b] hover:border-[#8b1e1e] transition-all opacity-0">Read
-                    full history on Wikipedia ↗</a>
+                <div class="pt-2">
+                    <a id="story-wiki-link" href="#" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 text-xs tracking-widest uppercase text-[#8b1e1e] hover:text-[#5c1313] font-semibold border-b border-[#8b1e1e]/40 hover:border-[#8b1e1e] pb-0.5 transition-all opacity-0">Read
+                        full history on Wikipedia &rarr;</a>
+                </div>
             </div>
         </div>
     </div>
@@ -2901,7 +2911,7 @@
                 'https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js',
                 'https://unpkg.com/globe.gl@2.32.0/dist/globe.gl.min.js',
                 'https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js',
-                "{{ url_for('static', filename='js/geography_globe.js') }}?v=40"
+                "{{ url_for('static', filename='js/geography_globe.js') }}?v=41"
             ];
 
             let index = 0;
