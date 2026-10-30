@@ -2,5 +2,8 @@
 {% block page %}
 {% from "macros.html" import page_hero, render_sections %}
 {{ page_hero('contact', '', '', '') }}
+<!-- DEVELOPERS SECTION -->
+{% include "sections/_developers.html" %}
+
 {{ render_sections('contact') }}
 {% endblock %}

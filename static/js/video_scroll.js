@@ -128,7 +128,7 @@
             { at: 0.00, chapter: 'Origin', headline: 'The First<br/><span>Debate</span>', sub: 'Before halls and microphones, humans gathered around fire and argued over truth.' },
             { at: 0.25, chapter: 'Conflict', headline: 'Where<br/><span>Ideas Clash</span>', sub: 'A great debate is not a war of words — it is a collision of worlds.' },
             { at: 0.55, chapter: 'Resolution', headline: 'Logic<br/><span>Prevails</span>', sub: 'Every argument forged in fire becomes the foundation of tomorrow\'s understanding.' },
-            { at: 0.80, chapter: 'Legacy', headline: 'PCIU<br/><span>Debating Forum</span>', sub: 'Join a legacy of thinkers, speakers, and champions.' },
+            { at: 0.80, chapter: 'Legacy', headline: 'PCDF', sub: 'Join a legacy of thinkers, speakers, and champions.' },
         ];
 
         let cw = 0, ch2 = 0, active = 1, prev = -1, dirty = false;

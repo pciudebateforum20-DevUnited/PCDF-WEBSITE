@@ -67,8 +67,15 @@ def new_section(layout):
 
 DEFAULTS = {
     'site': {
-        'title': 'PCIU Debating Forum',
+        'title': 'Port City International University Debate Forum (PCDF)',
         'tagline': 'Where logic meets passion, and every argument is a work of art.',
+        'contact_email': 'debate@pciu.edu',
+        'contact_phone': '+880 1234 567890',
+        'contact_room': 'Student Union, Room 204',
+        'facebook_url': '#',
+        'instagram_url': '#',
+        'linkedin_url': '#',
+        'youtube_url': '#',
     },
     'home': {
         'hero_kicker': 'Join The Elite Club',
@@ -85,7 +92,7 @@ DEFAULTS = {
     'about': {
         'eyebrow': 'About PCDF',
         'title': 'The Voice of Reason,<br class="hidden sm:block" /><span class="font-bold">The Power of Words</span>',
-        'subtitle': 'The Port City International University Debating Forum (PCIU Debating Forum) is the premier debating society of '
+        'subtitle': 'The Port City International University Debate Forum (PCDF) is the premier debating society of '
                     'Port City International University. Founded in 2023, we exist to cultivate a culture of critical '
                     'thinking, articulate expression, and respectful discourse on campus — and to send our voices into '
                     'the wider world.',
@@ -248,7 +255,7 @@ DEFAULTS = {
         'eyebrow': 'Gallery',
         'title': 'Moments from <span class="font-bold">the Floor</span>',
         'subtitle': 'Every tournament, workshop, and gala leaves a trail of spontaneity, intensity, and camaraderie. '
-                    'A visual diary of the PCIU Debating Forum.',
+                    'A visual diary of the Port City International University Debate Forum (PCDF).',
         'sections': [
             {'layout': 'gallery', 'title': 'From the Floor', 'subtitle': 'Moments', 'text': '', 'image': '',
              'items': [
@@ -286,7 +293,7 @@ DEFAULTS = {
     'testimonials': {
         'eyebrow': 'Voices',
         'title': 'In Their <span class="font-bold">Words</span>',
-        'subtitle': 'Members, alumni, and partners on what the PCIU Debating Forum gave them — and what it asks of '
+        'subtitle': 'Members, alumni, and partners on what the Port City International University Debate Forum (PCDF) gave them — and what it asks of '
                     'anyone who joins.',
         'sections': [
             {'layout': 'cards', 'title': 'Voices', 'subtitle': 'In Their Words', 'text': '', 'image': '',
@@ -372,7 +379,7 @@ DEFAULTS = {
     'blog': {
         'eyebrow': 'Insights & Thought Leadership',
         'title': 'The Orator&#39;s <span class="font-bold">Journal</span>',
-        'subtitle': 'Debating strategies, motion breakdowns, speaker techniques, and philosophical inquiries from PCIU Debating Forum members and adjudicators.',
+        'subtitle': 'Debating strategies, motion breakdowns, speaker techniques, and philosophical inquiries from Port City International University Debate Forum (PCDF) members and adjudicators.',
         'sections': [
             {'layout': 'cards', 'title': 'Featured Articles', 'subtitle': 'Deep Dives & Strategy', 'text': '', 'image': '',
              'items': [
@@ -437,6 +444,13 @@ PAGE_FIELDS = {
     'site': [
         {'key': 'title', 'label': 'Site Title', 'type': 'text'},
         {'key': 'tagline', 'label': 'Tagline', 'type': 'text'},
+        {'key': 'contact_email', 'label': 'Official Email', 'type': 'text'},
+        {'key': 'contact_phone', 'label': 'Official Phone / WhatsApp', 'type': 'text'},
+        {'key': 'contact_room', 'label': 'Club Room / Address', 'type': 'text'},
+        {'key': 'facebook_url', 'label': 'Facebook URL', 'type': 'text'},
+        {'key': 'instagram_url', 'label': 'Instagram URL', 'type': 'text'},
+        {'key': 'linkedin_url', 'label': 'LinkedIn URL', 'type': 'text'},
+        {'key': 'youtube_url', 'label': 'YouTube URL', 'type': 'text'},
     ],
     'home': [
         {'key': 'hero_kicker', 'label': 'Hero Kicker', 'type': 'text'},
@@ -911,21 +925,21 @@ def get_piddy_fallback_reply(user_msg):
     if any(k in msg_lower for k in ['president', 'presedent', 'head', 'sabha', 'shobhapoti', 'সভাপতির', 'সভাপতি', 'নেতৃত্ব', 'leader', 'committee', 'vp', 'vice president', 'secretary']):
         if 'vice' in msg_lower or 'vp' in msg_lower or 'সহ-সভাপতি' in msg_lower:
             if is_bn:
-                return "পিসিআইইউ ডিবেটিং ফোরাম (PCDF)-এর বর্তমান সহ-সভাপতি (Vice President) হলেন মুহাম্মদ ইব্রাহিম (Muhammad Ibrahim)। তিনি বিতর্ক প্রশিক্ষণ ও টুর্নামেন্ট প্রস্তুতি তত্ত্বাবধান করেন।"
-            return "The Vice President of the PCIU Debating Forum (PCDF) is Muhammad Ibrahim (Operations & Training). He directs competitive training, tournament preparations, and internal leagues."
+                return "পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি ডিবেট ফোরাম (PCDF)-এর বর্তমান সহ-সভাপতি (Vice President) হলেন মুহাম্মদ ইব্রাহিম (Muhammad Ibrahim)। তিনি বিতর্ক প্রশিক্ষণ ও টুর্নামেন্ট প্রস্তুতি তত্ত্বাবধান করেন।"
+            return "The Vice President of the Port City International University Debate Forum (PCDF) is Muhammad Ibrahim (Operations & Training). He directs competitive training, tournament preparations, and internal leagues."
         if 'secretary' in msg_lower or 'সেক্রেটারি' in msg_lower:
             if is_bn:
                 return "PCDF-এর বর্তমান সেক্রেটারিয়েট নেতৃত্ব:\n\n- যুগ্ম সম্পাদক (Joint Secretary): উম্মে কুলসুম (Umme Kulsum)\n- বিতর্ক সম্পাদক (Debate Secretary): জাহেদুল ইসলাম রাফি (Jahedul Islam Rafi)\n- অর্থ সম্পাদক (Finance Secretary): ফাহমিদা রুবাইয়াত নাজিফা (Fahmida Rubaiyat Nazifa)\n- প্রচার ও মিডিয়া সম্পাদক: তাকী মাহমুদ চৌধুরী (Taqi Mahmud Chowdhury)\n- দপ্তর সম্পাদক: মো. সোহরাফ (Md. Sohraf)"
             return "PCDF Current Secretariat Leadership:\n\n- Joint Secretary: Umme Kulsum\n- Debate Secretary: Jahedul Islam Rafi\n- Finance Secretary: Fahmida Rubaiyat Nazifa\n- Press & Media Secretary: Taqi Mahmud Chowdhury\n- Office Secretary: Md. Sohraf"
         if is_bn:
-            return "পিসিআইইউ ডিবেটিং ফোরাম (PCDF)-এর বর্তমান সভাপতি (President) হলেন আসাবুল ইসলাম রুতুল (Asabul Islam Rutul)। তিনি ক্লাবের সার্বিক কৌশলগত দিকনির্দেশনা ও জাতীয় পর্যায়ের প্রতিনিধিত্ব করেন।\n\nসহ-সভাপতি হলেন মুহাম্মদ ইব্রাহিম (Muhammad Ibrahim)।"
-        return "The current President of the PCIU Debating Forum (PCDF) is Asabul Islam Rutul (Executive Head).\n\nThe Vice President is Muhammad Ibrahim (Operations & Training)."
+            return "পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি ডিবেট ফোরাম (PCDF)-এর বর্তমান সভাপতি (President) হলেন আসাবুল ইসলাম রুতুল (Asabul Islam Rutul)। তিনি ক্লাবের সার্বিক কৌশলগত দিকনির্দেশনা ও জাতীয় পর্যায়ের প্রতিনিধিত্ব করেন।\n\nসহ-সভাপতি হলেন মুহাম্মদ ইব্রাহিম (Muhammad Ibrahim)।"
+        return "The current President of the Port City International University Debate Forum (PCDF) is Asabul Islam Rutul (Executive Head).\n\nThe Vice President is Muhammad Ibrahim (Operations & Training)."
 
     # 2. Fees / Cost / Entry queries
     if any(k in msg_lower for k in ['fee', 'entry', 'cost', 'taka', 'free', 'tk', 'টাকা', 'ফি', 'খরচ', 'বেতন']):
         if is_bn:
-            return "পিসিআইইউ ডিবেটিং ফোরামে (PCDF) কোনো এন্ট্রি ফি বা মাসিক ফি নেই (০ টাকা / সম্পূর্ণ বিনামূল্যে)।\n\nনির্বাচিত পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটির সকল শিক্ষার্থীর জন্য মেম্বারশিপ ও প্রশিক্ষণ সম্পূর্ণ ফ্রি।"
-        return "Joining and participating in the PCIU Debating Forum (PCDF) is 100% Free (0 Taka / 0 BDT).\n\nPCDF does not charge any entry fee or monthly fees. All workshops, practice sessions, and competitive training are provided free of charge for selected PCIU students."
+            return "পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি ডিবেট ফোরামে (PCDF) কোনো এন্ট্রি ফি বা মাসিক ফি নেই (০ টাকা / সম্পূর্ণ বিনামূল্যে)।\n\nনির্বাচিত পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটির সকল শিক্ষার্থীর জন্য মেম্বারশিপ ও প্রশিক্ষণ সম্পূর্ণ ফ্রি।"
+        return "Joining and participating in the Port City International University Debate Forum (PCDF) is 100% Free (0 Taka / 0 BDT).\n\nPCDF does not charge any entry fee or monthly fees. All workshops, practice sessions, and competitive training are provided free of charge for selected PCIU students."
 
     # 3. Members / Statistics queries
     if any(k in msg_lower for k in ['member', 'members', 'count', 'how many', 'stat', 'stats', 'সদস্য', 'কয়জন', 'ট্রফি', 'trophy', 'trophies']):
@@ -947,8 +961,8 @@ def get_piddy_fallback_reply(user_msg):
 
     # Default greeting
     if is_bn:
-        return "হ্যালো! আমি পিডি (Piddy), পিসিআইইউ ডিবেটিং ফোরামের (PCDF) এআই প্রতিনিধি।\n\n- বর্তমান সভাপতি: আসাবুল ইসলাম রুতুল\n- সহ-সভাপতি: মুহাম্মদ ইব্রাহিম\n- মেম্বারশিপ ফি: ০ টাকা (সম্পূর্ণ ফ্রি)\n- সক্রিয় সদস্য: ১৫০+ বিতার্কিক\n\nআপনি কমিটি, আসন্ন ২০২৬ বিতর্ক উৎসব, বিতর্ক ফরম্যাট বা মেম্বারশিপ নিয়ে যেকোনো প্রশ্ন করতে পারেন!"
-    return "Hello! I am Piddy, the friendly AI representative of the PCIU Debating Forum (PCDF).\n\n- Current President: Asabul Islam Rutul\n- Vice President: Muhammad Ibrahim\n- Membership Fee: 0 Taka (Free entry)\n- Active Members: 150+ debaters\n\nFeel free to ask me anything about our committee roster, upcoming 2026 Debate Fest, debate rules, or joining PCDF!"
+        return "হ্যালো! আমি পিডি (Piddy), পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি ডিবেট ফোরামের (PCDF) এআই প্রতিনিধি।\n\n- বর্তমান সভাপতি: আসাবুল ইসলাম রুতুল\n- সহ-সভাপতি: মুহাম্মদ ইব্রাহিম\n- মেম্বারশিপ ফি: ০ টাকা (সম্পূর্ণ ফ্রি)\n- সক্রিয় সদস্য: ১৫০+ বিতার্কিক\n\nআপনি কমিটি, আসন্ন ২০২৬ বিতর্ক উৎসব, বিতর্ক ফরম্যাট বা মেম্বারশিপ নিয়ে যেকোনো প্রশ্ন করতে পারেন!"
+    return "Hello! I am Piddy, the friendly AI representative of the Port City International University Debate Forum (PCDF).\n\n- Current President: Asabul Islam Rutul\n- Vice President: Muhammad Ibrahim\n- Membership Fee: 0 Taka (Free entry)\n- Active Members: 150+ debaters\n\nFeel free to ask me anything about our committee roster, upcoming 2026 Debate Fest, debate rules, or joining PCDF!"
 
 
 @app.route('/api/chat', methods=['POST'])
@@ -978,7 +992,7 @@ def api_chat():
         events_summary_lines.append(f"- {title} ({date}): {summary} [Highlights: {stats}]")
     events_text = '\n'.join(events_summary_lines)
 
-    system_prompt = f"""You are Piddy, the intelligent, friendly, and enthusiastic AI assistant and representative of the PCIU Debating Forum (PCDF) at Port City International University (PCIU), Chittagong, Bangladesh.
+    system_prompt = f"""You are Piddy, the intelligent, friendly, and enthusiastic AI assistant and representative of the Port City International University Debate Forum (PCDF) at Port City International University (PCIU), Chittagong, Bangladesh.
 Always speak warmly, clearly, and conversationally, just like a helpful club senior.
 
 CRITICAL RULES:
@@ -988,7 +1002,7 @@ CRITICAL RULES:
 4. Base your answers strictly on the verified knowledge base below.
 
 === PCDF VERIFIED KNOWLEDGE BASE ===
-ORGANIZATION: Port City International University Debating Forum (PCDF)
+ORGANIZATION: Port City International University Debate Forum (PCDF)
 INSTITUTION: Port City International University (PCIU), Chittagong, Bangladesh
 FOUNDED: 2017 (Active era since 2023)
 MOTTO: "We do more than debate." / "Where logic meets passion, and every argument is a work of art."
@@ -1280,7 +1294,7 @@ def api_arena_adjudicate():
     gov_text = "\n".join([f"- {t.get('name')}: \"{t.get('logic')}\"" for t in gov_troops]) or "None yet"
     opp_text = "\n".join([f"- {t.get('name')}: \"{t.get('logic')}\"" for t in opp_troops]) or "None yet"
 
-    system_prompt = """You are the Chief Adjudicator & Hard Debate Analyst of the PCIU Debating Forum (PCDF).
+    system_prompt = """You are the Chief Adjudicator & Hard Debate Analyst of the Port City International University Debate Forum (PCDF).
 You strictly evaluate debate clashes using Oxford & Parliamentary adjudication criteria (Logical consistency, Empirical proof, Rebuttal delta, and Impact weighing).
 Respond ONLY in valid, clean JSON with this exact schema:
 {

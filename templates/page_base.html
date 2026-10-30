@@ -20,7 +20,7 @@
                 class="h-10 md:h-12 w-auto drop-shadow-sm group-hover:scale-105 transition-transform duration-300">
             <div
                 class="text-sm md:text-xl cinzel font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase hidden sm:block text-gray-900">
-                PCIU Debating Forum
+                PCDF
             </div>
         </a>
 
@@ -133,7 +133,7 @@
                 <img src="{{ url_for('static', filename='images/logoPCDF.png') }}" alt="PCDF Logo"
                     class="h-8 md:h-10 w-auto mb-3 md:mb-4">
                 <p class="text-[0.65rem] md:text-xs text-gray-500 font-light leading-relaxed max-w-xs">
-                    PCIU Debating Forum. Where logic meets passion, and every argument is a work of art. Est. 2017.
+                    Port City International University Debate Forum (PCDF). Where logic meets passion, and every argument is a work of art. Est. 2017.
                 </p>
             </div>
             <div>
@@ -153,10 +153,10 @@
                     class="text-[0.65rem] md:text-xs tracking-[0.2em] uppercase text-gray-400 mb-3 md:mb-4 cinzel font-bold">
                     Connect</h4>
                 <ul class="space-y-1.5 md:space-y-2 text-xs md:text-sm text-gray-400 font-light">
-                    <li><a href="#" class="hover:text-white transition-colors">Facebook</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">LinkedIn</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+                    <li><a href="{{ content('site', 'facebook_url', '#') }}" target="_blank" rel="noopener" class="hover:text-white transition-colors">Facebook</a></li>
+                    <li><a href="{{ content('site', 'instagram_url', '#') }}" target="_blank" rel="noopener" class="hover:text-white transition-colors">Instagram</a></li>
+                    <li><a href="{{ content('site', 'linkedin_url', '#') }}" target="_blank" rel="noopener" class="hover:text-white transition-colors">LinkedIn</a></li>
+                    <li><a href="{{ content('site', 'youtube_url', '#') }}" target="_blank" rel="noopener" class="hover:text-white transition-colors">YouTube</a></li>
                 </ul>
             </div>
             <div>

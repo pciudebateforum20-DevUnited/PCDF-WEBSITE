@@ -1,8 +1,14 @@
 {
   "site": {
-    "title": "PCIU Debating Forum",
+    "title": "Port City International University Debate Forum (PCDF)",
     "tagline": "Where logic meets passion, and every argument is a work of art.",
-    "sections": []
+    "contact_email": "debate@pciu.edu",
+    "contact_phone": "+880 1234 567890",
+    "contact_room": "Student Union, Room 204",
+    "facebook_url": "#",
+    "instagram_url": "#",
+    "linkedin_url": "#",
+    "youtube_url": "#"
   },
   "home": {
     "hero_kicker": "Join The Elite Club",
@@ -54,7 +60,7 @@
   "about": {
     "eyebrow": "About PCDF",
     "title": "The Voice of Reason,<br class=\"hidden sm:block\" /><span class=\"font-bold\">The Power of Words</span>",
-    "subtitle": "The Port City International University Debating Forum (PCDF) is the premier debating society of Port City International University. Founded in 2023, we exist to cultivate a culture of critical thinking, articulate expression, and respectful discourse on campus — and to send our voices into the wider world.",
+    "subtitle": "The Port City International University Debate Forum (PCDF) is the premier debating society of Port City International University. Founded in 2023, we exist to cultivate a culture of critical thinking, articulate expression, and respectful discourse on campus — and to send our voices into the wider world.",
     "sections": [
       {
         "layout": "text",
@@ -696,7 +702,7 @@
   "gallery": {
     "eyebrow": "Gallery",
     "title": "Moments from <span class=\"font-bold\">the Floor</span>",
-    "subtitle": "Every tournament, workshop, and gala leaves a trail of spontaneity, intensity, and camaraderie. A visual diary of the PCIU Debating Forum.",
+    "subtitle": "Every tournament, workshop, and gala leaves a trail of spontaneity, intensity, and camaraderie. A visual diary of the Port City International University Debate Forum (PCDF).",
     "sections": [
       {
         "image": "",
@@ -847,7 +853,7 @@
   "testimonials": {
     "eyebrow": "Voices",
     "title": "In Their <span class=\"font-bold\">Words</span>",
-    "subtitle": "Members, alumni, and partners on what the PCIU Debating Forum gave them — and what it asks of anyone who joins.",
+    "subtitle": "Members, alumni, and partners on what the Port City International University Debate Forum (PCDF) gave them — and what it asks of anyone who joins.",
     "sections": [
       {
         "layout": "cards",
@@ -1120,7 +1126,7 @@
   "blog": {
     "eyebrow": "Insights & Thought Leadership",
     "title": "The Orator&#39;s <span class=\"font-bold\">Journal</span>",
-    "subtitle": "Debating strategies, motion breakdowns, speaker techniques, and philosophical inquiries from PCIU Debating Forum members and adjudicators.",
+    "subtitle": "Debating strategies, motion breakdowns, speaker techniques, and philosophical inquiries from Port City International University Debate Forum (PCDF) members and adjudicators.",
     "sections": [
       {
         "layout": "cards",
