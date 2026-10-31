@@ -945,8 +945,8 @@ def get_piddy_fallback_reply(user_msg):
     # 3. Members / Statistics queries
     if any(k in msg_lower for k in ['member', 'members', 'count', 'how many', 'stat', 'stats', 'সদস্য', 'কয়জন', 'ট্রফি', 'trophy', 'trophies']):
         if is_bn:
-            return "PCDF-এর বর্তমান সদস্য সংখ্যা ও পরিসংখ্যান:\n\n- সক্রিয় সদস্য: ১৫০+ বিতার্কিক ও বিচারক\n- অর্জিত ট্রফি: ২৫+ টি জাতীয় ও আঞ্চলিক চ্যাম্পিয়নশিপ ট্রফি\n- বিশ্ববিদ্যালয়ের ৮টি একাডেমিক বিভাগের শিক্ষার্থীরা এতে সক্রিয়ভাবে অংশ নেয়\n- প্রতিষ্ঠা: ২০১৭ সাল।"
-        return "PCDF Key Statistics:\n\n- Active Members: 150+ active debaters and adjudicators\n- Trophies Won: 25+ national and regional championship trophies\n- Department Representation: 8 academic departments\n- Founded: 2017 (Active collegiate forum at PCIU)"
+            return "PCDF-এর বর্তমান সদস্য সংখ্যা ও পরিসংখ্যান:\n\n- সক্রিয় সদস্য: ২৫০+ বিতার্কিক ও শিক্ষার্থী\n- অর্জিত ট্রফি/টুর্নামেন্ট: ৭টি টুর্নামেন্ট\n- বিশ্ববিদ্যালয়ের ৮টি একাডেমিক বিভাগের শিক্ষার্থীরা এতে সক্রিয়ভাবে অংশ নেয়\n- সক্রিয় সময়কাল: ২০২৪ সাল থেকে সক্রিয়।"
+        return "PCDF Key Statistics:\n\n- Active Members: 250+ active debaters and members\n- Tournaments Won: 7 tournament titles\n- Department Representation: 8 academic departments\n- Active Since: 2024 (Active collegiate forum at PCIU)"
 
     # 4. Events / Tournament / Fest queries
     if any(k in msg_lower for k in ['event', 'events', 'tournament', 'fest', 'festival', 'ইভেন্ট', 'অনুষ্ঠান', 'প্রতিযোগিতা', 'খেলার']):
@@ -962,8 +962,8 @@ def get_piddy_fallback_reply(user_msg):
 
     # Default greeting
     if is_bn:
-        return "হ্যালো! আমি পিডি (Piddy), পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি ডিবেট ফোরামের (PCDF) এআই প্রতিনিধি।\n\n- বর্তমান সভাপতি: আসাবুল ইসলাম রুতুল\n- সহ-সভাপতি: মুহাম্মদ ইব্রাহিম\n- মেম্বারশিপ ফি: ০ টাকা (সম্পূর্ণ ফ্রি)\n- সক্রিয় সদস্য: ১৫০+ বিতার্কিক\n\nআপনি কমিটি, আসন্ন ২০২৬ বিতর্ক উৎসব, বিতর্ক ফরম্যাট বা মেম্বারশিপ নিয়ে যেকোনো প্রশ্ন করতে পারেন!"
-    return "Hello! I am Piddy, the friendly AI representative of the Port City International University Debate Forum (PCDF).\n\n- Current President: Asabul Islam Rutul\n- Vice President: Muhammad Ibrahim\n- Membership Fee: 0 Taka (Free entry)\n- Active Members: 150+ debaters\n\nFeel free to ask me anything about our committee roster, upcoming 2026 Debate Fest, debate rules, or joining PCDF!"
+        return "হ্যালো! আমি পিডি (Piddy), পোর্ট সিটি ইন্টারন্যাশনাল ইউনিভার্সিটি ডিবেট ফোরামের (PCDF) এআই প্রতিনিধি।\n\n- বর্তমান সভাপতি: আসাবুল ইসলাম রুতুল\n- সহ-সভাপতি: মুহাম্মদ ইব্রাহিম\n- সাধারণ সম্পাদক: খালিদ সাইফুল্লাহ সরকার\n- মেম্বারশিপ ফি: ০ টাকা (সম্পূর্ণ ফ্রি)\n- সক্রিয় সদস্য: ২৫০+ শিক্ষার্থী\n- সক্রিয়: ২০২৪ সাল থেকে\n\nআপনি কমিটি, আসন্ন ২০২৬ বিতর্ক উৎসব, বিতর্ক ফরম্যাট বা মেম্বারশিপ নিয়ে যেকোনো প্রশ্ন করতে পারেন!"
+    return "Hello! I am Piddy, the friendly AI representative of the Port City International University Debate Forum (PCDF).\n\n- Current President: Asabul Islam Rutul\n- Vice President: Muhammad Ibrahim\n- General Secretary: Khalid Saifullah Sarker\n- Membership Fee: 0 Taka (Free entry)\n- Active Members: 250+ debaters\n- Active Since: 2024\n\nFeel free to ask me anything about our committee roster, upcoming 2026 Debate Fest, debate rules, or joining PCDF!"
 
 
 @app.route('/api/chat', methods=['POST'])
@@ -1005,7 +1005,7 @@ CRITICAL RULES:
 === PCDF VERIFIED KNOWLEDGE BASE ===
 ORGANIZATION: Port City International University Debate Forum (PCDF)
 INSTITUTION: Port City International University (PCIU), Chittagong, Bangladesh
-FOUNDED: 2017 (Active era since 2023)
+ACTIVE ERA: Active since 2024
 MOTTO: "We do more than debate." / "Where logic meets passion, and every argument is a work of art."
 HEADQUARTERS / CLUB ROOM: Room 204, Student Union, Port City International University
 PRACTICE SESSIONS: Every Tuesday from 3:00 PM to 7:00 PM in Room 204.
@@ -1013,7 +1013,7 @@ PRACTICE SESSIONS: Every Tuesday from 3:00 PM to 7:00 PM in Room 204.
 KEY STATS:
 - Member Count: 250+ active debaters, adjudicators, and alumni
 - Tournaments Won: 7 championship trophies & accolades across inter-varsity circuits
-- Inter-Varsity Breaks: 15+ breaks and outround finishes
+- Departments Represented: 8 academic departments
 - Department Representation: 8 academic departments actively competing
 
 FEES & COSTS (100% FREE):
