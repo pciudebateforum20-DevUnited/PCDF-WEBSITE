@@ -155,6 +155,7 @@ DEFAULTS = {
              'items': [
                  {'heading': 'President', 'text': 'Asabul Islam Rutul — sets the strategic vision and represents PCDF externally.', 'image': '/static/img/committee_members/asabul_islam_rutul.webp', 'value': '', 'label': ''},
                  {'heading': 'Vice President', 'text': 'Muhammad Ibrahim — oversees competitive training and tournament preparation.', 'image': '/static/img/committee_members/muhammad_ibrahim.webp', 'value': '', 'label': ''},
+                  {'heading': 'General Secretary', 'text': 'Khalid Saifullah Sarker — coordinates executive operations and secretarial administration.', 'image': '/static/img/committee_members/khalid_saifullah_sarker.webp', 'value': '', 'label': ''},
                  {'heading': 'Joint Secretary', 'text': 'Umme Kulsum — leads organisational management and administrative coordination.', 'image': '/static/img/committee_members/umme_kulsum.webp', 'value': '', 'label': ''},
                  {'heading': 'Debate Secretary', 'text': 'Jahedul Islam Rafi — manages debate modules, motions, and competitive workshops.', 'image': '/static/img/committee_members/jahedul_islam_rafi.webp', 'value': '', 'label': ''},
                  {'heading': 'Finance Secretary', 'text': 'Fahmida Rubaiyat Nazifa — manages forum budget, sponsorship, and fiscal planning.', 'image': '/static/img/committee_members/fahmida_rubaiyat_nazifa.webp', 'value': '', 'label': ''},
@@ -1010,8 +1011,9 @@ HEADQUARTERS / CLUB ROOM: Room 204, Student Union, Port City International Unive
 PRACTICE SESSIONS: Every Tuesday from 3:00 PM to 7:00 PM in Room 204.
 
 KEY STATS:
-- Member Count: 150+ active debaters, adjudicators, and alumni
-- Trophies Won: 25+ championship trophies & accolades across national and regional circuits
+- Member Count: 250+ active debaters, adjudicators, and alumni
+- Tournaments Won: 7 championship trophies & accolades across inter-varsity circuits
+- Inter-Varsity Breaks: 15+ breaks and outround finishes
 - Department Representation: 8 academic departments actively competing
 
 FEES & COSTS (100% FREE):
@@ -1022,6 +1024,7 @@ FEES & COSTS (100% FREE):
 CURRENT EXECUTIVE COMMITTEE (2025–2026):
 - President (Executive Head): Asabul Islam Rutul (Sets overarching strategic vision, represents PCDF across national collegiate forums, oversees institutional relations)
 - Vice President (Operations & Training): Muhammad Ibrahim (Directs tournament preparations, competitive squads, internal leagues, speaker development)
+- General Secretary: Khalid Saifullah Sarker (Coordinates executive operations, administrative governance, and inter-organizational communications)
 - Joint Secretary: Umme Kulsum (Organisational management and administrative coordination)
 - Assistant Secretary: Humaira Yeasmin Mila (Secretariat coordination and member correspondence)
 - Debate Secretary: Jahedul Islam Rafi (Manages debate modules, motions, and competitive workshops)

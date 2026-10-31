@@ -18,16 +18,16 @@
         
         <p class="mt-4 sm:mt-6 text-sm sm:text-base font-light text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Elected stewards of rhetoric, leadership, and competitive debate at Port City International University. 
-            Meet the 17 executives directing forum strategy, tournament training, media relations, and discourse excellence.
+            Meet the 18 executives directing forum strategy, tournament training, media relations, and discourse excellence.
         </p>
 
         <!-- CATEGORY FILTER BUTTONS -->
         <div class="mt-8 sm:mt-10 flex flex-wrap items-center justify-center gap-2 sm:gap-3" id="committeeFilters">
             <button type="button" data-filter="all" class="filter-btn active-filter px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-[#8b1e1e] bg-[#8b1e1e] text-white shadow-sm">
-                All Executives (17)
+                All Executives (18)
             </button>
             <button type="button" data-filter="leadership" class="filter-btn px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-gray-300 bg-white text-gray-700 hover:border-[#8b1e1e] hover:text-[#8b1e1e]">
-                Leadership (2)
+                Leadership (3)
             </button>
             <button type="button" data-filter="secretariat" class="filter-btn px-4 sm:px-5 py-2 text-xs font-semibold tracking-wider uppercase rounded-full transition-all duration-300 border border-gray-300 bg-white text-gray-700 hover:border-[#8b1e1e] hover:text-[#8b1e1e]">
                 Secretariat (10)
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
                 <!-- President -->
                 <div class="member-card group bg-white border border-[#e2dfd8] p-5 sm:p-6 shadow-[6px_6px_0_0_#8b1e1e] hover:shadow-[10px_10px_0_0_#8b1e1e] hover:-translate-y-1.5 transition-all duration-500 rounded-sm">
                     <div class="relative w-full aspect-[4/5] overflow-hidden bg-[#f4f1ea] mb-5 border border-gray-100">
@@ -88,6 +88,25 @@
                         <h3 class="text-xl sm:text-2xl font-bold cinzel text-[#2c2825] uppercase tracking-wide leading-tight">Muhammad Ibrahim</h3>
                         <p class="text-xs text-gray-500 font-light mt-2 leading-relaxed">
                             Directs tournament preparations, competitive debating squads, internal league operations, and speaker development.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- General Secretary -->
+                <div class="member-card group bg-white border border-[#e2dfd8] p-5 sm:p-6 shadow-[6px_6px_0_0_#8b1e1e] hover:shadow-[10px_10px_0_0_#8b1e1e] hover:-translate-y-1.5 transition-all duration-500 rounded-sm">
+                    <div class="relative w-full aspect-[4/5] overflow-hidden bg-[#f4f1ea] mb-5 border border-gray-100">
+                        <img src="{{ url_for('static', filename='img/committee_members/khalid_saifullah_sarker.webp') }}" 
+                             alt="Khalid Saifullah Sarker" 
+                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out">
+                        <div class="absolute top-3 left-3 px-3 py-1 bg-[#8b1e1e] text-white text-[0.65rem] uppercase tracking-widest font-semibold shadow">
+                            General Secretary
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <span class="text-[0.65rem] tracking-[0.25em] text-[#8b1e1e] font-bold uppercase block mb-1">Administration & Governance</span>
+                        <h3 class="text-xl sm:text-2xl font-bold cinzel text-[#2c2825] uppercase tracking-wide leading-tight">Khalid Saifullah Sarker</h3>
+                        <p class="text-xs text-gray-500 font-light mt-2 leading-relaxed">
+                            Coordinates executive operations, oversees administrative governance, and spearheads inter-organizational communications.
                         </p>
                     </div>
                 </div>
