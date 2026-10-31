@@ -1,5 +1,5 @@
 <!-- SECTION: DEVELOPERS INFO -->
-<section id="developers" class="py-8 md:py-12 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#faf8f5] border-t border-[#e2dfd8] relative section-reveal overflow-hidden">
+<section id="developers" class="pt-8 pb-12 md:py-12 px-4 sm:px-6 md:px-8 lg:px-12 bg-[#faf8f5] border-t border-[#e2dfd8] relative section-reveal overflow-hidden">
     <!-- Subtle Ambient Texture -->
     <div class="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#8b1e1e_1px,transparent_1px)] [background-size:16px_16px]"></div>
 
@@ -22,7 +22,7 @@
             <!-- DEV 1: ARNOB -->
             <div class="dev-card bg-white border border-[#dedad2] p-3.5 sm:p-4 rounded-xl shadow-[3px_3px_0_0_#8b1e1e] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#8b1e1e] transition-all duration-300 flex flex-col justify-between group">
                 <div>
-                    <div class="w-full aspect-[4/4.6] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
+                    <div class="w-full aspect-[4/4.5] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
                         <img src="{{ url_for('static', filename='images/developers/arnob.jpg') }}" alt="Ahamed Sahrear Arnob" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#2c2825]/90 text-white text-[0.62rem] font-mono tracking-wider rounded shadow-xs">
                             CSE 03208281
@@ -52,7 +52,7 @@
             <!-- DEV 2: MAHI -->
             <div class="dev-card bg-white border border-[#dedad2] p-3.5 sm:p-4 rounded-xl shadow-[3px_3px_0_0_#8b1e1e] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#8b1e1e] transition-all duration-300 flex flex-col justify-between group">
                 <div>
-                    <div class="w-full aspect-[4/4.6] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
+                    <div class="w-full aspect-[4/4.5] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
                         <img src="{{ url_for('static', filename='images/developers/mahi.jpg') }}" alt="Ismoth Doha Mahi" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#2c2825]/90 text-white text-[0.62rem] font-mono tracking-wider rounded shadow-xs">
                             CSE 03208277
@@ -82,7 +82,7 @@
             <!-- DEV 3: RIKA -->
             <div class="dev-card bg-white border border-[#dedad2] p-3.5 sm:p-4 rounded-xl shadow-[3px_3px_0_0_#8b1e1e] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#8b1e1e] transition-all duration-300 flex flex-col justify-between group">
                 <div>
-                    <div class="w-full aspect-[4/4.6] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
+                    <div class="w-full aspect-[4/4.5] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
                         <img src="{{ url_for('static', filename='images/developers/rika.jpg') }}" alt="Rika Mohajan" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#2c2825]/90 text-white text-[0.62rem] font-mono tracking-wider rounded shadow-xs">
                             CSE 03208274
@@ -112,7 +112,7 @@
             <!-- DEV 4: SHANTO -->
             <div class="dev-card bg-white border border-[#dedad2] p-3.5 sm:p-4 rounded-xl shadow-[3px_3px_0_0_#8b1e1e] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#8b1e1e] transition-all duration-300 flex flex-col justify-between group">
                 <div>
-                    <div class="w-full aspect-[4/4.6] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
+                    <div class="w-full aspect-[4/4.5] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
                         <img src="{{ url_for('static', filename='images/developers/shanto.jpg') }}" alt="Nur Hossain Shanto" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
                         <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#2c2825]/90 text-white text-[0.62rem] font-mono tracking-wider rounded shadow-xs">
                             CSE 03208270
@@ -144,31 +144,31 @@
         <!-- ========================================== -->
         <!-- MOBILE SWAP VIEW (Committee Style Swap) -->
         <!-- ========================================== -->
-        <div class="block md:hidden max-w-[280px] xs:max-w-[300px] mx-auto relative z-10">
-            <!-- 3D Flip Card Slot -->
-            <div id="dev-mobile-slot" class="dev-slot w-full h-[370px] xs:h-[390px] relative">
+        <div class="block md:hidden max-w-[280px] xs:max-w-[305px] mx-auto relative z-10">
+            <!-- 3D Flip Card Slot with full comfortable height -->
+            <div id="dev-mobile-slot" class="dev-slot w-full h-[420px] xs:h-[445px] relative">
                 <div id="dev-flip-inner" class="dev-flip-inner">
                     <div id="dev-flip-front" class="dev-flip-front w-full h-full"></div>
                     <div id="dev-flip-back" class="dev-flip-back w-full h-full"></div>
                 </div>
             </div>
 
-            <!-- Mobile Controls: Prev Button, Dots, Next Button -->
-            <div class="flex items-center justify-between mt-3.5 px-2">
+            <!-- Mobile Controls: Prev Button, Dots, Next Button (Lowered with generous spacing) -->
+            <div class="flex items-center justify-between mt-6 px-3 relative z-20">
                 <button type="button" id="dev-prev-btn" aria-label="Previous Developer"
-                        class="w-7 h-7 rounded-full border border-[#d4cbb3] bg-white flex items-center justify-center text-gray-700 hover:text-[#8b1e1e] hover:border-[#8b1e1e] transition-colors shadow-xs active:scale-95">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        class="w-9 h-9 rounded-full border border-[#8b1e1e]/40 bg-white flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#8b1e1e] hover:border-[#8b1e1e] active:bg-[#8b1e1e] active:text-white transition-all shadow-sm active:scale-90 cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </button>
 
-                <!-- Indicator Dots -->
+                <!-- Indicator Dots (Touch friendly) -->
                 <div id="dev-dots" class="flex items-center gap-1.5"></div>
 
                 <button type="button" id="dev-next-btn" aria-label="Next Developer"
-                        class="w-7 h-7 rounded-full border border-[#d4cbb3] bg-white flex items-center justify-center text-gray-700 hover:text-[#8b1e1e] hover:border-[#8b1e1e] transition-colors shadow-xs active:scale-95">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        class="w-9 h-9 rounded-full border border-[#8b1e1e]/40 bg-white flex items-center justify-center text-gray-700 hover:text-white hover:bg-[#8b1e1e] hover:border-[#8b1e1e] active:bg-[#8b1e1e] active:text-white transition-all shadow-sm active:scale-90 cursor-pointer">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"></path>
                     </svg>
                 </button>
             </div>
@@ -261,7 +261,7 @@
         return `
             <div class="w-full h-full bg-white border border-[#dedad2] p-3.5 rounded-xl shadow-[3px_3px_0_0_#8b1e1e] flex flex-col justify-between box-border">
                 <div>
-                    <div class="w-full aspect-[4/4.6] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
+                    <div class="w-full aspect-[4/4.5] overflow-hidden rounded-lg bg-[#f5f3ef] mb-3 relative border border-gray-100">
                         <img src="${d.img}" alt="${d.name}" class="w-full h-full object-cover object-top">
                         <span class="absolute top-2 left-2 px-2 py-0.5 bg-[#2c2825]/90 text-white text-[0.62rem] font-mono tracking-wider rounded shadow-xs">
                             ${d.id}
@@ -302,8 +302,10 @@
         dotsContainer.innerHTML = '';
         devData.forEach((_, i) => {
             const dot = document.createElement('button');
+            dot.setAttribute('type', 'button');
             dot.setAttribute('aria-label', `Developer ${i + 1}`);
-            dot.className = `${i === 0 ? 'w-5 h-1.5 bg-[#8b1e1e]' : 'w-1.5 h-1.5 bg-[#d4cbb3]'} rounded-full transition-all duration-400 cursor-pointer`;
+            dot.className = `p-1.5 flex items-center justify-center cursor-pointer`;
+            dot.innerHTML = `<span class="${i === 0 ? 'w-6 h-2 bg-[#8b1e1e]' : 'w-2 h-2 bg-[#d4cbb3]'} rounded-full transition-all duration-300 block"></span>`;
             dot.onclick = () => {
                 if (i !== currentIndex) {
                     const dir = i > currentIndex ? 'next' : 'prev';
@@ -316,8 +318,11 @@
         });
 
         function updateDots() {
-            Array.from(dotsContainer.children).forEach((dot, i) => {
-                dot.className = `${i === currentIndex ? 'w-5 h-1.5 bg-[#8b1e1e]' : 'w-1.5 h-1.5 bg-[#d4cbb3] hover:bg-[#8b1e1e]/60'} rounded-full transition-all duration-400 cursor-pointer`;
+            Array.from(dotsContainer.children).forEach((dotBtn, i) => {
+                const span = dotBtn.querySelector('span');
+                if (span) {
+                    span.className = `${i === currentIndex ? 'w-6 h-2 bg-[#8b1e1e]' : 'w-2 h-2 bg-[#d4cbb3] hover:bg-[#8b1e1e]/60'} rounded-full transition-all duration-300 block`;
+                }
             });
         }
 
